@@ -1,104 +1,100 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <!-- Basic Meta -->
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BlobbyOfficial – Musician, Developer, Content Creator</title>
-  <meta name="description" content="BlobbyOfficial blends chill lo-fi penguin vibes, custom Roblox games, and pro digital services. Explore music, experiences, store, and portfolio.">
-  <meta name="keywords" content="BlobbyOfficial, lo-fi music, Roblox developer, Sigma Penguin, scripting, digital services, musician, content creator, personal brand, portfolio, penguin music">
+
+  <!-- SEO & Social -->
+  <meta name="description" content="BlobbyOfficial creates penguin-themed lo-fi music, Roblox experiences, and digital services. Explore music, games, portfolio, and more!">
+  <meta name="keywords" content="BlobbyOfficial, lo-fi, Sigma Penguin, Roblox, music, digital services, web developer, scripting, UI design">
   <meta name="author" content="BlobbyOfficial">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#6D28D9">
-  <meta name="color-scheme" content="dark light">
 
-  <!-- Favicons -->
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- TailwindCSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Poppins', 'sans-serif']
-          },
-          colors: {
-            brand: '#6D28D9'
-          }
-        }
-      }
-    };
-  </script>
-
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:title" content="BlobbyOfficial – Musician, Developer, Content Creator">
-  <meta property="og:description" content="BlobbyOfficial creates lo-fi penguin music, custom Roblox experiences, and elite digital services.">
+  <meta property="og:description" content="Discover music, games, projects and more by BlobbyOfficial.">
   <meta property="og:image" content="https://blobbyofficial.com/preview.jpg">
   <meta property="og:url" content="https://blobbyofficial.com">
   <meta property="og:type" content="website">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BlobbyOfficial – Musician, Developer, Content Creator">
-  <meta name="twitter:description" content="Explore lo-fi penguin beats, Roblox creations, and digital services by BlobbyOfficial.">
+  <meta name="twitter:title" content="BlobbyOfficial">
+  <meta name="twitter:description" content="Explore music, games and digital content by BlobbyOfficial.">
   <meta name="twitter:image" content="https://blobbyofficial.com/preview.jpg">
 
-  <!-- Rich Results: JSON-LD Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "BlobbyOfficial",
-    "url": "https://blobbyofficial.com",
-    "image": "https://blobbyofficial.com/profile.jpg",
-    "sameAs": [
-      "https://twitter.com/BlobbyOfficial",
-      "https://youtube.com/@BlobbyOfficial",
-      "https://roblox.com/users/YourUserIDHere/profile"
-    ],
-    "jobTitle": "Musician, Developer, Content Creator",
-    "description": "Creating lo-fi music, immersive Roblox games, and offering elite digital services."
-  }
-  </script>
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
-
-<body class="bg-black text-white font-sans antialiased scroll-smooth">
-
-  <!-- Header -->
-  <header class="p-6 bg-gradient-to-r from-brand to-purple-600 shadow-lg">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <h1 class="text-2xl font-bold tracking-wide">BlobbyOfficial</h1>
-      <nav class="space-x-4">
-        <a href="#music" class="hover:underline">Music</a>
-        <a href="#games" class="hover:underline">Games</a>
-        <a href="#portfolio" class="hover:underline">Portfolio</a>
-        <a href="#contact" class="hover:underline">Contact</a>
-      </nav>
-    </div>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1>BlobbyOfficial</h1>
+      <ul class="nav-links">
+        <li><a href="#music">Music</a></li>
+        <li><a href="#games">Games</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="py-24 text-center hero-bg bg-gradient-to-br from-brand to-purple-800">
-    <div class="max-w-3xl mx-auto px-6">
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Welcome to the Penguinverse</h2>
-      <p class="text-lg text-gray-200 mb-8">Music, games, digital creations — everything Blobby.</p>
-      <a href="#portfolio" class="bg-white text-black px-6 py-3 font-semibold rounded-full hover:bg-gray-200 transition">Explore Now</a>
-    </div>
-  </section>
+  <main>
+    <section id="hero" class="hero">
+      <h2>Welcome to BlobbyOfficial</h2>
+      <p>Musician, Developer, Content Creator</p>
+      <button onclick="scrollToSection('music')">Explore Now</button>
+    </section>
 
-  <!-- Footer -->
-  <footer class="mt-24 text-center p-6 text-sm text-gray-400">
-    &copy; 2025 BlobbyOfficial. All rights reserved.
+    <section id="music">
+      <h3>🎵 Lo-fi Music</h3>
+      <p>Listen to penguin-themed lo-fi beats and Sigma Penguin tracks.</p>
+      <audio controls src="/assets/audio/sample.mp3"></audio>
+    </section>
+
+    <section id="games">
+      <h3>🎮 Roblox Experiences</h3>
+      <p>Explore immersive games built in Roblox Studio.</p>
+      <a href="https://www.roblox.com/users/123456789/profile" target="_blank">Visit My Roblox Profile</a>
+    </section>
+
+    <section id="portfolio">
+      <h3>💼 Digital Services</h3>
+      <p>From web development to UI design, here's what I offer.</p>
+      <ul>
+        <li>Web Development</li>
+        <li>Game Scripting</li>
+        <li>UI/UX Design</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h3>📬 Contact Me</h3>
+      <form id="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 BlobbyOfficial. All rights reserved.</p>
   </footer>
 
+  <!-- JS -->
+  <script src="script.js"></script>
 </body>
 </html>
