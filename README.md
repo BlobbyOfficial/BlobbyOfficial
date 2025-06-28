@@ -15,5 +15,5 @@ Visit [https://blobbyofficial.github.io/BlobbyOfficial/](https://blobbyofficial.
 
 ## Contact
 
-Email: contact@blobbyofficial.com
-Twitter: [@BlobbyOfficial](https://twitter.com/BlobbyOfficial)
+Email: blobbyofficial@outlook.com
+Twitter: [@BlobbyOfficial](https://twitter.com/BlobbyOfficial_)
