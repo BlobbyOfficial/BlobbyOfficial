@@ -1,974 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
   <!-- Basic Meta -->
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BlobbyOfficial – Musician, Developer, Content Creator</title>
-  <meta name="description" content="BlobbyOfficial creates high quality lo‑fi music, Roblox experiences & professional digital services. Discover music, games, store, portfolio & more!">
-  <meta name="keywords" content="BlobbyOfficial, Sigma Penguin, lo-fi, lofi, chillhop, chill lo-fi music, lo-fi beats, penguin lo-fi, Roblox developer, Roblox game creator, Roblox builder, Roblox scripter, Lua scripting, game development, Roblox games, custom UI design, professional scripting, Roblox UI, digital services, website design, portfolio showcase, personal brand, indie developer, content creator, digital content, online store, merch store, Roblox clothing, Blobby music, Blobby beats, penguin music, game dev services, music producer, online business, creative services, freelance developer, programming, scripting help, developer for hire, digital freelancer, aesthetic websites, interactive experiences, game assets, Tailwind developer, cool games, web experiences, creative portfolio, animated UI, BlobbyOfficial store, BlobbyOfficial games, BlobbyOfficial music, Roblox projects, music production, Roblox commissions, 3D modeling, UI/UX design, game designer, Roblox animations, penguin-themed music, personal website, Roblox studio expert, digital identity, tech content, gamer dev, sigma content, Blobby vibes, web animations, developer portfolio, coding services">
+  <meta name="description" content="BlobbyOfficial blends chill lo-fi penguin vibes, custom Roblox games, and pro digital services. Explore music, experiences, store, and portfolio.">
+  <meta name="keywords" content="BlobbyOfficial, lo-fi music, Roblox developer, Sigma Penguin, scripting, digital services, musician, content creator, personal brand, portfolio, penguin music">
   <meta name="author" content="BlobbyOfficial">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#6D28D9">
-  <meta name="msapplication-TileColor" content="#6D28D9">
-  
+  <meta name="color-scheme" content="dark light">
+
   <!-- Favicons -->
-  <link rel="icon" href="/Assets/favicon.png" sizes="32x32" type="image/x-icon">
-  <link rel="apple-touch-icon" href="/Assets/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  
-  <!-- Preconnect & Preload -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-  
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha384-XxNQZZ+C3t5F6+z68H6Lj+mVFlMduf3mK4Z90PLNaK9HOmXvqgFe6NQ/k++IpNwK"
-        crossorigin="anonymous">
-  
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
   <!-- TailwindCSS -->
-  <script src="https://cdn.tailwindcss.com" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif']
+          },
           colors: {
-            dark:      {100:'#1E1E1E',200:'#252525',300:'#2D2D2D',400:'#353535',500:'#3D3D3D'},
-            accent:    {100:'#8B5CF6',200:'#7C3AED',300:'#6D28D9'}
+            brand: '#6D28D9'
           }
         }
       }
     };
   </script>
-  
-  <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:title"       content="BlobbyOfficial – Penguin Lo‑Fi Beats & Digital Services">
-  <meta property="og:description" content="Chill lo‑fi music, Roblox worlds, a merch store & digital services by BlobbyOfficial.">
-  <meta property="og:url"         content="https://blobbyofficial.github.io">
-  <meta property="og:image"       content="https://blobbyofficial.github.io/assets/og-image.png">
-  
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="BlobbyOfficial – Musician, Developer, Content Creator">
+  <meta property="og:description" content="BlobbyOfficial creates lo-fi penguin music, custom Roblox experiences, and elite digital services.">
+  <meta property="og:image" content="https://blobbyofficial.com/preview.jpg">
+  <meta property="og:url" content="https://blobbyofficial.com">
+  <meta property="og:type" content="website">
+
   <!-- Twitter Card -->
-  <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:site"        content="@BlobbyOfficial_">
-  <meta name="twitter:title"       content="BlobbyOfficial – Penguin Lo‑Fi Beats & Digital Services">
-  <meta name="twitter:description" content="Chill lo‑fi music, Roblox worlds, a merch store & digital services by BlobbyOfficial.">
-  <meta name="twitter:image"       content="https://blobbyofficial.github.io/assets/twitter-card.png">
-  
-  <!-- Rich Results: JSON‑LD Structured Data -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BlobbyOfficial – Musician, Developer, Content Creator">
+  <meta name="twitter:description" content="Explore lo-fi penguin beats, Roblox creations, and digital services by BlobbyOfficial.">
+  <meta name="twitter:image" content="https://blobbyofficial.com/preview.jpg">
+
+  <!-- Rich Results: JSON-LD Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "name": "BlobbyOfficial",
-        "url": "https://blobbyofficial.github.io",
-        "logo": "https://blobbyofficial.github.io/assets/favicon.ico",
-        "sameAs": [
-          "https://www.youtube.com/@BlobbyOfficial",
-          "https://x.com/BlobbyOfficial_",
-          "https://linktr.ee/blobbyofficial",
-          "https://discord.gg/Yu9XvEncCU",
-          "https://www.roblox.com/communities/32402889/The-Official-Blobby-Group"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "name": "BlobbyOfficial",
-        "url": "https://blobbyofficial.github.io",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://blobbyofficial.github.io/?s={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://blobbyofficial.github.io" },
-          { "@type": "ListItem", "position": 2, "name": "About", "item": "https://blobbyofficial.github.io/#about" },
-          { "@type": "ListItem", "position": 3, "name": "Music", "item": "https://blobbyofficial.github.io/#music" },
-          { "@type": "ListItem", "position": 4, "name": "Store", "item": "https://blobbyofficial.github.io/#store" }
-        ]
-      },
-      {
-        "@type": "MusicGroup",
-        "name": "BlobbyOfficial",
-        "url": "https://blobbyofficial.github.io",
-        "genre": "Lo-fi",
-        "sameAs": [
-          "https://www.youtube.com/@BlobbyOfficial",
-          "https://open.spotify.com/artist/B0F9PPVNVT"
-        ]
-      }
-    ]
+    "@type": "Person",
+    "name": "BlobbyOfficial",
+    "url": "https://blobbyofficial.com",
+    "image": "https://blobbyofficial.com/profile.jpg",
+    "sameAs": [
+      "https://twitter.com/BlobbyOfficial",
+      "https://youtube.com/@BlobbyOfficial",
+      "https://roblox.com/users/YourUserIDHere/profile"
+    ],
+    "jobTitle": "Musician, Developer, Content Creator",
+    "description": "Creating lo-fi music, immersive Roblox games, and offering elite digital services."
   }
   </script>
-  
-  <!-- Custom Base Styles -->
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      scroll-behavior: smooth;
-      background-color: #121212;
-      color: #E5E7EB;
-    }
-    .hero-bg {
-      background: linear-gradient(135deg, #6D28D9 0%, #4F46E5 100%);
-    }
-    /* Hover animations & scrollbar */
-    .project-card:hover, .service-card:hover, .stats-card:hover, .social-icon:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3), 0 10px 10px -5px rgba(0,0,0,0.2);
-    }
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #3D3D3D;
-      border-radius: 5px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #4F46E5;
-    }
-    @keyframes fadeIn {
-      from { opacity:0; transform: translateY(20px); }
-      to   { opacity:1; transform: translateY(0); }
-    }
-    .animate-fadeIn { animation: fadeIn 0.6s ease forwards; }
-    .glow:hover { box-shadow: 0 0 25px rgba(139,92,246,0.7); }
-  </style>
 </head>
-</head>
-<body class="bg-gray-900 text-gray-100">
-    <!-- Navigation -->
-    <nav class="bg-gray-900 border-b border-gray-800 fixed w-full z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <div class="text-xl font-bold text-violet-400">BlobbyOfficial</div>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-home mr-2"></i> Home
-                    </a>
-                    <a href="#about" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-user mr-2"></i> About
-                    </a>
-                    <a href="#services" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-cogs mr-2"></i> Services
-                    </a>
-                    <a href="#portfolio" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-briefcase mr-2"></i> Portfolio
-                    </a>
-                    <a href="#stats" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-chart-bar mr-2"></i> Stats
-                    </a>
-                    <a href="#social" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-share-alt mr-2"></i> Connect
-                    </a>
-                    <a href="https://example.com" target="_blank" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-rss mr-2"></i> Blog
-                    </a>
-                    <a href="https://example.com" target="_blank" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-headset mr-2"></i> Support
-                    </a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-400 hover:text-violet-400 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-b border-gray-800">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-home mr-2"></i> Home
-                </a>
-                <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-user mr-2"></i> About
-                </a>
-                <a href="#services" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-cogs mr-2"></i> Services
-                </a>
-                <a href="#portfolio" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-briefcase mr-2"></i> Portfolio
-                </a>
-                <a href="#stats" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-chart-bar mr-2"></i> Stats
-                </a>
-                <a href="#social" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-share-alt mr-2"></i> Connect
-                </a>
-                <a href="https://example.com" target="_blank" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-rss mr-2"></i> Blog
-                </a>
-                <a href="https://example.com" target="_blank" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-headset mr-2"></i> Support
-                </a>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-bg pt-28 pb-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-1/2 mb-10 md:mb-0 animate-fadeIn">
-                    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
-                        Professional Solutions for Your Business Needs
-                    </h1>
-                    <p class="text-xl text-indigo-100 mb-8">
-                        Hi, I'm Blobby. I deliver high-quality services tailored to help your business grow and succeed.
-                    </p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#social" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium shadow-lg hover:bg-gray-100 transition duration-300 text-center flex items-center justify-center glow">
-                            <i class="fas fa-paper-plane mr-2"></i> Get in Touch
-                        </a>
-                        <a href="#portfolio" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-indigo-600 transition duration-300 text-center flex items-center justify-center">
-                            <i class="fas fa-eye mr-2"></i> View My Work
-                        </a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center animate-fadeIn delay-200">
-                    <div class="w-64 h-64 md:w-80 md:h-80 bg-indigo-300 rounded-full overflow-hidden border-4 border-violet-500 shadow-xl glow">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-full h-full">
-                            <circle cx="100" cy="70" r="40" fill="#6D28D9"/>
-                            <circle cx="100" cy="60" r="15" fill="white"/>
-                            <path d="M60,120 Q100,180 140,120" fill="#6D28D9"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<body class="bg-black text-white font-sans antialiased scroll-smooth">
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
-                <div class="w-16 h-1 bg-violet-500 mx-auto"></div>
-            </div>
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <div class="relative">
-                        <div class="w-full h-80 bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-full h-full">
-                                <rect width="200" height="200" fill="#1F2937"/>
-                                <circle cx="100" cy="70" r="40" fill="#6D28D9"/>
-                                <circle cx="100" cy="60" r="15" fill="white"/>
-                                <path d="M60,120 Q100,180 140,120" fill="#6D28D9"/>
-                            </svg>
-                        </div>
-                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-violet-600 rounded-lg"></div>
-                    </div>
-                </div>
-                <div class="md:w-1/2 md:pl-12">
-                    <h3 class="text-2xl font-bold text-white mb-4">Blobby Official</h3>
-                    <p class="text-gray-300 mb-6">
-                        With over 10 years of experience in the industry, I've helped numerous businesses achieve their goals through dedicated service and innovative solutions. My approach combines technical expertise with a deep understanding of business needs.
-                    </p>
-                    <p class="text-gray-300 mb-8">
-                        I believe in building long-term relationships with my clients, understanding their unique challenges, and delivering solutions that exceed expectations. My commitment to quality and attention to detail sets me apart.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-3 border border-violet-500">
-                                <i class="fas fa-check text-violet-400"></i>
-                            </div>
-                            <span class="text-gray-300">Professional</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-3 border border-violet-500">
-                                <i class="fas fa-check text-violet-400"></i>
-                            </div>
-                            <span class="text-gray-300">Reliable</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-3 border border-violet-500">
-                                <i class="fas fa-check text-violet-400"></i>
-                            </div>
-                            <span class="text-gray-300">Experienced</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-3 border border-violet-500">
-                                <i class="fas fa-check text-violet-400"></i>
-                            </div>
-                            <span class="text-gray-300">Innovative</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">My Services</h2>
-                <div class="w-16 h-1 bg-violet-500 mx-auto mb-6"></div>
-                <p class="text-gray-300 max-w-2xl mx-auto">
-                    I offer a range of professional services designed to help your business grow and succeed in today's competitive market.
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="service-card bg-gray-900 rounded-lg shadow-md p-8 transition duration-300 border border-gray-700">
-                    <div class="w-16 h-16 bg-gray-800 rounded-lg flex items-center justify-center mb-6 border border-violet-500">
-                        <i class="fas fa-laptop-code text-2xl text-violet-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Web Development</h3>
-                    <p class="text-gray-300 mb-4">
-                        Custom websites built with the latest technologies to ensure fast loading, responsive design, and optimal user experience.
-                    </p>
-                    <a href="#social" class="text-violet-400 font-medium hover:text-violet-300 flex items-center transition duration-300">
-                        <i class="fas fa-arrow-right mr-2"></i> Learn More
-                    </a>
-                </div>
-                
-                <!-- Service 2 -->
-                <div class="service-card bg-gray-900 rounded-lg shadow-md p-8 transition duration-300 border border-gray-700">
-                    <div class="w-16 h-16 bg-gray-800 rounded-lg flex items-center justify-center mb-6 border border-violet-500">
-                        <i class="fas fa-chart-line text-2xl text-violet-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Digital Marketing</h3>
-                    <p class="text-gray-300 mb-4">
-                        Strategic marketing solutions to increase your online presence, drive traffic, and convert visitors into loyal customers.
-                    </p>
-                    <a href="#social" class="text-violet-400 font-medium hover:text-violet-300 flex items-center transition duration-300">
-                        <i class="fas fa-arrow-right mr-2"></i> Learn More
-                    </a>
-                </div>
-                
-                <!-- Service 3 -->
-                <div class="service-card bg-gray-900 rounded-lg shadow-md p-8 transition duration-300 border border-gray-700">
-                    <div class="w-16 h-16 bg-gray-800 rounded-lg flex items-center justify-center mb-6 border border-violet-500">
-                        <i class="fas fa-paint-brush text-2xl text-violet-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Brand Identity</h3>
-                    <p class="text-gray-300 mb-4">
-                        Comprehensive branding solutions including logo design, visual identity, and brand guidelines to establish a strong market presence.
-                    </p>
-                    <a href="#social" class="text-violet-400 font-medium hover:text-violet-300 flex items-center transition duration-300">
-                        <i class="fas fa-arrow-right mr-2"></i> Learn More
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">My Portfolio</h2>
-                <div class="w-16 h-1 bg-violet-500 mx-auto mb-6"></div>
-                <p class="text-gray-300 max-w-2xl mx-auto">
-                    Take a look at some of my recent projects and the results I've delivered for my clients.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="project-card bg-gray-800 rounded-lg shadow-md overflow-hidden transition duration-300 border border-gray-700">
-                    <div class="h-48 bg-gray-700 relative">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" class="w-full h-full">
-                                <rect width="200" height="100" fill="#374151"/>
-                                <circle cx="100" cy="50" r="30" fill="#6D28D9"/>
-                                <rect x="70" y="40" width="60" height="20" fill="#E5E7EB"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">TechCorp Website Redesign</h3>
-                        <p class="text-gray-300 mb-4">
-                            Complete website overhaul resulting in 40% increase in user engagement and 25% higher conversion rates.
-                        </p>
-                        <button class="view-project text-violet-400 font-medium hover:text-violet-300 flex items-center transition duration-300" data-project="1">
-                            <i class="fas fa-search mr-2"></i> View Project
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card bg-gray-800 rounded-lg shadow-md overflow-hidden transition duration-300 border border-gray-700">
-                    <div class="h-48 bg-gray-700 relative">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" class="w-full h-full">
-                                <rect width="200" height="100" fill="#374151"/>
-                                <circle cx="50" cy="50" r="20" fill="#6D28D9"/>
-                                <circle cx="150" cy="50" r="20" fill="#6D28D9"/>
-                                <rect x="70" y="40" width="60" height="20" fill="#E5E7EB"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">GreenLife Brand Identity</h3>
-                        <p class="text-gray-300 mb-4">
-                            Created a comprehensive brand identity for an eco-friendly startup, including logo, packaging, and marketing materials.
-                        </p>
-                        <button class="view-project text-violet-400 font-medium hover:text-violet-300 flex items-center transition duration-300" data-project="2">
-                            <i class="fas fa-search mr-2"></i> View Project
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card bg-gray-800 rounded-lg shadow-md overflow-hidden transition duration-300 border border-gray-700">
-                    <div class="h-48 bg-gray-700 relative">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" class="w-full h-full">
-                                <rect width="200" height="100" fill="#374151"/>
-                                <rect x="40" y="20" width="120" height="60" fill="#6D28D9"/>
-                                <rect x="60" y="40" width="80" height="20" fill="#E5E7EB"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">FitQuest Mobile App</h3>
-                        <p class="text-gray-300 mb-4">
-                            Designed and developed a fitness tracking app with over 10,000 downloads in the first month after launch.
-                        </p>
-                        <button class="view-project text-violet-400 font-medium hover:text-violet-300 flex items-center transition duration-300" data-project="3">
-                            <i class="fas fa-search mr-2"></i> View Project
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project Modal -->
-    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center hidden">
-        <div class="bg-gray-800 rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto border border-gray-700">
-            <div class="p-6 border-b border-gray-700 flex justify-between items-center">
-                <h3 id="modal-title" class="text-2xl font-bold text-white"></h3>
-                <button id="close-modal" class="text-gray-400 hover:text-white transition duration-300">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-            <div class="p-6">
-                <div id="modal-content" class="space-y-6"></div>
-            </div>
-        </div>
+  <!-- Header -->
+  <header class="p-6 bg-gradient-to-r from-brand to-purple-600 shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <h1 class="text-2xl font-bold tracking-wide">BlobbyOfficial</h1>
+      <nav class="space-x-4">
+        <a href="#music" class="hover:underline">Music</a>
+        <a href="#games" class="hover:underline">Games</a>
+        <a href="#portfolio" class="hover:underline">Portfolio</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Stats Section -->
-    <section id="stats" class="py-20 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">Community Stats</h2>
-                <div class="w-16 h-1 bg-violet-500 mx-auto mb-6"></div>
-                <p class="text-gray-300 max-w-2xl mx-auto">
-                    Join our growing community across various platforms and be part of something amazing.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Roblox Players -->
-                <div class="stats-card rounded-lg shadow-md p-6 text-center">
-                    <div class="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4 border border-violet-500">
-                        <i class="fas fa-gamepad text-2xl text-violet-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Roblox Players</h3>
-                    <p class="counter text-4xl text-violet-400 mb-2" data-target="1250">0</p>
-                    <p class="text-gray-300">Currently Online</p>
-                </div>
-                
-                <!-- Website Users -->
-                <div class="stats-card rounded-lg shadow-md p-6 text-center">
-                    <div class="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4 border border-violet-500">
-                        <i class="fas fa-users text-2xl text-violet-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Website Users</h3>
-                    <p class="counter text-4xl text-violet-400 mb-2" data-target="45000">0</p>
-                    <p class="text-gray-300">Monthly Visitors</p>
-                </div>
-                
-                <!-- Discord Members -->
-                <div class="stats-card rounded-lg shadow-md p-6 text-center">
-                    <div class="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4 border border-violet-500">
-                        <i class="fab fa-discord text-2xl text-violet-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Discord Members</h3>
-                    <p class="counter text-4xl text-violet-400 mb-2" data-target="8750">0</p>
-                    <p class="text-gray-300">Active Community</p>
-                </div>
-                
-                <!-- Patreon Subscribers -->
-                <div class="stats-card rounded-lg shadow-md p-6 text-center">
-                    <div class="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4 border border-violet-500">
-                        <i class="fab fa-patreon text-2xl text-violet-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Patreon Subscribers</h3>
-                    <p class="counter text-4xl text-violet-400 mb-2" data-target="320">0</p>
-                    <p class="text-gray-300">Supporting Members</p>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                <!-- Social Media Followers -->
-                <div class="stats-card rounded-lg shadow-md p-6 text-center">
-                    <div class="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4 border border-violet-500">
-                        <i class="fas fa-hashtag text-2xl text-violet-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Social Media</h3>
-                    <p class="counter text-4xl text-violet-400 mb-2" data-target="25000">0</p>
-                    <p class="text-gray-300">Total Followers</p>
-                </div>
-                
-                <!-- YouTube Subscribers -->
-                <div class="stats-card rounded-lg shadow-md p-6 text-center">
-                    <div class="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4 border border-violet-500">
-                        <i class="fab fa-youtube text-2xl text-violet-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">YouTube</h3>
-                    <p class="counter text-4xl text-violet-400 mb-2" data-target="12500">0</p>
-                    <p class="text-gray-300">Subscribers</p>
-                </div>
-                
-                <!-- Projects Completed -->
-                <div class="stats-card rounded-lg shadow-md p-6 text-center">
-                    <div class="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4 border border-violet-500">
-                        <i class="fas fa-check-circle text-2xl text-violet-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Projects</h3>
-                    <p class="counter text-4xl text-violet-400 mb-2" data-target="150">0</p>
-                    <p class="text-gray-300">Successfully Completed</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Hero -->
+  <section class="py-24 text-center hero-bg bg-gradient-to-br from-brand to-purple-800">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Welcome to the Penguinverse</h2>
+      <p class="text-lg text-gray-200 mb-8">Music, games, digital creations — everything Blobby.</p>
+      <a href="#portfolio" class="bg-white text-black px-6 py-3 font-semibold rounded-full hover:bg-gray-200 transition">Explore Now</a>
+    </div>
+  </section>
 
-    <!-- Social Links Section -->
-    <section id="social" class="py-20 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">Connect With Me</h2>
-                <div class="w-16 h-1 bg-violet-500 mx-auto mb-6"></div>
-                <p class="text-gray-300 max-w-2xl mx-auto">
-                    Follow me on social media and join my communities to stay updated with the latest news and projects.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                <!-- Discord -->
-                <a href="#" class="social-icon bg-[#5865F2] text-white rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition duration-300">
-                    <i class="fab fa-discord text-4xl mb-3"></i>
-                    <span class="font-medium">Discord</span>
-                </a>
-                
-                <!-- Roblox -->
-                <a href="#" class="social-icon bg-[#00A2FF] text-white rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition duration-300">
-                    <i class="fas fa-gamepad text-4xl mb-3"></i>
-                    <span class="font-medium">Roblox</span>
-                </a>
-                
-                <!-- Spotify -->
-                <a href="#" class="social-icon bg-[#1DB954] text-white rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition duration-300">
-                    <i class="fab fa-spotify text-4xl mb-3"></i>
-                    <span class="font-medium">Spotify</span>
-                </a>
-                
-                <!-- Twitter/X -->
-                <a href="#" class="social-icon bg-black text-white rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition duration-300 border border-gray-700">
-                    <i class="fab fa-x-twitter text-4xl mb-3"></i>
-                    <span class="font-medium">Twitter/X</span>
-                </a>
-                
-                <!-- Facebook -->
-                <a href="#" class="social-icon bg-[#1877F2] text-white rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition duration-300">
-                    <i class="fab fa-facebook-f text-4xl mb-3"></i>
-                    <span class="font-medium">Facebook</span>
-                </a>
-                
-                <!-- Instagram -->
-                <a href="#" class="social-icon bg-gradient-to-r from-[#405DE6] via-[#E1306C] to-[#FFDC80] text-white rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition duration-300">
-                    <i class="fab fa-instagram text-4xl mb-3"></i>
-                    <span class="font-medium">Instagram</span>
-                </a>
-                
-                <!-- TikTok -->
-                <a href="#" class="social-icon bg-black text-white rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition duration-300 border border-gray-700">
-                    <i class="fab fa-tiktok text-4xl mb-3"></i>
-                    <span class="font-medium">TikTok</span>
-                </a>
-                
-                <!-- YouTube -->
-                <a href="#" class="social-icon bg-[#FF0000] text-white rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition duration-300">
-                    <i class="fab fa-youtube text-4xl mb-3"></i>
-                    <span class="font-medium">YouTube</span>
-                </a>
-                
-                <!-- Twitch -->
-                <a href="#" class="social-icon bg-[#9146FF] text-white rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition duration-300">
-                    <i class="fab fa-twitch text-4xl mb-3"></i>
-                    <span class="font-medium">Twitch</span>
-                </a>
-                
-                <!-- Patreon -->
-                <a href="#" class="social-icon bg-[#F96854] text-white rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition duration-300">
-                    <i class="fab fa-patreon text-4xl mb-3"></i>
-                    <span class="font-medium">Patreon</span>
-                </a>
-            </div>
-            
-            <div class="mt-16 text-center">
-                <h3 class="text-2xl font-bold text-white mb-6">Get In Touch</h3>
-                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="mailto:contact@blobbyofficial.com" class="bg-violet-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:bg-violet-700 transition duration-300 flex items-center glow">
-                        <i class="fas fa-envelope mr-2"></i> Email Me
-                    </a>
-                    <a href="https://example.com" target="_blank" class="bg-gray-800 text-violet-400 border border-violet-500 px-6 py-3 rounded-lg font-medium shadow-lg hover:bg-gray-700 transition duration-300 flex items-center">
-                        <i class="fas fa-headset mr-2"></i> Support
-                    </a>
-                    <a href="https://example.com" target="_blank" class="bg-gray-800 text-violet-400 border border-violet-500 px-6 py-3 rounded-lg font-medium shadow-lg hover:bg-gray-700 transition duration-300 flex items-center">
-                        <i class="fas fa-rss mr-2"></i> Blog
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Footer -->
+  <footer class="mt-24 text-center p-6 text-sm text-gray-400">
+    &copy; 2025 BlobbyOfficial. All rights reserved.
+  </footer>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <div class="text-2xl font-bold text-violet-400 mb-2">BlobbyOfficial</div>
-                    <p class="text-gray-400">Professional services for your business needs.</p>
-                </div>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#" class="text-gray-400 hover:text-violet-400 text-2xl transition duration-300">
-                        <i class="fab fa-discord"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-violet-400 text-2xl transition duration-300">
-                        <i class="fas fa-gamepad"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-violet-400 text-2xl transition duration-300">
-                        <i class="fab fa-spotify"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-violet-400 text-2xl transition duration-300">
-                        <i class="fab fa-x-twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-violet-400 text-2xl transition duration-300">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-violet-400 text-2xl transition duration-300">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-violet-400 text-2xl transition duration-300">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="flex flex-col md:flex-row justify-center md:justify-between items-center mt-8 pt-8 border-t border-gray-800">
-                <div class="flex flex-wrap justify-center space-x-4 mb-4 md:mb-0">
-                    <a href="#home" class="text-gray-400 hover:text-violet-400 flex items-center transition duration-300">
-                        <i class="fas fa-home mr-2"></i> Home
-                    </a>
-                    <a href="#about" class="text-gray-400 hover:text-violet-400 flex items-center transition duration-300">
-                        <i class="fas fa-user mr-2"></i> About
-                    </a>
-                    <a href="#services" class="text-gray-400 hover:text-violet-400 flex items-center transition duration-300">
-                        <i class="fas fa-cogs mr-2"></i> Services
-                    </a>
-                    <a href="#portfolio" class="text-gray-400 hover:text-violet-400 flex items-center transition duration-300">
-                        <i class="fas fa-briefcase mr-2"></i> Portfolio
-                    </a>
-                </div>
-                <p class="text-gray-400">&copy; 2023 BlobbyOfficial. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 64, // Adjust for header height
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                }
-            });
-        });
-        
-        // Project modal functionality
-        const projectModal = document.getElementById('project-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalContent = document.getElementById('modal-content');
-        const closeModal = document.getElementById('close-modal');
-        const viewProjectButtons = document.querySelectorAll('.view-project');
-        
-        // Project data
-        const projectData = {
-            1: {
-                title: "TechCorp Website Redesign",
-                content: `
-                    <div class="space-y-6">
-                        <div class="h-64 bg-gray-700 rounded-lg flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" class="w-full h-full">
-                                <rect width="400" height="200" fill="#374151"/>
-                                <circle cx="200" cy="100" r="60" fill="#6D28D9"/>
-                                <rect x="140" y="80" width="120" height="40" fill="#E5E7EB"/>
-                            </svg>
-                        </div>
-                        <p class="text-gray-300">
-                            TechCorp approached me with the challenge of modernizing their outdated website to better reflect their innovative technology solutions and improve user engagement.
-                        </p>
-                        <h4 class="text-xl font-bold text-white flex items-center">
-                            <i class="fas fa-exclamation-circle text-violet-400 mr-2"></i> The Challenge
-                        </h4>
-                        <p class="text-gray-300">
-                            Their existing website had poor navigation, slow loading times, and wasn't mobile-responsive, resulting in high bounce rates and low conversion.
-                        </p>
-                        <h4 class="text-xl font-bold text-white flex items-center">
-                            <i class="fas fa-lightbulb text-violet-400 mr-2"></i> The Solution
-                        </h4>
-                        <p class="text-gray-300">
-                            I completely redesigned the website with a focus on user experience, implementing a clean, modern design with intuitive navigation and optimized performance across all devices.
-                        </p>
-                        <h4 class="text-xl font-bold text-white flex items-center">
-                            <i class="fas fa-chart-line text-violet-400 mr-2"></i> Results
-                        </h4>
-                        <ul class="list-none pl-5 text-gray-300 space-y-2">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 40% increase in user engagement</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 25% higher conversion rates</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 50% reduction in bounce rate</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 35% increase in average session duration</li>
-                        </ul>
-                    </div>
-                `
-            },
-            2: {
-                title: "GreenLife Brand Identity",
-                content: `
-                    <div class="space-y-6">
-                        <div class="h-64 bg-gray-700 rounded-lg flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" class="w-full h-full">
-                                <rect width="400" height="200" fill="#374151"/>
-                                <circle cx="100" cy="100" r="40" fill="#6D28D9"/>
-                                <circle cx="300" cy="100" r="40" fill="#6D28D9"/>
-                                <rect x="140" y="80" width="120" height="40" fill="#E5E7EB"/>
-                            </svg>
-                        </div>
-                        <p class="text-gray-300">
-                            GreenLife, an eco-friendly startup, needed a comprehensive brand identity that would communicate their commitment to sustainability and appeal to environmentally conscious consumers.
-                        </p>
-                        <h4 class="text-xl font-bold text-white flex items-center">
-                            <i class="fas fa-exclamation-circle text-violet-400 mr-2"></i> The Challenge
-                        </h4>
-                        <p class="text-gray-300">
-                            Creating a brand identity that balanced professionalism with environmental values, while standing out in an increasingly crowded market of "green" companies.
-                        </p>
-                        <h4 class="text-xl font-bold text-white flex items-center">
-                            <i class="fas fa-lightbulb text-violet-400 mr-2"></i> The Solution
-                        </h4>
-                        <p class="text-gray-300">
-                            I developed a complete brand package including a distinctive logo, color palette, typography, packaging design, and marketing materials that conveyed GreenLife's mission and values.
-                        </p>
-                        <h4 class="text-xl font-bold text-white flex items-center">
-                            <i class="fas fa-chart-line text-violet-400 mr-2"></i> Results
-                        </h4>
-                        <ul class="list-none pl-5 text-gray-300 space-y-2">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Brand recognition increased by 60% within 6 months</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Product packaging received industry award for sustainable design</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Successfully secured partnerships with 3 major retailers</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Social media following grew by 200% in the first quarter</li>
-                        </ul>
-                    </div>
-                `
-            },
-            3: {
-                title: "FitQuest Mobile App",
-                content: `
-                    <div class="space-y-6">
-                        <div class="h-64 bg-gray-700 rounded-lg flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" class="w-full h-full">
-                                <rect width="400" height="200" fill="#374151"/>
-                                <rect x="80" y="40" width="240" height="120" fill="#6D28D9"/>
-                                <rect x="120" y="80" width="160" height="40" fill="#E5E7EB"/>
-                            </svg>
-                        </div>
-                        <p class="text-gray-300">
-                            FitQuest wanted to create a mobile app that would help users track their fitness journey, set goals, and stay motivated through gamification elements.
-                        </p>
-                        <h4 class="text-xl font-bold text-white flex items-center">
-                            <i class="fas fa-exclamation-circle text-violet-400 mr-2"></i> The Challenge
-                        </h4>
-                        <p class="text-gray-300">
-                            Designing an intuitive, engaging app that would stand out in a saturated fitness app market and keep users coming back consistently.
-                        </p>
-                        <h4 class="text-xl font-bold text-white flex items-center">
-                            <i class="fas fa-lightbulb text-violet-400 mr-2"></i> The Solution
-                        </h4>
-                        <p class="text-gray-300">
-                            I designed and developed a user-friendly app with customizable workout plans, progress tracking, achievement badges, and social sharing capabilities to foster community engagement.
-                        </p>
-                        <h4 class="text-xl font-bold text-white flex items-center">
-                            <i class="fas fa-chart-line text-violet-400 mr-2"></i> Results
-                        </h4>
-                        <ul class="list-none pl-5 text-gray-300 space-y-2">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Over 10,000 downloads in the first month</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 4.8/5 star average rating on app stores</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 70% user retention rate after 3 months</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Featured in "Best New Fitness Apps" by a major tech publication</li>
-                        </ul>
-                    </div>
-                `
-            }
-        };
-        
-        // Open modal with project details
-        viewProjectButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const projectId = button.getAttribute('data-project');
-                const project = projectData[projectId];
-                
-                modalTitle.textContent = project.title;
-                modalContent.innerHTML = project.content;
-                projectModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-            });
-        });
-        
-        // Close modal
-        closeModal.addEventListener('click', () => {
-            projectModal.classList.add('hidden');
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
-        });
-        
-        // Close modal when clicking outside
-        projectModal.addEventListener('click', (e) => {
-            if (e.target === projectModal) {
-                projectModal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }
-        });
-        
-        // Counter animation for stats
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200; // The lower the slower
-        
-        const animateCounters = () => {
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                
-                // Lower inc to slow and higher to speed up
-                const inc = target / speed;
-                
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target.toLocaleString();
-                }
-            });
-        };
-        
-        // Check if element is in viewport
-        function isInViewport(element) {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
-        
-        // Start animation when stats section is in viewport
-        let animated = false;
-        
-        function checkForAnimation() {
-            const statsSection = document.querySelector('#stats');
-            if (!animated && statsSection && isInViewport(statsSection)) {
-                animateCounters();
-                animated = true;
-            }
-        }
-        
-        // Check on scroll
-        window.addEventListener('scroll', checkForAnimation);
-        
-        // Check on page load and resize
-        window.addEventListener('load', checkForAnimation);
-        window.addEventListener('resize', checkForAnimation);
-        
-        // Add fade-in animations to elements when they come into view
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.service-card, .project-card, .stats-card, .social-icon');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.2;
-                
-                if (elementPosition < screenPosition) {
-                    element.classList.add('animate-fadeIn');
-                }
-            });
-        };
-        
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-        
-        // Handle escape key for modal
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !projectModal.classList.contains('hidden')) {
-                projectModal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }
-        });
-        
-        // Add touch support for mobile devices
-        let touchStartY = 0;
-        let touchEndY = 0;
-        
-        document.addEventListener('touchstart', (e) => {
-            touchStartY = e.changedTouches[0].screenY;
-        }, false);
-        
-        document.addEventListener('touchend', (e) => {
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipe();
-        }, false);
-        
-        function handleSwipe() {
-            // For future swipe gestures if needed
-        }
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'946cbdf102789e0a',t:'MTc0ODQyNDcxNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
