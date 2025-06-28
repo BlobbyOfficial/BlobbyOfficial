@@ -1,16 +1,19 @@
-## Hi there 👋
+# BlobbyOfficial
 
-<!--
-**BlobbyOfficial/BlobbyOfficial** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+BlobbyOfficial is a musician, developer, and content creator specializing in penguin-themed lo-fi music, Roblox experiences, and professional digital services.
 
-Here are some ideas to get you started:
+## Features
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- Lo-fi music tracks & albums
+- Roblox games & scripts
+- Portfolio of digital services
+- Online store
+
+## Usage
+
+Visit [https://blobbyofficial.github.io/BlobbyOfficial/](https://blobbyofficial.github.io/BlobbyOfficial/) to explore music, games, and services.
+
+## Contact
+
+Email: contact@blobbyofficial.com
+Twitter: [@BlobbyOfficial](https://twitter.com/BlobbyOfficial)
