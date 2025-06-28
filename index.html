@@ -1,151 +1,148 @@
 <head>
-  <!-- Basic Setup -->
+  <!-- Basic Meta -->
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlobbyOfficial | Professional Services</title>
-
-  <!-- Favicon (adjust the path as needed) -->
-  <link rel="icon" href="/path/to/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/path/to/favicon.ico" type="image/x-icon">
-
-  <!-- Apple Touch Icon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/path/to/apple-touch-icon.png">
-
-  <!-- Manifest for PWA (optional) -->
-  <link rel="manifest" href="/manifest.json">
-
-  <!-- Theme Colors -->
+  <title>BlobbyOfficial – Penguin Lo‑Fi Beats & Digital Services</title>
+  <meta name="description" content="BlobbyOfficial creates penguin‑themed lo‑fi music, Roblox experiences & professional digital services. Discover music, games, store, portfolio & connect.">
+  <meta name="keywords" content="BlobbyOfficial, lo-fi, penguin, Roblox, music, digital services, portfolio, store">
+  <meta name="author" content="BlobbyOfficial">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#6D28D9">
   <meta name="msapplication-TileColor" content="#6D28D9">
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="BlobbyOfficial offers high-quality digital services to elevate your business.">
-  <meta name="keywords" content="Blobby, Web Development, Design, Digital Services, Portfolio, Tailwind, Professional Services">
-  <meta name="author" content="BlobbyOfficial">
-
-  <!-- Open Graph for Social Sharing -->
-  <meta property="og:title" content="BlobbyOfficial | Professional Services">
-  <meta property="og:description" content="Delivering cutting-edge web and design solutions.">
-  <meta property="og:image" content="https://example.com/preview.jpg">
-  <meta property="og:url" content="https://blobbyofficial.com">
-  <meta property="og:type" content="website">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BlobbyOfficial | Professional Services">
-  <meta name="twitter:description" content="Professional web services tailored to your needs.">
-  <meta name="twitter:image" content="https://example.com/preview.jpg">
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Google Fonts -->
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/favicon.ico" sizes="32x32" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Preconnect & Preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Custom Tailwind Config -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha384-XxNQZZ+C3t5F6+z68H6Lj+mVFlMduf3mK4Z90PLNaK9HOmXvqgFe6NQ/k++IpNwK"
+        crossorigin="anonymous">
+  
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com" defer></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            dark: {
-              100: '#1E1E1E',
-              200: '#252525',
-              300: '#2D2D2D',
-              400: '#353535',
-              500: '#3D3D3D',
-            },
-            accent: {
-              100: '#8B5CF6',
-              200: '#7C3AED',
-              300: '#6D28D9',
-            }
+            dark:      {100:'#1E1E1E',200:'#252525',300:'#2D2D2D',400:'#353535',500:'#3D3D3D'},
+            accent:    {100:'#8B5CF6',200:'#7C3AED',300:'#6D28D9'}
           }
         }
       }
     };
   </script>
-
-  <!-- Basic Styling -->
+  
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="BlobbyOfficial – Penguin Lo‑Fi Beats & Digital Services">
+  <meta property="og:description" content="Chill lo‑fi music, Roblox worlds, a merch store & digital services by BlobbyOfficial.">
+  <meta property="og:url"         content="https://blobbyofficial.github.io">
+  <meta property="og:image"       content="https://blobbyofficial.github.io/assets/og-image.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@BlobbyOfficial_">
+  <meta name="twitter:title"       content="BlobbyOfficial – Penguin Lo‑Fi Beats & Digital Services">
+  <meta name="twitter:description" content="Chill lo‑fi music, Roblox worlds, a merch store & digital services by BlobbyOfficial.">
+  <meta name="twitter:image"       content="https://blobbyofficial.github.io/assets/twitter-card.png">
+  
+  <!-- Rich Results: JSON‑LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "BlobbyOfficial",
+        "url": "https://blobbyofficial.github.io",
+        "logo": "https://blobbyofficial.github.io/assets/favicon.ico",
+        "sameAs": [
+          "https://www.youtube.com/@BlobbyOfficial",
+          "https://x.com/BlobbyOfficial_",
+          "https://linktr.ee/blobbyofficial",
+          "https://discord.gg/Yu9XvEncCU",
+          "https://www.roblox.com/communities/32402889/The-Official-Blobby-Group"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "name": "BlobbyOfficial",
+        "url": "https://blobbyofficial.github.io",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://blobbyofficial.github.io/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://blobbyofficial.github.io" },
+          { "@type": "ListItem", "position": 2, "name": "About", "item": "https://blobbyofficial.github.io/#about" },
+          { "@type": "ListItem", "position": 3, "name": "Music", "item": "https://blobbyofficial.github.io/#music" },
+          { "@type": "ListItem", "position": 4, "name": "Store", "item": "https://blobbyofficial.github.io/#store" }
+        ]
+      },
+      {
+        "@type": "MusicGroup",
+        "name": "BlobbyOfficial",
+        "url": "https://blobbyofficial.github.io",
+        "genre": "Lo-fi",
+        "sameAs": [
+          "https://www.youtube.com/@BlobbyOfficial",
+          "https://open.spotify.com/artist/B0F9PPVNVT"
+        ]
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Custom Base Styles -->
   <style>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-            background-color: #121212;
-            color: #E5E7EB;
-        }
-        
-        .hero-bg {
-            background: linear-gradient(135deg, #6D28D9 0%, #4F46E5 100%);
-        }
-        
-        .project-card:hover, .service-card:hover, .stats-card:hover, .social-icon:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-        }
-        
-        .project-card, .service-card, .stats-card, .social-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .stats-card {
-            background: linear-gradient(135deg, #252525 0%, #1E1E1E 100%);
-            border: 1px solid #353535;
-        }
-        
-        .counter {
-            font-weight: 700;
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #1E1E1E;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #3D3D3D;
-            border-radius: 5px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4F46E5;
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-fadeIn {
-            animation: fadeIn 0.6s ease forwards;
-        }
-        
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-        .delay-400 { animation-delay: 0.4s; }
-        
-        /* Glow effect */
-        .glow {
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
-        }
-        
-        .glow:hover {
-            box-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
-        }
-    </style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #121212;
+      color: #E5E7EB;
+    }
+    .hero-bg {
+      background: linear-gradient(135deg, #6D28D9 0%, #4F46E5 100%);
+    }
+    /* Hover animations & scrollbar */
+    .project-card:hover, .service-card:hover, .stats-card:hover, .social-icon:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3), 0 10px 10px -5px rgba(0,0,0,0.2);
+    }
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3D3D3D;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4F46E5;
+    }
+    @keyframes fadeIn {
+      from { opacity:0; transform: translateY(20px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    .animate-fadeIn { animation: fadeIn 0.6s ease forwards; }
+    .glow:hover { box-shadow: 0 0 25px rgba(139,92,246,0.7); }
+  </style>
+</head>
 </head>
 <body class="bg-gray-900 text-gray-100">
     <!-- Navigation -->
