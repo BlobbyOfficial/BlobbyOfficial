@@ -1,217 +1,155 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlobbyOfficial | Professional Services</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: {
-                            100: '#1E1E1E',
-                            200: '#252525',
-                            300: '#2D2D2D',
-                            400: '#353535',
-                            500: '#3D3D3D',
-                        },
-                        accent: {
-                            100: '#8B5CF6',
-                            200: '#7C3AED',
-                            300: '#6D28D9',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-            background-color: #121212;
-            color: #E5E7EB;
-        }
-        
-        .hero-bg {
-            background: linear-gradient(135deg, #6D28D9 0%, #4F46E5 100%);
-        }
-        
-        .project-card:hover, .service-card:hover, .stats-card:hover, .social-icon:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-        }
-        
-        .project-card, .service-card, .stats-card, .social-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .stats-card {
-            background: linear-gradient(135deg, #252525 0%, #1E1E1E 100%);
-            border: 1px solid #353535;
-        }
-        
-        .counter {
-            font-weight: 700;
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #1E1E1E;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #3D3D3D;
-            border-radius: 5px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4F46E5;
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-fadeIn {
-            animation: fadeIn 0.6s ease forwards;
-        }
-        
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-        .delay-400 { animation-delay: 0.4s; }
-        
-        /* Glow effect */
-        .glow {
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
-        }
-        
-        .glow:hover {
-            box-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
-        }
-    </style>
-</head>
-<body class="bg-gray-900 text-gray-100">
-    <!-- Navigation -->
-    <nav class="bg-gray-900 border-b border-gray-800 fixed w-full z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <div class="text-xl font-bold text-violet-400">BlobbyOfficial</div>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-home mr-2"></i> Home
-                    </a>
-                    <a href="#about" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-user mr-2"></i> About
-                    </a>
-                    <a href="#services" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-cogs mr-2"></i> Services
-                    </a>
-                    <a href="#portfolio" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-briefcase mr-2"></i> Portfolio
-                    </a>
-                    <a href="#stats" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-chart-bar mr-2"></i> Stats
-                    </a>
-                    <a href="#social" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-share-alt mr-2"></i> Connect
-                    </a>
-                    <a href="https://example.com" target="_blank" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-rss mr-2"></i> Blog
-                    </a>
-                    <a href="https://example.com" target="_blank" class="text-gray-300 hover:text-violet-400 px-3 py-2 font-medium flex items-center transition duration-300">
-                        <i class="fas fa-headset mr-2"></i> Support
-                    </a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-400 hover:text-violet-400 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-b border-gray-800">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-home mr-2"></i> Home
-                </a>
-                <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-user mr-2"></i> About
-                </a>
-                <a href="#services" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-cogs mr-2"></i> Services
-                </a>
-                <a href="#portfolio" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-briefcase mr-2"></i> Portfolio
-                </a>
-                <a href="#stats" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-chart-bar mr-2"></i> Stats
-                </a>
-                <a href="#social" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-share-alt mr-2"></i> Connect
-                </a>
-                <a href="https://example.com" target="_blank" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-rss mr-2"></i> Blog
-                </a>
-                <a href="https://example.com" target="_blank" class="block px-3 py-2 text-gray-300 hover:text-violet-400 font-medium flex items-center transition duration-300">
-                    <i class="fas fa-headset mr-2"></i> Support
-                </a>
-            </div>
-        </div>
-    </nav>
+  <!-- Essential Meta -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6D28D9">
+  <title>BlobbyOfficial | Professional Services</title>
+  <meta name="description" content="Hi, I'm Blobby. I provide modern, professional solutions tailored to grow your business. Explore my services, portfolio, and connect.">
+  <meta name="author" content="BlobbyOfficial">
+  <meta name="robots" content="index, follow">
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-bg pt-28 pb-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-1/2 mb-10 md:mb-0 animate-fadeIn">
-                    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
-                        Professional Solutions for Your Business Needs
-                    </h1>
-                    <p class="text-xl text-indigo-100 mb-8">
-                        Hi, I'm Blobby. I deliver high-quality services tailored to help your business grow and succeed.
-                    </p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#social" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium shadow-lg hover:bg-gray-100 transition duration-300 text-center flex items-center justify-center glow">
-                            <i class="fas fa-paper-plane mr-2"></i> Get in Touch
-                        </a>
-                        <a href="#portfolio" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-indigo-600 transition duration-300 text-center flex items-center justify-center">
-                            <i class="fas fa-eye mr-2"></i> View My Work
-                        </a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center animate-fadeIn delay-200">
-                    <div class="w-64 h-64 md:w-80 md:h-80 bg-indigo-300 rounded-full overflow-hidden border-4 border-violet-500 shadow-xl glow">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-full h-full">
-                            <circle cx="100" cy="70" r="40" fill="#6D28D9"/>
-                            <circle cx="100" cy="60" r="15" fill="white"/>
-                            <path d="M60,120 Q100,180 140,120" fill="#6D28D9"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/favicon.png">
+
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:title" content="BlobbyOfficial | Professional Services">
+  <meta property="og:description" content="Professional solutions for your business needs.">
+  <meta property="og:image" content="/preview.png">
+  <meta property="og:url" content="https://yourdomain.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BlobbyOfficial | Professional Services">
+  <meta name="twitter:description" content="Tailored solutions to grow and elevate your business.">
+  <meta name="twitter:image" content="/preview.png">
+  <meta name="twitter:site" content="@yourhandle">
+
+  <!-- Manifest & PWA Support -->
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Font Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: {
+              100: '#1E1E1E',
+              200: '#252525',
+              300: '#2D2D2D',
+              400: '#353535',
+              500: '#3D3D3D',
+            },
+            accent: {
+              100: '#8B5CF6',
+              200: '#7C3AED',
+              300: '#6D28D9',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-XxNQZZ+C3t5F6+z68H6Lj+mVFlMduf3mK4Z90PLNaK9HOmXvqgFe6NQ/k++IpNwK" crossorigin="anonymous">
+
+  <!-- Custom Styles -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #121212;
+      color: #E5E7EB;
+    }
+
+    .hero-bg {
+      background: linear-gradient(135deg, #6D28D9 0%, #4F46E5 100%);
+    }
+
+    .project-card:hover,
+    .service-card:hover,
+    .stats-card:hover,
+    .social-icon:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
+                  0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-card,
+    .service-card,
+    .stats-card,
+    .social-icon {
+      transition: all 0.3s ease;
+    }
+
+    .stats-card {
+      background: linear-gradient(135deg, #252525 0%, #1E1E1E 100%);
+      border: 1px solid #353535;
+    }
+
+    .counter {
+      font-weight: 700;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1E1E1E;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #3D3D3D;
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4F46E5;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+
+    .glow {
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+    }
+
+    .glow:hover {
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
+    }
+  </style>
+</head>
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gray-900">
