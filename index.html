@@ -1,1 +1,1731 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlobbyOfficial | Creative Developer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Colors */
+            --bg-primary: #121218;
+            --bg-secondary: #1a1a24;
+            --bg-tertiary: #22222e;
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8d0;
+            --text-tertiary: #8888a0;
+            --accent-primary: #ff44ff;
+            --accent-secondary: #0088ff;
+            --accent-tertiary: #44ffff;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 2rem;
+            --space-xl: 4rem;
+            
+            /* Animation */
+            --hover-scale: 1.05;
+            --hover-duration: 250ms;
+            --hover-easing: cubic-bezier(0.22, 1, 0.36, 1);
+            
+            /* UI */
+            --border-radius-sm: 0.5rem;
+            --border-radius-md: 1rem;
+            --border-radius-lg: 2rem;
+            --navbar-height: 4rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: var(--navbar-height);
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--accent-primary);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+        
+        .section {
+            padding: var(--space-xl) 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform var(--hover-duration) var(--hover-easing),
+                        box-shadow var(--hover-duration) var(--hover-easing);
+            border: none;
+        }
+        
+        .btn:hover {
+            transform: scale(var(--hover-scale));
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: var(--text-primary);
+            box-shadow: 0 4px 15px rgba(255, 68, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(255, 68, 255, 0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 15px rgba(255, 68, 255, 0.2);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(18, 18, 24, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            height: var(--navbar-height);
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform var(--hover-duration) var(--hover-easing);
+        }
+        
+        .logo:hover {
+            transform: scale(var(--hover-scale));
+        }
+        
+        .logo svg {
+            width: 2rem;
+            height: 2rem;
+            transition: transform 0.5s ease;
+        }
+        
+        .logo:hover svg {
+            transform: rotate(180deg);
+        }
+        
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 101;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: var(--space-lg);
+        }
+        
+        nav a {
+            color: var(--text-primary);
+            font-weight: 500;
+            position: relative;
+            padding: var(--space-xs) 0;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: calc(100vh - var(--navbar-height));
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin-top: var(--space-lg);
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.2;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            aspect-ratio: 1;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-image-inner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .about-text h3 {
+            margin-bottom: var(--space-md);
+        }
+        
+        .skills {
+            margin-top: var(--space-lg);
+        }
+        
+        .skills h4 {
+            margin-bottom: var(--space-md);
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+        
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.9rem;
+            transition: transform var(--hover-duration) var(--hover-easing),
+                        background var(--hover-duration) var(--hover-easing);
+        }
+        
+        .skill-tag:hover {
+            transform: scale(var(--hover-scale));
+            background: rgba(255, 68, 255, 0.2);
+        }
+        
+        /* Timeline */
+        .timeline {
+            margin-top: var(--space-xl);
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            transition: transform var(--hover-duration) var(--hover-easing);
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        }
+        
+        .timeline-item h4 {
+            margin-bottom: var(--space-xs);
+        }
+        
+        .timeline-item .date {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .service-card {
+            padding: var(--space-lg);
+            border-radius: var(--border-radius-md);
+            transition: transform var(--hover-duration) var(--hover-easing),
+                        box-shadow var(--hover-duration) var(--hover-easing);
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-secondary);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+            color: var(--accent-primary);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        /* Portfolio Section */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .portfolio-filter {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.9rem;
+            transition: all var(--hover-duration) var(--hover-easing);
+            cursor: pointer;
+        }
+        
+        .portfolio-filter:hover,
+        .portfolio-filter.active {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: var(--text-primary);
+            border-color: transparent;
+            transform: scale(var(--hover-scale));
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .portfolio-item {
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 16/9;
+            transition: transform var(--hover-duration) var(--hover-easing);
+            background: var(--bg-secondary);
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(var(--hover-scale));
+        }
+        
+        .portfolio-item-inner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 68, 255, 0.2), rgba(0, 136, 255, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(18, 18, 24, 0.9), rgba(18, 18, 24, 0.2));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: var(--space-lg);
+            opacity: 0;
+            transition: opacity var(--hover-duration) var(--hover-easing);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay h3 {
+            margin-bottom: var(--space-xs);
+        }
+        
+        .portfolio-overlay .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
+        }
+        
+        .portfolio-overlay .tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.8rem;
+        }
+        
+        .portfolio-overlay .buttons {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        /* Music Section */
+        .music {
+            background: var(--bg-secondary);
+        }
+        
+        .player-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+            border-radius: var(--border-radius-lg);
+            background: rgba(26, 26, 36, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .player-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .album-cover {
+            width: 150px;
+            height: 150px;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .player-info h3 {
+            margin-bottom: var(--space-xs);
+        }
+        
+        .player-info .artist {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .player-controls {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .progress-container {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-bottom: var(--space-sm);
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 3px;
+            width: 30%;
+        }
+        
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .control-button {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform var(--hover-duration) var(--hover-easing);
+            padding: var(--space-sm);
+        }
+        
+        .control-button:hover {
+            transform: scale(var(--hover-scale));
+            color: var(--accent-primary);
+        }
+        
+        .control-button.play-pause {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .playlist {
+            margin-top: var(--space-lg);
+        }
+        
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            padding: var(--space-md);
+            border-radius: var(--border-radius-sm);
+            transition: background var(--hover-duration) var(--hover-easing),
+                        transform var(--hover-duration) var(--hover-easing);
+            cursor: pointer;
+        }
+        
+        .playlist-item:hover,
+        .playlist-item.active {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+        
+        .playlist-item .number {
+            width: 30px;
+            font-weight: 700;
+            color: var(--text-tertiary);
+        }
+        
+        .playlist-item .title {
+            flex: 1;
+        }
+        
+        .playlist-item .duration {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        
+        /* Store Section */
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .product-card {
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            transition: transform var(--hover-duration) var(--hover-easing),
+                        box-shadow var(--hover-duration) var(--hover-easing);
+            background: var(--bg-tertiary);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-image {
+            aspect-ratio: 1;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255, 68, 255, 0.2), rgba(0, 136, 255, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: var(--text-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-info {
+            padding: var(--space-md);
+        }
+        
+        .product-info h3 {
+            margin-bottom: var(--space-xs);
+            font-size: 1.2rem;
+        }
+        
+        .product-info .price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .product-info .amount {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .product-info .stock {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+        }
+        
+        .product-info .stock.low {
+            color: #ff4444;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            transition: background var(--hover-duration) var(--hover-easing),
+                        transform var(--hover-duration) var(--hover-easing);
+        }
+        
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            transform: scale(var(--hover-scale));
+        }
+        
+        /* Contact & Social Section */
+        .contact-social {
+            background: var(--bg-secondary);
+        }
+        
+        .contact-social-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+        }
+        
+        .contact-info h3 {
+            margin-bottom: var(--space-md);
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            transition: transform var(--hover-duration) var(--hover-easing);
+        }
+        
+        .contact-method:hover {
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+        }
+        
+        .contact-details h4 {
+            margin-bottom: var(--space-xs);
+        }
+        
+        .contact-form {
+            padding: var(--space-lg);
+            border-radius: var(--border-radius-lg);
+            background: rgba(26, 26, 36, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-sm);
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: var(--text-primary);
+            border: none;
+            padding: 0.75rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform var(--hover-duration) var(--hover-easing),
+                        box-shadow var(--hover-duration) var(--hover-easing);
+        }
+        
+        .submit-button:hover {
+            transform: scale(var(--hover-scale));
+            box-shadow: 0 5px 15px rgba(255, 68, 255, 0.3);
+        }
+        
+        /* Social Links */
+        .social-links-container {
+            margin-top: var(--space-xl);
+        }
+        
+        .social-links-title {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all var(--hover-duration) var(--hover-easing);
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-tertiary);
+            padding: var(--space-lg) 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .footer-nav {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: var(--space-md) 0;
+        }
+        
+        .footer-nav a {
+            color: var(--text-secondary);
+        }
+        
+        .footer-bottom {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            margin-top: var(--space-md);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-content,
+            .contact-social-container {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: rgba(18, 18, 24, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: var(--space-lg);
+                z-index: 100;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+            
+            nav ul.active {
+                transform: translateX(0);
+            }
+            
+            .player-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            :root {
+                --space-lg: 1.5rem;
+                --space-xl: 3rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+            }
+            
+            .portfolio-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .portfolio-filter {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        /* Background Animation */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff44ff" stop-opacity="0.1" />
+                    <stop offset="100%" stop-color="#0088ff" stop-opacity="0.1" />
+                </linearGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#bg-gradient)" />
+            
+            <!-- Abstract shapes -->
+            <circle cx="10%" cy="20%" r="5%" fill="#ff44ff" opacity="0.03">
+                <animate attributeName="cy" values="20%;25%;20%" dur="10s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="80%" cy="60%" r="7%" fill="#0088ff" opacity="0.03">
+                <animate attributeName="cx" values="80%;75%;80%" dur="15s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="30%" cy="70%" r="4%" fill="#44ffff" opacity="0.03">
+                <animate attributeName="r" values="4%;5%;4%" dur="8s" repeatCount="indefinite" />
+            </circle>
+            
+            <!-- Grid lines -->
+            <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+                <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.03" />
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="4" y="4" width="24" height="24" rx="6" fill="#121218" />
+                        <path d="M12 12h8v8h-8z" fill="url(#logo-gradient)">
+                            <animate attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="10s" repeatCount="indefinite" />
+                        </path>
+                        <defs>
+                            <linearGradient id="logo-gradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#ff44ff" />
+                                <stop offset="1" stop-color="#0088ff" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span class="gradient-text">BlobbyOfficial</span>
+                </a>
+                
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+                
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="#hero" class="active">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#music">Music</a></li>
+                        <li><a href="#store">Store</a></li>
+                        <li><a href="#contact-social">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Creative <span class="gradient-text">Developer</span></h1>
+                <p>Building immersive digital experiences through code, design, and sound. Specializing in Roblox development, UI design, and Lo-Fi music production.</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 13v7a1 1 0 01-1 1H4a1 1 0 01-1-1v-7m4-6l5 5 5-5m-5 5V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        View My Work
+                    </a>
+                    <a href="#contact-social" class="btn btn-secondary">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-image-inner">B</div>
+                </div>
+                <div class="about-text">
+                    <h3>Hello, I'm <span class="gradient-text">Blobby</span></h3>
+                    <p>I'm a creative developer with a passion for building immersive digital experiences. With over 5 years of experience in Roblox development, UI design, and Lo-Fi music production, I strive to create unique and engaging projects that push the boundaries of what's possible.</p>
+                    <p>My approach combines technical expertise with artistic vision, allowing me to deliver solutions that are not only functional but also visually stunning and emotionally resonant.</p>
+                    
+                    <div class="skills">
+                        <h4>My Skills</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Roblox Development</span>
+                            <span class="skill-tag">Lua Scripting</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">3D Modeling</span>
+                            <span class="skill-tag">Music Production</span>
+                            <span class="skill-tag">Sound Design</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">Game Design</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>Senior Roblox Developer</h4>
+                            <div class="date">2021 - Present</div>
+                            <p>Leading development on major Roblox experiences with millions of visits.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Freelance UI Designer</h4>
+                            <div class="date">2019 - 2021</div>
+                            <p>Created intuitive and visually appealing interfaces for various clients.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Lo-Fi Music Producer</h4>
+                            <div class="date">2018 - Present</div>
+                            <p>Released multiple albums and singles on major streaming platforms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+        <div class="container">
+            <h2 class="section-title">My Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <h3>Roblox Development</h3>
+                    <p>Custom Roblox experiences from concept to completion. Includes game mechanics, scripting, UI design, and optimization for performance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>UI/UX Design</h3>
+                    <p>Intuitive and visually appealing interfaces that enhance user experience. Includes wireframing, prototyping, and implementation.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎵</div>
+                    <h3>Lo-Fi Music Production</h3>
+                    <p>Custom Lo-Fi tracks and soundscapes for games, videos, or personal enjoyment. Includes composition, mixing, and mastering.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔊</div>
+                    <h3>Sound Design</h3>
+                    <p>Immersive sound effects and audio environments that enhance the user experience. Perfect for games, apps, and multimedia projects.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Web Development</h3>
+                    <p>Responsive and interactive websites built with modern technologies. Includes design, development, and deployment.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Mentorship & Consulting</h3>
+                    <p>Guidance and expertise for aspiring developers and designers. Includes code reviews, feedback, and personalized learning plans.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+        <div class="container">
+            <h2 class="section-title">My Portfolio</h2>
+            <div class="portfolio-filters">
+                <button class="portfolio-filter active" data-filter="all">All</button>
+                <button class="portfolio-filter" data-filter="roblox">Roblox</button>
+                <button class="portfolio-filter" data-filter="ui">UI Design</button>
+                <button class="portfolio-filter" data-filter="music">Music</button>
+                <button class="portfolio-filter" data-filter="web">Web</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="roblox">
+                    <div class="portfolio-item-inner">🎮</div>
+                    <div class="portfolio-overlay">
+                        <h3>Cosmic Adventures</h3>
+                        <div class="tags">
+                            <span class="tag">Roblox</span>
+                            <span class="tag">Game Design</span>
+                            <span class="tag">Lua</span>
+                        </div>
+                        <div class="buttons">
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="ui">
+                    <div class="portfolio-item-inner">🎨</div>
+                    <div class="portfolio-overlay">
+                        <h3>NeoBanking App</h3>
+                        <div class="tags">
+                            <span class="tag">UI Design</span>
+                            <span class="tag">Mobile</span>
+                            <span class="tag">Figma</span>
+                        </div>
+                        <div class="buttons">
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="music">
+                    <div class="portfolio-item-inner">🎵</div>
+                    <div class="portfolio-overlay">
+                        <h3>Midnight Dreams Album</h3>
+                        <div class="tags">
+                            <span class="tag">Lo-Fi</span>
+                            <span class="tag">Music Production</span>
+                            <span class="tag">Composition</span>
+                        </div>
+                        <div class="buttons">
+                            <a href="#" class="btn btn-primary">Listen Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="roblox">
+                    <div class="portfolio-item-inner">🏝️</div>
+                    <div class="portfolio-overlay">
+                        <h3>Island Survival</h3>
+                        <div class="tags">
+                            <span class="tag">Roblox</span>
+                            <span class="tag">Game Design</span>
+                            <span class="tag">Lua</span>
+                        </div>
+                        <div class="buttons">
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-item-inner">💻</div>
+                    <div class="portfolio-overlay">
+                        <h3>Portfolio Website</h3>
+                        <div class="tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <div class="buttons">
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="music">
+                    <div class="portfolio-item-inner">🎧</div>
+                    <div class="portfolio-overlay">
+                        <h3>Urban Echoes EP</h3>
+                        <div class="tags">
+                            <span class="tag">Lo-Fi</span>
+                            <span class="tag">Music Production</span>
+                            <span class="tag">Composition</span>
+                        </div>
+                        <div class="buttons">
+                            <a href="#" class="btn btn-primary">Listen Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="music section">
+        <div class="container">
+            <h2 class="section-title">My Music</h2>
+            <div class="player-container">
+                <div class="player-header">
+                    <div class="album-cover">
+                        🎵
+                    </div>
+                    <div class="player-info">
+                        <h3>Midnight Dreams</h3>
+                        <div class="artist">BlobbyOfficial</div>
+                        <p>A collection of Lo-Fi beats perfect for studying, relaxing, or coding. Immerse yourself in the chill vibes and atmospheric sounds.</p>
+                    </div>
+                </div>
+                <div class="player-controls">
+                    <div class="progress-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="time-info">
+                        <span>1:23</span>
+                        <span>3:45</span>
+                    </div>
+                    <div class="control-buttons">
+                        <button class="control-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 20L9 12L19 4V20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M5 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="control-button play-pause">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 3L19 12L5 21V3Z" fill="currentColor"/>
+                            </svg>
+                        </button>
+                        <button class="control-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 4L15 12L5 20V4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19 5V19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="playlist">
+                    <div class="playlist-item active">
+                        <div class="number">01</div>
+                        <div class="title">Midnight Dreams</div>
+                        <div class="duration">3:45</div>
+                    </div>
+                    <div class="playlist-item">
+                        <div class="number">02</div>
+                        <div class="title">Urban Echoes</div>
+                        <div class="duration">4:12</div>
+                    </div>
+                    <div class="playlist-item">
+                        <div class="number">03</div>
+                        <div class="title">Rainy Days</div>
+                        <div class="duration">3:28</div>
+                    </div>
+                    <div class="playlist-item">
+                        <div class="number">04</div>
+                        <div class="title">Neon Lights</div>
+                        <div class="duration">5:01</div>
+                    </div>
+                    <div class="playlist-item">
+                        <div class="number">05</div>
+                        <div class="title">Sunset Vibes</div>
+                        <div class="duration">3:56</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section id="store" class="store section">
+        <div class="container">
+            <h2 class="section-title">Store</h2>
+            <div class="store-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        🎵
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Midnight Dreams Album</h3>
+                        <div class="price">
+                            <div class="amount">$9.99</div>
+                            <div class="stock">In Stock</div>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        🎮
+                    </div>
+                    <div class="product-info">
+                        <h3>Game Asset Pack</h3>
+                        <div class="price">
+                            <div class="amount">$24.99</div>
+                            <div class="stock">In Stock</div>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        👕
+                    </div>
+                    <div class="product-info">
+                        <h3>Developer T-Shirt</h3>
+                        <div class="price">
+                            <div class="amount">$19.99</div>
+                            <div class="stock low">Low Stock</div>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        📚
+                    </div>
+                    <div class="product-info">
+                        <h3>Roblox Dev Guide</h3>
+                        <div class="price">
+                            <div class="amount">$14.99</div>
+                            <div class="stock">In Stock</div>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Social Section -->
+    <section id="contact-social" class="contact-social section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-social-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>hello@blobbyofficial.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>San Francisco, CA</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="social-links-container">
+                        <h3 class="social-links-title">Connect With Me</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16 11.37a4 4 0 11-7.914 1.173A4 4 0 0116 11.37z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="GitHub">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="YouTube">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.75 15.02l5.75-3.27-5.75-3.27v6.54z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Spotify">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M16.5 8.5c-2.5-1.5-5.5-1.5-8 0M15.5 12.5c-2-1-4.5-1-6.5 0M14.5 16.5c-1.5-.5-3.5-.5-5 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Me a Message</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="gradient-text">BlobbyOfficial</span>
+                </div>
+                <div class="footer-nav">
+                    <a href="#hero">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#music">Music</a>
+                    <a href="#store">Store</a>
+                    <a href="#contact-social">Contact</a>
+                </div>
+                <div class="footer-bottom">
+                    &copy; 2023 BlobbyOfficial. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Toggle
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        });
+        
+        // Active Navigation Link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Portfolio Filtering
+        const filterButtons = document.querySelectorAll('.portfolio-filter');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Form Submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+        
+        // Music Player Simulation
+        const playPauseButton = document.querySelector('.play-pause');
+        const progressBar = document.querySelector('.progress-bar');
+        let isPlaying = false;
+        
+        playPauseButton.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            
+            if (isPlaying) {
+                playPauseButton.innerHTML = `
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="6" y="4" width="4" height="16" fill="currentColor"/>
+                        <rect x="14" y="4" width="4" height="16" fill="currentColor"/>
+                    </svg>
+                `;
+                
+                // Simulate progress
+                let width = 0;
+                const interval = setInterval(() => {
+                    width += 1;
+                    progressBar.style.width = `${width}%`;
+                    
+                    if (width >= 100 || !isPlaying) {
+                        clearInterval(interval);
+                        if (width >= 100) {
+                            isPlaying = false;
+                            playPauseButton.innerHTML = `
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 3L19 12L5 21V3Z" fill="currentColor"/>
+                                </svg>
+                            `;
+                            progressBar.style.width = '0%';
+                        }
+                    }
+                }, 100);
+            } else {
+                playPauseButton.innerHTML = `
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 3L19 12L5 21V3Z" fill="currentColor"/>
+                    </svg>
+                `;
+            }
+        });
+        
+        // Playlist Item Click
+        const playlistItems = document.querySelectorAll('.playlist-item');
+        
+        playlistItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all items
+                playlistItems.forEach(i => i.classList.remove('active'));
+                
+                // Add active class to clicked item
+                item.classList.add('active');
+                
+                // Reset player
+                isPlaying = false;
+                playPauseButton.innerHTML = `
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 3L19 12L5 21V3Z" fill="currentColor"/>
+                    </svg>
+                `;
+                progressBar.style.width = '0%';
+            });
+        });
+        
+        // Add to Cart Animation
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.textContent = 'Added to Cart';
+                button.style.background = 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))';
+                
+                setTimeout(() => {
+                    button.textContent = 'Add to Cart';
+                    button.style.background = '';
+                }, 2000);
+            });
+        });
+        
+        // Page Load Animation
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9588285fb08a4449',t:'MTc1MTM5NjU0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
