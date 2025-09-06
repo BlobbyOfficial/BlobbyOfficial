@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BlobbyOfficial</title>
+<meta name="description" content="BlobbyOfficial is a faceless YouTuber, musician, UI designer, and Roblox developer. Discover projects, music, and creative work all in one place." />
+<meta name="keywords" content="BlobbyOfficial, Blobby, Roblox, Roblox developer, YouTube creator, faceless YouTuber, musician, UI designer, digital creator, portfolio, gaming, content creator" />
+<meta name="author" content="BlobbyOfficial" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://blobbyofficial.github.io/BlobbyOfficial/" />
+<meta property="og:title" content="BlobbyOfficial — Portfolio, Music, Roblox & More" />
+<meta property="og:description" content="Explore BlobbyOfficial’s music, UI design, Roblox projects, and YouTube channel. Join the community and check out the latest creative work." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blobbyofficial.github.io/BlobbyOfficial/" />
+<meta property="og:image" content="https://blobbyofficial.github.io/BlobbyOfficial/preview.png" />
+<meta property="og:site_name" content="BlobbyOfficial" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="BlobbyOfficial — Portfolio, Music, Roblox & More" />
+<meta name="twitter:description" content="Faceless YouTuber, musician, UI designer, and Roblox developer. Explore projects, music, and community links." />
+<meta name="twitter:image" content="https://blobbyofficial.github.io/BlobbyOfficial/preview.png" />
+<meta name="twitter:creator" content="@blobby_official" />
+<meta name="theme-color" content="#0f172a" />
+<link rel="apple-touch-icon" href="https://blobbyofficial.github.io/BlobbyOfficial/icon.png" />
+<link rel="icon" type="image/png" href="https://blobbyofficial.github.io/BlobbyOfficial/favicon.png" />
+
+<style>
+  :root{ --bg:#0b1020; --panel:#0f172a; --muted:#94a3b8; --text:#e5e7eb; --brand:#7c3aed; --brand-2:#22d3ee; --ring: rgba(124,58,237,.5); --radius:20px; }
+  *{box-sizing:border-box;}
+  html, body{height:100%;}
+  body{margin:0;font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial;color:var(--text);background:radial-gradient(1200px 800px at 80% -10%, rgba(124,58,237,.15), transparent 50%),radial-gradient(900px 600px at -20% 10%, rgba(34,211,238,.12), transparent 50%),var(--bg);line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1100px;margin:0 auto;padding:24px;}
+  header{position:sticky;top:0;z-index:30;backdrop-filter:blur(10px);background:rgba(11,16,32,.6);border-bottom:1px solid rgba(148,163,184,.12);}
+  .nav{display:flex;align-items:center;justify-content:flex-start;gap:16px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand-2));font-weight:800;overflow:hidden;}
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+  .brand h1{font-size:18px;margin:0;font-weight:700;}
+  section{padding:40px 0;}
+  .section-title{font-size:14px;text-transform:uppercase;letter-spacing:1.6px;color:var(--muted);margin-bottom:14px;}
+  .panel{background:var(--panel);border:1px solid rgba(148,163,184,.14);border-radius:var(--radius);padding:22px;}
+  .hero .card{background:linear-gradient(180deg, rgba(148,163,184,.08), rgba(148,163,184,.03));border:1px solid rgba(148,163,184,.16);border-radius:var(--radius);padding:28px;display:grid;grid-template-columns:88px 1fr;gap:18px;}
+  .hero .logo{width:88px;height:88px;border-radius:20px;display:grid;place-items:center;font-size:26px;font-weight:800;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 10px 30px rgba(124,58,237,.25);overflow:hidden;}
+  .hero .logo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero h2{margin:4px 0 12px;font-size:32px;}
+  .hero p{color:var(--muted);margin:0;}
+  .grid{display:grid;gap:16px;}
+  @media(min-width:760px){.grid{grid-template-columns:repeat(3, 1fr);}}
+  .tile{background:linear-gradient(180deg, rgba(148,163,184,.06), rgba(148,163,184,.02));border:1px solid rgba(148,163,184,.14);border-radius:16px;padding:18px;}
+  .tile h3{margin:0 0 6px;font-size:18px;}
+  .tile p{margin:0;color:var(--muted);}
+  .links{display:grid;gap:16px;}
+  @media(min-width:600px){.links{grid-template-columns:1fr;}}
+  .link-card{display:flex;align-items:center;gap:16px;padding:20px;border-radius:16px;background:var(--panel);border:1px solid rgba(148,163,184,.14);transition:.2s ease;text-decoration:none;color:var(--text);}
+  .link-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,.25);}
+  .link-card img{width:32px;height:32px;flex-shrink:0;}
+  .link-card .info{display:flex;flex-direction:column;}
+  .link-card .info .title{font-weight:700;font-size:16px;margin-bottom:4px;}
+  .link-card .info .desc{font-size:14px;color:var(--muted);}
+  .contact-cards{display:grid;gap:16px;}
+  .contact-card{display:flex;align-items:center;gap:16px;padding:20px;border-radius:16px;background:var(--panel);border:1px solid rgba(148,163,184,.14);transition:.2s ease;text-decoration:none;color:var(--text);}
+  .contact-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,211,238,.25);}
+  .contact-card img{width:28px;height:28px;flex-shrink:0;}
+  .contact-card .info{display:flex;flex-direction:column;}
+  .contact-card .info .title{font-weight:700;font-size:16px;margin-bottom:4px;}
+  .contact-card .info .desc{font-size:14px;color:var(--muted);}
+  footer{padding:30px 0 60px;color:var(--muted);}
+  .muted{color:var(--muted);}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="https://blobbyofficial.github.io/BlobbyOfficial/">
+      <div class="avatar"><img src="assets/icon.png" alt="BlobbyOfficial Logo"></div>
+      <h1>BlobbyOfficial</h1>
+    </a>
+  </div>
+</header>
+
+<main id="top" class="container">
+  <!-- About -->
+  <section class="hero" id="about">
+    <div class="card">
+      <div class="logo"><img src="assets/icon.png" alt="BlobbyOfficial Logo"></div>
+      <div>
+        <h2>About Me</h2>
+        <p>I’m <strong>BlobbyOfficial</strong>, a faceless YouTuber, musician, UI designer, and Roblox developer. I focus on creating content and projects that are engaging, creative, and fun. Everything I share reflects my interest in exploring different forms of digital creativity while keeping my work accessible to a wide audience.</p>
+      </div>
+    </div>
+  </section>
+
+    <!-- What I Do -->
+    <section id="work">
+      <div class="section-title">What I Do</div>
+      <div class="grid">
+        <article class="tile">
+          <h3>Music</h3>
+          <p>I produce and release music that blends various styles and influences. My goal is to create tracks that are unique, memorable, and enjoyable to listen to.</p>
+        </article>
+        <article class="tile">
+          <h3>UI Design</h3>
+          <p>I design clean, functional, and visually appealing user interfaces directly in Roblox. My focus is on making digital experiences intuitive and easy to use within the Roblox ecosystem.</p>
+        </article>
+        <article class="tile">
+          <h3>Roblox Development</h3>
+          <p>I develop Roblox projects ranging from small ideas to larger interactive experiences. Roblox gives me the space to combine creativity, coding, and design to build projects that people can enjoy and share.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- YouTube -->
+    <section id="youtube">
+      <div class="section-title">YouTube</div>
+      <div class="panel">
+        <p>As a faceless creator, I share content that highlights my work and creative projects. My channel focuses on bringing people into the world of music, design, and game development without relying on personal identity.</p>
+      </div>
+    </section>
+
+    <!-- Looking Ahead -->
+    <section id="future">
+      <div class="section-title">Looking Ahead</div>
+      <div class="panel">
+        <p>My aim is to continue building my presence as a creator across platforms. I’m always working on new projects in music, design, development, and content creation, with the goal of expanding what I can share with the community.</p>
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section id="links">
+      <div class="section-title">Links</div>
+      <div class="links">
+        <a class="link-card" href="mailto:blobbyofficial@outlook.com" target="_blank">
+          <img src="https://img.icons8.com/?size=100&id=63598&format=png&color=ffffff" alt="Email" />
+          <div class="info">
+            <div class="title">Email</div>
+            <div class="desc">blobbyofficial@outlook.com</div>
+          </div>
+        </a>
+        <a class="link-card" href="https://discord.gg/quq8thpMEd" target="_blank">
+          <img src="https://img.icons8.com/?size=100&id=25627&format=png&color=ffffff" alt="Discord" />
+          <div class="info">
+            <div class="title">Discord</div>
+            <div class="desc">Join the community</div>
+          </div>
+        </a>
+        <a class="link-card" href="https://www.youtube.com/@blobby_official" target="_blank">
+          <img src="https://img.icons8.com/?size=100&id=37325&format=png&color=ffffff" alt="YouTube" />
+          <div class="info">
+            <div class="title">YouTube</div>
+            <div class="desc">@blobby_official</div>
+          </div>
+        </a>
+        <a class="link-card" href="https://www.roblox.com/communities/32402889/The-Official-Blobby-Group#!/about" target="_blank">
+          <img src="https://img.icons8.com/?size=100&id=62158&format=png&color=ffffff" alt="Roblox Community" />
+          <div class="info">
+            <div class="title">Blobby Roblox Community</div>
+            <div class="desc">Join the group</div>
+          </div>
+        </a>
+        <a class="link-card" href="https://open.spotify.com/artist/" target="_blank">
+          <img src="https://img.icons8.com/?size=100&id=6707&format=png&color=ffffff" alt="Spotify" />
+          <div class="info">
+            <div class="title">Spotify</div>
+            <div class="desc">Music</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-title">Contact</div>
+      <div class="contact-cards">
+        <a class="contact-card" href="mailto:blobbyofficial@outlook.com">
+          <img src="https://img.icons8.com/?size=100&id=63598&format=png&color=ffffff" alt="Email" />
+          <div class="info">
+            <div class="title">Email</div>
+            <div class="desc">blobbyofficial@outlook.com</div>
+          </div>
+        </a>
+        <a class="contact-card" href="https://discord.gg/quq8thpMEd" target="_blank">
+          <img src="https://img.icons8.com/?size=100&id=25627&format=png&color=ffffff" alt="Discord" />
+          <div class="info">
+            <div class="title">Discord</div>
+            <div class="desc">Join my server</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="muted">© <span id="year"></span> BlobbyOfficial • All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.get

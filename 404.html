@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 — BlobbyOfficial</title>
+  <meta name="description" content="Oops — the page you are looking for on BlobbyOfficial cannot be found." />
+  <meta name="author" content="BlobbyOfficial" />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://blobbyofficial.github.io/BlobbyOfficial/404.html" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="404 — BlobbyOfficial" />
+  <meta property="og:description" content="Oops — the page you are looking for on BlobbyOfficial cannot be found." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://blobbyofficial.github.io/BlobbyOfficial/404.html" />
+  <meta property="og:image" content="https://blobbyofficial.github.io/BlobbyOfficial/preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="apple-touch-icon" href="https://blobbyofficial.github.io/BlobbyOfficial/icon.png" />
+  <link rel="icon" type="image/png" href="https://blobbyofficial.github.io/BlobbyOfficial/favicon.png" />
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#0f172a;
+      --muted:#94a3b8;
+      --text:#e5e7eb;
+      --brand:#7c3aed;
+      --brand-2:#22d3ee;
+      --accent:#6b24d9;
+      --radius:20px;
+      --max-width:720px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial;
+      color:var(--text);
+      background:radial-gradient(1200px 800px at 80% -10%, rgba(124,58,237,.12), transparent 50%),
+                 radial-gradient(900px 600px at -20% 10%, rgba(34,211,238,.08), transparent 50%),
+                 var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;align-items:center;justify-content:center;padding:28px;
+    }
+
+    /* panel */
+    .panel{
+      width:100%;
+      max-width:var(--max-width);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      border:1px solid rgba(148,163,184,.08);
+      padding:36px;
+      text-align:center;
+      backdrop-filter: blur(6px) saturate(120%);
+      box-shadow: 0 8px 30px rgba(2,6,23,.6);
+      animation: panel-fade .48s cubic-bezier(.2,.9,.3,1) both;
+    }
+
+    @keyframes panel-fade{ from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+
+    /* logo */
+    .logo{
+      width:132px;height:132px;border-radius:999px;overflow:hidden;margin:0 auto 18px;display:block;
+      border: 1px solid rgba(255,255,255,0.04);
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      display:flex;align-items:center;justify-content:center;
+      animation: logo-breathe 3.6s ease-in-out infinite;
+    }
+    .logo img{width:100%;height:100%;object-fit:cover;display:block}
+    @keyframes logo-breathe{ 0%{transform:translateY(0)} 50%{transform:translateY(-6px)} 100%{transform:translateY(0)} }
+
+    h1{font-size:72px;line-height:1;margin:6px 0;color:var(--text);font-weight:800}
+    h2{font-size:20px;color:var(--muted);margin:8px 0 18px}
+    p.lead{color:var(--muted);margin:0 0 22px;font-size:16px}
+
+    /* buttons */
+    .buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+
+    .btn{
+      -webkit-tap-highlight-color:transparent;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 20px;border-radius:12px;min-width:160px;cursor:pointer;border:1px solid transparent;
+      font-weight:700;font-size:15px;text-decoration:none;color:var(--text);background-color:var(--brand);
+      transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease;
+      outline:none;
+    }
+
+    /* primary (solid) */
+    .btn.primary{background-color:var(--brand);color:#fff;border-color:rgba(255,255,255,0.06)}
+    .btn.primary:hover{transform:translateY(-3px);filter:brightness(1.06)}
+
+    /* secondary (outline) */
+    .btn.ghost{background-color:transparent;color:var(--brand-2);border:1px solid rgba(34,211,238,.12)}
+    .btn.ghost:hover{transform:translateY(-3px);background-color:rgba(34,211,238,0.03)}
+
+    /* focus accessibility */
+    .btn:focus-visible{box-shadow:0 0 0 4px rgba(34,211,238,.12);border-color:var(--brand-2)}
+
+    /* remove shadows on hover per request (no heavy shadows) */
+    /* subtle elevation via translate only, no shadow */
+
+    /* layout tweaks */
+    @media (max-width:520px){
+      .panel{padding:26px}
+      .logo{width:96px;height:96px;margin-bottom:12px}
+      h1{font-size:52px}
+      h2{font-size:18px}
+      .btn{min-width:140px;padding:12px 16px;font-size:15px}
+    }
+
+    /* reduced motion */
+    @media (prefers-reduced-motion:reduce){
+      .panel, .logo{animation:none}
+      .btn{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <main role="main" aria-labelledby="page-title" class="panel">
+    <div class="logo" aria-hidden="false">
+      <img src="assets/icon.png" alt="BlobbyOfficial logo">
+    </div>
+
+    <h1 id="page-title">404</h1>
+    <h2>Page not found</h2>
+    <p class="lead">Sorry — the page you requested can't be found. It may have been moved, renamed, or never existed.</p>
+
+    <div class="buttons" role="group" aria-label="Helpful links">
+      <a class="btn primary" href="https://blobbyofficial.github.io/BlobbyOfficial/" aria-label="Go to BlobbyOfficial homepage">Go to Homepage</a>
+      <a class="btn ghost" href="https://github.com/BlobbyOfficial/BlobbyOfficial" aria-label="View source code on GitHub">View Source Code</a>
+    </div>
+  </main>
+
+  <script>
+    // Respect reduced motion preferences
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!prefersReduced){
+      // subtle click ripple for buttons (keyboard accessible)
+      document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const circle = document.createElement('span');
+          const rect = btn.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          circle.style.position = 'absolute';
+          circle.style.width = circle.style.height = size + 'px';
+          circle.style.left = (e.clientX - rect.left - size/2) + 'px';
+          circle.style.top = (e.clientY - rect.top - size/2) + 'px';
+          circle.style.background = 'rgba(255,255,255,0.06)';
+          circle.style.borderRadius = '50%';
+          circle.style.pointerEvents = 'none';
+          circle.style.transform = 'scale(0)';
+          circle.style.transition = 'transform .5s ease, opacity .5s ease';
+          circle.style.opacity = '0.9';
+          btn.style.position = 'relative';
+          btn.appendChild(circle);
+          requestAnimationFrame(()=> circle.style.transform = 'scale(1)');
+          setTimeout(()=>{circle.style.opacity = '0';},250);
+          setTimeout(()=> circle.remove(),700);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
