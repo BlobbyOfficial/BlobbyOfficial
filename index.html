@@ -72,11 +72,13 @@
 <body>
 <header>
   <div class="container nav">
-    <a class="brand" href="https://blobbyofficial.github.io/BlobbyOfficial/">
-      <div class="avatar"><img src="assets/icon.png" alt="BlobbyOfficial Logo"></div>
-      <h1>BlobbyOfficial</h1>
+    <div class="brand">
+      <a href="https://blobbyofficial.github.io/BlobbyOfficial/">
+        <div class="avatar"><img src="assets/icon.png" alt="BlobbyOfficial Logo"></div>
+        <h1>BlobbyOfficial</h1>
+      </a>
       <div class="dropdown">
-        <button class="dropdown-toggle">▼</button>
+        <button class="dropdown-toggle" type="button">▼</button>
         <div class="dropdown-menu">
           <a href="#about">About</a>
           <a href="#work">What I Do</a>
@@ -86,12 +88,13 @@
           <a href="#contact">Contact</a>
         </div>
       </div>
-    </a>
+    </div>
   </div>
 </header>
 
 <style>
   .brand { display: flex; align-items: center; gap: 12px; position: relative; }
+  .brand a { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
   .dropdown { position: relative; }
   .dropdown-toggle { 
     background:none; 
@@ -142,7 +145,8 @@
   const toggle = document.querySelector('.dropdown-toggle');
   const menuLinks = document.querySelectorAll('.dropdown-menu a');
 
-  toggle.addEventListener('click', () => {
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault(); // prevent page refresh
     dropdown.classList.toggle('open');
   });
 
