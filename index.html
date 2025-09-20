@@ -197,4 +197,18 @@
   </footer>
 
   <script>
-    document.get
+    // Set copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Accessibility: Focus outline only on keyboard navigation
+    document.body.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+        document.body.classList.add('user-is-tabbing');
+      }
+    });
+    document.body.addEventListener('mousedown', function() {
+      document.body.classList.remove('user-is-tabbing');
+    });
+  </script>
+</body>
+</html>
