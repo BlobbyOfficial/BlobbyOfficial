@@ -91,6 +91,32 @@
   </div>
 </div>
 
+<script>
+  // Start with scrolling locked
+  document.body.style.overflow = 'hidden';
+
+  // Called by Turnstile when verification succeeds
+  function turnstileSuccess(token) {
+    document.getElementById('gate-overlay').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  if (!sessionStorage.getItem('verified')) {
+    document.getElementById('gate-overlay').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.getElementById('gate-overlay').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  function turnstileSuccess(token) {
+    sessionStorage.setItem('verified', 'true');
+    document.getElementById('gate-overlay').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+</script>
+
+
 <header>
   <div class="container nav">
     <div class="brand">
