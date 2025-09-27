@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /private/
+Disallow: /admin/
+Disallow: /assets/
+Allow: /pages/
+
+Sitemap: [https://blobbyofficial.com/sitemap.xml](https://blobbyofficial.com/sitemap.xml)
+
+# Crawl-delay to prevent server overload
+
+Crawl-delay: 5
+
+# Specify preferred domain if applicable
+
+# Host: blobbyofficial.com
