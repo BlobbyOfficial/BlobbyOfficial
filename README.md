@@ -8,7 +8,7 @@
 <div align="center">
   
 [![Website](https://img.shields.io/badge/🌐%20Website-www.blobbyofficial.com-0f0f0f?style=flat-square&logo=google-chrome&logoColor=white)](https://www.blobbyofficial.com)
-[![License](https://img.shields.io/badge/⚖️%20License-Apache--2.0-8B0000?style=flat-square&logo=scale&logoColor=white)](https://github.com/BlobbyOfficial/BlobbyOfficial/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/⚖️%20License-Apache--2.0-8B0000?style=flat-square&logo=scale&logoColor=white)](https://github.com/BlobbyOfficial/BlobbyOfficial/blob/master/LICENSE.md)
 [![README](https://img.shields.io/badge/📖%20README-BlobbyOfficial-222222?style=flat-square&logo=markdown&logoColor=white)](https://github.com/BlobbyOfficial/BlobbyOfficial/blob/master/README.md)
 
 
