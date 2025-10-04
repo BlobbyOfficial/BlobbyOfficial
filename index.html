@@ -196,40 +196,49 @@
 </script>
 
 
-<header>
+<!-- Desktop Navbar -->
+<header class="desktop-navbar">
   <div class="container nav">
-    <div class="brand">
-      <a href="https://www.blobbyofficial.com" class="brand-link">
-        <div class="avatar"><img src="assets/icon.png" alt="BlobbyOfficial Logo"></div>
-        <h1>BlobbyOfficial</h1>
-      </a>
-      <button class="hamburger" aria-label="Toggle menu">☰</button>
-      <div class="dropdown-desktop">
-        <div class="dropdown-text">
-          <a href="https://www.blobbyofficial.com" class="text-toggle">BlobbyOfficial <span class="arrow">▼</span></a>
-          <div class="dropdown-menu">
-            <a href="#about">About</a>
-            <a href="#work">What I Do</a>
-            <a href="#youtube">YouTube</a>
-            <a href="#future">Looking Ahead</a>
-            <a href="#links">Links</a>
-            <a href="#contact">Contact</a>
-          </div>
+    <a href="https://www.blobbyofficial.com" class="brand-link">
+      <div class="avatar"><img src="assets/icon.png" alt="BlobbyOfficial Logo"></div>
+      <h1>BlobbyOfficial</h1>
+    </a>
+    <div class="desktop-links">
+      <div class="dropdown-text">
+        <a href="https://www.blobbyofficial.com" class="text-toggle">BlobbyOfficial <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="#about">About</a>
+          <a href="#work">What I Do</a>
+          <a href="#youtube">YouTube</a>
+          <a href="#future">Looking Ahead</a>
+          <a href="#links">Links</a>
+          <a href="#contact">Contact</a>
         </div>
-        <a href="https://store.blobbyofficial.com" target="_blank">Store</a>
-        <a href="https://commissions.blobbyofficial.com" target="_blank">Commission</a>
-        <a href="https://links.blobbyofficial.com" target="_blank">Links</a>
-        <a href="https://blog.blobbyofficial.com" target="_blank">Blog</a>
-        <a href="https://newsletter.blobbyofficial.com" target="_blank">Newsletter</a>
       </div>
+      <a href="https://store.blobbyofficial.com" target="_blank">Store</a>
+      <a href="https://commissions.blobbyofficial.com" target="_blank">Commission</a>
+      <a href="https://links.blobbyofficial.com" target="_blank">Links</a>
+      <a href="https://blog.blobbyofficial.com" target="_blank">Blog</a>
+      <a href="https://newsletter.blobbyofficial.com" target="_blank">Newsletter</a>
     </div>
+  </div>
+</header>
+
+<!-- Mobile Navbar -->
+<header class="mobile-navbar">
+  <div class="container nav">
+    <a href="https://www.blobbyofficial.com" class="brand-link">
+      <div class="avatar"><img src="assets/icon.png" alt="BlobbyOfficial Logo"></div>
+      <h1>BlobbyOfficial</h1>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu">☰</button>
   </div>
 
   <div class="side-panel">
     <nav>
       <ul>
         <li class="panel-dropdown">
-         <span class="arrow">▼</span>
+          <span class="panel-toggle">BlobbyOfficial <span class="arrow">▼</span></span>
           <ul class="panel-menu">
             <li><a href="#about" class="submenu">About</a></li>
             <li><a href="#work" class="submenu">What I Do</a></li>
@@ -250,71 +259,65 @@
 </header>
 
 <style>
-  .nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 20px 25px; font-size: 18px; }
-  .brand { display: flex; align-items: center; gap: 15px; position: relative; }
-  .brand-link { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
-  .brand-link h1 { font-size: 2rem; margin: 0; }
-  .avatar img { width: 50px; height: 50px; object-fit: contain; }
+/* General */
+.brand-link { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text); }
+.brand-link h1 { margin:0; font-size:2rem; }
+.avatar img { width:50px; height:50px; object-fit:contain; }
+.arrow { display:inline-block; transition: transform 0.3s ease; }
 
-  /* Hamburger mobile */
-  .hamburger { display:none; font-size:28px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border:none; cursor:pointer; color:var(--text); padding:10px 15px; border-radius:8px; }
+/* Desktop specific */
+.desktop-navbar .desktop-links { display:flex; align-items:center; gap:20px; }
+.dropdown-text { position:relative; }
+.text-toggle { display:flex; align-items:center; gap:5px; text-decoration:none; color:var(--text); cursor:pointer; }
+.dropdown-menu { position:absolute; top:130%; left:0; background:var(--panel); border:1px solid rgba(148,163,184,.14); border-radius:var(--radius); display:flex; flex-direction:column; min-width:180px; z-index:50; opacity:0; transform:translateY(-15px); pointer-events:none; transition:all 0.35s cubic-bezier(0.4,0,0.2,1); }
+.dropdown-text.open .dropdown-menu { opacity:1; transform:translateY(0); pointer-events:auto; }
+.dropdown-menu a { padding:12px 16px; border-radius:var(--radius); color:var(--text); text-decoration:none; transition: background 0.25s ease, transform 0.25s ease; }
+.dropdown-menu a:hover { background: rgba(124,58,237,.15); transform:translateX(5px); }
 
-  /* Desktop Dropdown */
-  .dropdown-desktop { display: flex; align-items: center; gap: 20px; }
-  .dropdown-text { position: relative; }
-  .text-toggle { display:flex; align-items:center; gap:5px; cursor:pointer; text-decoration:none; color:var(--text); }
-  .arrow { display:inline-block; transition: transform 0.3s ease; }
-  .dropdown-text.open .arrow { transform: rotate(180deg); }
-  .dropdown-menu { position: absolute; top: 130%; left: 0; background: var(--panel); border: 1px solid rgba(148,163,184,.14); border-radius: var(--radius); display: flex; flex-direction: column; min-width: 180px; z-index: 50; opacity: 0; transform: translateY(-15px); pointer-events: none; transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
-  .dropdown-text.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .dropdown-menu a { padding: 12px 16px; color: var(--text); text-decoration: none; transition: background 0.25s ease, transform 0.25s ease; border-radius: var(--radius); }
-  .dropdown-menu a:hover { background: rgba(124,58,237,.15); transform: translateX(5px); }
+/* Mobile specific */
+.mobile-navbar .hamburger { font-size:28px; background: rgba(255,255,255,0.1); backdrop-filter:blur(10px); border:none; padding:10px 15px; border-radius:8px; cursor:pointer; color:var(--text); }
+.side-panel { position:fixed; top:0; left:-300px; width:280px; height:100%; background:var(--panel); z-index:999; transition:left 0.35s ease; padding-top:60px; box-shadow:2px 0 8px rgba(0,0,0,0.2); }
+.side-panel.open { left:0; }
+.side-panel nav ul { list-style:none; padding:0; margin:0; }
+.side-panel nav ul li { border-bottom:1px solid rgba(148,163,184,.14); }
+.side-panel nav ul li a, .panel-toggle { display:block; padding:15px 20px; text-decoration:none; color:var(--text); cursor:pointer; transition: background 0.25s ease; }
+.side-panel nav ul li a:hover, .panel-toggle:hover { background: rgba(124,58,237,.15); }
+.panel-dropdown .panel-menu { display:none; flex-direction:column; padding-left:20px; }
+.panel-dropdown.open .panel-menu { display:flex; }
+.panel-dropdown .arrow { float:right; transition: transform 0.3s ease; }
+.panel-dropdown.open .arrow { transform:rotate(180deg); }
+.submenu { padding-left:15px; background: rgba(0,0,0,0.03); border-radius:6px; margin:2px 0; }
 
-  /* Side Panel */
-  .side-panel { position: fixed; top: 0; left: -300px; width: 280px; height: 100%; background: var(--panel); z-index: 999; transition: left 0.35s ease; padding-top: 60px; box-shadow: 2px 0 8px rgba(0,0,0,0.2); }
-  .side-panel.open { left: 0; }
-  .side-panel nav ul { list-style:none; padding:0; margin:0; }
-  .side-panel nav ul li { border-bottom: 1px solid rgba(148,163,184,.14); }
-  .side-panel nav ul li a, .panel-toggle { display:block; padding:15px 20px; text-decoration:none; color:var(--text); cursor:pointer; transition: background 0.25s ease; }
-  .side-panel nav ul li a:hover, .panel-toggle:hover { background: rgba(124,58,237,.15); }
-  .panel-dropdown .panel-menu { display:none; flex-direction: column; padding-left: 20px; } /* indented submenu */
-  .panel-dropdown.open .panel-menu { display:flex; }
-  .panel-dropdown .arrow { float:right; transition: transform 0.3s ease; }
-  .panel-dropdown.open .arrow { transform: rotate(180deg); }
-  .submenu { padding-left: 15px; background: rgba(0,0,0,0.03); border-radius: 6px; margin: 2px 0; }
-
-  @media (max-width: 768px) {
-    .hamburger { display:block; }
-    .dropdown-desktop { display: none; }
-  }
+/* Hide Desktop on Mobile, Hide Mobile on Desktop */
+@media(max-width:768px){ .desktop-navbar{ display:none; } }
+@media(min-width:769px){ .mobile-navbar{ display:none; } }
 </style>
 
 <script>
-  const allDropdowns = document.querySelectorAll('.dropdown-text');
-  const hamburger = document.querySelector('.hamburger');
-  const sidePanel = document.querySelector('.side-panel');
-  const panelDropdown = document.querySelector('.panel-dropdown');
-  const panelToggle = panelDropdown.querySelector('.panel-toggle');
-
-  function closeAllDropdowns(except = null) {
-    allDropdowns.forEach(dd => { if (dd !== except) dd.classList.remove('open'); });
-  }
-
-  allDropdowns.forEach(dd => {
-    const toggle = dd.querySelector('.text-toggle');
-    const links = dd.querySelectorAll('.dropdown-menu a');
-    toggle.addEventListener('click', e => {
-      e.preventDefault();
-      const isOpen = dd.classList.contains('open');
-      closeAllDropdowns();
-      if (!isOpen) dd.classList.add('open');
-    });
-    links.forEach(link => link.addEventListener('click', () => dd.classList.remove('open')));
+/* Desktop dropdown */
+const desktopDropdowns = document.querySelectorAll('.desktop-navbar .dropdown-text');
+desktopDropdowns.forEach(dd => {
+  const toggle = dd.querySelector('.text-toggle');
+  const links = dd.querySelectorAll('.dropdown-menu a');
+  toggle.addEventListener('click', e => {
+    e.preventDefault();
+    const isOpen = dd.classList.contains('open');
+    desktopDropdowns.forEach(d => d.classList.remove('open'));
+    if(!isOpen) dd.classList.add('open');
   });
+  links.forEach(link => link.addEventListener('click', ()=>dd.classList.remove('open')));
+});
 
-  hamburger.addEventListener('click', () => sidePanel.classList.toggle('open'));
-  panelToggle.addEventListener('click', () => panelDropdown.classList.toggle('open'));
+/* Mobile panel */
+const hamburger = document.querySelector('.mobile-navbar .hamburger');
+const sidePanel = document.querySelector('.side-panel');
+const panelDropdown = document.querySelector('.panel-dropdown');
+const panelToggle = panelDropdown.querySelector('.panel-toggle');
+
+hamburger.addEventListener('click', ()=>sidePanel.classList.toggle('open'));
+panelToggle.addEventListener('click', ()=>panelDropdown.classList.toggle('open'));
 </script>
+
 
 
 
