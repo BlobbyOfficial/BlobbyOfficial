@@ -24,6 +24,9 @@
 <link rel="apple-touch-icon" href="https://blobbyofficial.com/assets/icon.png" />
 <link rel="icon" type="image/png" href="https://blobbyofficial.com/assets/favicon.png" />
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<link rel="preload" as="image" href="/assets/icon_1080x1080.png">
+<link rel="preload" as="image" href="/assets/icon_1920x1920.png">
+<link rel="preload" as="image" href="/assets/circle_icon_1920x1920.png">
 <link rel="preload" as="image" href="/assets/banner.png">
 <link rel="preload" as="image" href="/assets/old banner.jpg">
 <link rel="preload" as="image" href="/assets/old icon.jpg">
@@ -40,9 +43,19 @@
   "name": "BlobbyOfficial",
   "alternateName": "Blobby Official",
   "additionalName": ["Blobby", "Blobby_Official", "BlobbyOfficial_", "BlobbyOfficial"],
-  "image": "https://blobbyofficial.com/assets/icon.png",
+  "image": [
+    "https://blobbyofficial.com/assets/icon.png",
+    "https://blobbyofficial.com/assets/icon_1080x1080.png",
+    "https://blobbyofficial.com/assets/icon_1920x1920.png",
+    "https://blobbyofficial.com/assets/circle_icon_1920x1920.png"
+  ],
   "url": "https://blobbyofficial.com",
   "sameAs": [
+    "https://www.blobbyofficial.com",
+    "https://blog.blobbyofficial.com",
+    "https://newsletter.blobbyofficial.com",
+    "https://store.blobbyofficial.com",
+    "https://blobbyofficial.com/404",
     "https://youtube.com/@Blobby_Official",
     "https://twitter.com/BlobbyOfficial_",
     "https://www.tiktok.com/@blobby.official",
@@ -59,29 +72,15 @@
     "https://blobbyofficial.gumroad.com/",
     "https://patreon.com/BlobbyOfficial",
     "https://linktr.ee/blobbyofficial",
-    "https://github.com/BlobbyOfficial"
+    "https://github.com/BlobbyOfficial",
+    "https://blobbyofficial.godaddysites.com/"
   ],
   "email": "blobbyofficial@blobbyofficial.com",
   "contactPoint": [
-    {
-      "@type": "ContactPoint",
-      "contactType": "Main Email",
-      "email": "blobbyofficial@blobbyofficial.com"}
-    {
-      "@type": "ContactPoint",
-      "contactType": "Customer Support",
-      "email": "support@blobbyofficial.com"
-    },
-    {
-      "@type": "ContactPoint",
-      "contactType": "General Inquiries",
-      "email": "blobbyofficial@outlook.com"
-    },
-    {
-      "@type": "ContactPoint",
-      "contactType": "Newsletter",
-      "email": "noreply@blobbyofficial.com"
-    }
+    {"@type": "ContactPoint", "contactType": "Main Email", "email": "blobbyofficial@blobbyofficial.com"},
+    {"@type": "ContactPoint", "contactType": "Customer Support", "email": "support@blobbyofficial.com"},
+    {"@type": "ContactPoint", "contactType": "General Inquiries", "email": "blobbyofficial@outlook.com"},
+    {"@type": "ContactPoint", "contactType": "Newsletter", "email": "noreply@blobbyofficial.com"}
   ],
   "description": "BlobbyOfficial is a musician, YouTuber, UI designer, and digital creator. They develop music across multiple platforms, build creative digital experiences, and run an online community. Not related to Mr Blobby.",
   "knowsAbout": [
@@ -95,6 +94,10 @@
   ],
   "owns": [
     {"@type": "Website", "url": "https://blobbyofficial.com"},
+    {"@type": "Website", "url": "https://www.blobbyofficial.com"},
+    {"@type": "Website", "url": "https://blog.blobbyofficial.com"},
+    {"@type": "Website", "url": "https://newsletter.blobbyofficial.com"},
+    {"@type": "Website", "url": "https://store.blobbyofficial.com"},
     {"@type": "Organization", "name": "The Official Blobby Group", "url": "https://www.roblox.com/communities/32402889/The-Official-Blobby-Group"}
   ]
 }
