@@ -7,7 +7,7 @@
 
 <div align="center">
   
-![Website](https://img.shields.io/badge/🌐%20Website-BlobbyOfficial-111111?style=for-the-badge&logo=google-chrome&logoColor=white)
+![Website](https://img.shields.io/badge/🌐%20Website-BlobbyOfficial-111111?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.blobbyofficial.com)
 [![LICENSE](https://img.shields.io/badge/⚖️%20License-Apache--2.0-8B0000?style=for-the-badge&logo=scale&logoColor=white)](https://github.com/BlobbyOfficial/BlobbyOfficial/blob/master/LICENSE)
 [![README](https://img.shields.io/badge/📖%20README-BlobbyOfficial-222222?style=for-the-badge&logo=markdown&logoColor=white)](https://github.com/BlobbyOfficial/BlobbyOfficial/blob/master/README.md)
 
