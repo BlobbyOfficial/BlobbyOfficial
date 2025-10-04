@@ -161,7 +161,6 @@
   footer{padding:30px 0 60px;color:var(--muted);}
   .muted{color:var(--muted);}
 </style>
-</head>
 <body>
   <!-- Gate overlay -->
 <div id="gate-overlay">
@@ -200,20 +199,18 @@
 <header>
   <div class="container nav">
     <div class="brand">
-      <a href="https://blobbyofficial.com">
+      <a href="https://www.blobbyofficial.com">
         <div class="avatar"><img src="assets/icon.png" alt="BlobbyOfficial Logo"></div>
         <h1>BlobbyOfficial</h1>
       </a>
-      <div class="dropdown">
-        <button class="dropdown-toggle" type="button">▼</button>
-        <div class="dropdown-menu">
-          <a href="#about">About</a>
-          <a href="#work">What I Do</a>
-          <a href="#youtube">YouTube</a>
-          <a href="#future">Looking Ahead</a>
-          <a href="#links">Links</a>
-          <a href="#contact">Contact</a>
-        </div>
+      <button class="hamburger" aria-label="Toggle menu">☰</button>
+      <div class="dropdown-mobile">
+        <a href="#about">About</a>
+        <a href="#work">What I Do</a>
+        <a href="#youtube">YouTube</a>
+        <a href="#future">Looking Ahead</a>
+        <a href="#links">Links</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
 
@@ -222,7 +219,7 @@
         <button class="text-toggle">Shop ▼</button>
         <div class="dropdown-menu">
           <a href="https://blobbyofficial.gumroad.com/" target="_blank">Gumroad</a>
-          <a href="https://patreon.com/BlobbyOfficial?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=creatorshare_creator&utm_content=join_link" target="_blank">Patreon</a>
+          <a href="https://patreon.com/BlobbyOfficial" target="_blank">Patreon</a>
         </div>
       </div>
       <div class="dropdown-text">
@@ -247,14 +244,15 @@
 </header>
 
 <style>
-  .nav { display: flex; align-items: center; justify-content: space-between; }
-  .nav-right { display: flex; gap: 20px; align-items: center; }
+  /* Base */
+  .nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 0 10px; }
+  .nav-right { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
 
   .brand { display: flex; align-items: center; gap: 12px; position: relative; }
   .brand a { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
 
   .dropdown, .dropdown-text { position: relative; }
-  .dropdown-toggle, .text-toggle { 
+  .dropdown-toggle, .text-toggle, .hamburger { 
     background:none; 
     border:none; 
     color:var(--text); 
@@ -262,7 +260,7 @@
     cursor:pointer; 
     transition: transform .3s ease;
   }
-  .dropdown.open .dropdown-toggle { transform: rotate(180deg); }
+  .dropdown.open .dropdown-toggle, .dropdown-text.open .text-toggle { transform: rotate(180deg); }
 
   .dropdown-menu { 
     position: absolute; 
@@ -283,10 +281,23 @@
   .dropdown.open .dropdown-menu, .dropdown-text.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
   .dropdown-menu a { padding: 10px 14px; color: var(--text); text-decoration: none; transition: background .2s; border-radius: var(--radius); }
   .dropdown-menu a:hover { background: rgba(124,58,237,.15); }
+
+  /* Mobile */
+  .hamburger { display: none; font-size: 24px; }
+  .dropdown-mobile { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--panel); z-index: 100; border-top: 1px solid rgba(148,163,184,.14); }
+  .dropdown-mobile a { padding: 12px; border-bottom: 1px solid rgba(148,163,184,.14); }
+
+  @media (max-width: 768px) {
+    .nav-right { display: none; width: 100%; flex-direction: column; }
+    .hamburger { display: block; }
+    .dropdown-mobile.open { display: flex; }
+  }
 </style>
 
 <script>
   const allDropdowns = document.querySelectorAll('.dropdown, .dropdown-text');
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.querySelector('.dropdown-mobile');
 
   function closeAllDropdowns(except = null) {
     allDropdowns.forEach(dd => { if (dd !== except) dd.classList.remove('open'); });
@@ -304,6 +315,10 @@
     });
 
     links.forEach(link => { link.addEventListener('click', () => { dd.classList.remove('open'); }); });
+  });
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
   });
 </script>
 
