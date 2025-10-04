@@ -7,11 +7,9 @@
 
 <div align="center">
   
-[![Open issue](https://img.shields.io/github/issues/BlobbyOfficial/BlobbyOfficial)](https://github.com/BlobbyOfficial/BlobbyOfficial/issues)
-[![Closed issue](https://img.shields.io/github/issues-closed/BlobbyOfficial/BlobbyOfficial)](https://github.com/BlobbyOfficial/BlobbyOfficial/issues)
+[![Website](https://img.shields.io/badge/Website-Visit-blue)](https://www.blobbyofficial.com/)
 [![LICENSE](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/BlobbyOfficial/BlobbyOfficial/blob/master/LICENSE)
 [![README](https://img.shields.io/badge/README-BlobbyOfficial-red.svg)](https://github.com/BlobbyOfficial/BlobbyOfficial/blob/master/README.md)
-[![Deployments](https://img.shields.io/badge/Deployments-blue.svg)](https://github.com/BlobbyOfficial/BlobbyOfficial/deployments)
 
 </div>
 
@@ -51,7 +49,7 @@ My aim is to continue building my presence as a creator across platforms. I’m 
 [![Email](https://img.shields.io/badge/Email-Contact-red)](mailto:blobbyofficial@outlook.com)  
 [![Discord](https://img.shields.io/badge/Discord-Join-purple)](https://discord.gg/quq8thpMEd)  
 [![Linktree](https://img.shields.io/badge/Linktree-Visit-green)](https://linktr.ee/blobbyofficial)  
-[![Website](https://img.shields.io/badge/Website-Visit-blue)](https://blobbyofficial.github.io/BlobbyOfficial/)  
+[![Website](https://img.shields.io/badge/Website-Visit-blue)](https://www.blobbyofficial.com/)  
 [![Source Code](https://img.shields.io/badge/GitHub-Repo-black)](https://github.com/BlobbyOfficial/BlobbyOfficial)
 
 ---
