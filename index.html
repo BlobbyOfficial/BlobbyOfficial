@@ -216,21 +216,21 @@
 
     <div class="nav-right">
       <div class="dropdown-text">
-        <button class="text-toggle">Shop ▼</button>
+        <button class="text-toggle">Shop <span class="arrow">▼</span></button>
         <div class="dropdown-menu">
           <a href="https://blobbyofficial.gumroad.com/" target="_blank">Gumroad</a>
           <a href="https://patreon.com/BlobbyOfficial" target="_blank">Patreon</a>
         </div>
       </div>
       <div class="dropdown-text">
-        <button class="text-toggle">Commission ▼</button>
+        <button class="text-toggle">Commission <span class="arrow">▼</span></button>
         <div class="dropdown-menu">
           <a href="pages/commission/ui.html">UI</a>
           <a href="pages/commissions/music.html">Music</a>
         </div>
       </div>
       <div class="dropdown-text">
-        <button class="text-toggle">Links ▼</button>
+        <button class="text-toggle">Links <span class="arrow">▼</span></button>
         <div class="dropdown-menu">
           <a href="mailto:blobbyofficial@outlook.com" target="_blank">Email</a>
           <a href="https://discord.gg/quq8thpMEd" target="_blank">Discord</a>
@@ -244,48 +244,30 @@
 </header>
 
 <style>
-  /* Base */
-  .nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 0 10px; }
-  .nav-right { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+  .nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 20px 25px; font-size: 18px; }
+  .nav-right { display: flex; gap: 25px; align-items: center; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 15px; position: relative; }
+  .brand a { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text); }
+  .brand h1 { font-size: 2rem; }
 
-  .brand { display: flex; align-items: center; gap: 12px; position: relative; }
-  .brand a { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+  .text-toggle, .hamburger { background:none; border:none; color:var(--text); font-size:1.1rem; cursor:pointer; display:flex; align-items:center; gap:5px; }
 
-  .dropdown, .dropdown-text { position: relative; }
-  .dropdown-toggle, .text-toggle, .hamburger { 
-    background:none; 
-    border:none; 
-    color:var(--text); 
-    font-size:16px; 
-    cursor:pointer; 
-    transition: transform .3s ease;
-  }
-  .dropdown.open .dropdown-toggle, .dropdown-text.open .text-toggle { transform: rotate(180deg); }
+  .arrow { display:inline-block; transition: transform 0.3s ease; }
+  .dropdown.open .arrow, .dropdown-text.open .arrow { transform: rotate(180deg); }
 
   .dropdown-menu { 
-    position: absolute; 
-    top: 120%; 
-    left: 0; 
-    background: var(--panel); 
-    border: 1px solid rgba(148,163,184,.14); 
-    border-radius: var(--radius); 
-    display: flex; 
-    flex-direction: column; 
-    min-width: 160px; 
-    z-index: 50; 
-    opacity: 0; 
-    transform: translateY(-10px); 
-    pointer-events: none; 
-    transition: all .25s ease; 
+    position: absolute; top: 130%; left: 0; background: var(--panel); border: 1px solid rgba(148,163,184,.14); 
+    border-radius: var(--radius); display: flex; flex-direction: column; min-width: 180px; z-index: 50; 
+    opacity: 0; transform: translateY(-15px); pointer-events: none; transition: all 0.35s cubic-bezier(0.4,0,0.2,1); 
   }
   .dropdown.open .dropdown-menu, .dropdown-text.open .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .dropdown-menu a { padding: 10px 14px; color: var(--text); text-decoration: none; transition: background .2s; border-radius: var(--radius); }
-  .dropdown-menu a:hover { background: rgba(124,58,237,.15); }
+  .dropdown-menu a { padding: 12px 16px; color: var(--text); text-decoration: none; transition: background 0.25s ease, transform 0.25s ease; border-radius: var(--radius); }
+  .dropdown-menu a:hover { background: rgba(124,58,237,.15); transform: translateX(5px); }
 
-  /* Mobile */
-  .hamburger { display: none; font-size: 24px; }
-  .dropdown-mobile { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--panel); z-index: 100; border-top: 1px solid rgba(148,163,184,.14); }
-  .dropdown-mobile a { padding: 12px; border-bottom: 1px solid rgba(148,163,184,.14); }
+  .hamburger { display: none; font-size: 28px; }
+  .dropdown-mobile { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--panel); z-index: 100; border-top: 1px solid rgba(148,163,184,.14); transition: max-height 0.35s ease; overflow: hidden; }
+  .dropdown-mobile a { padding: 14px; border-bottom: 1px solid rgba(148,163,184,.14); transition: background 0.25s ease; }
+  .dropdown-mobile a:hover { background: rgba(124,58,237,.15); }
 
   @media (max-width: 768px) {
     .nav-right { display: none; width: 100%; flex-direction: column; }
@@ -317,10 +299,9 @@
     links.forEach(link => { link.addEventListener('click', () => { dd.classList.remove('open'); }); });
   });
 
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-  });
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
 </script>
+
 
 
 <main id="top" class="container">
