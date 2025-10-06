@@ -3,13 +3,14 @@ Disallow: /private/
 Disallow: /admin/
 Disallow: /assets/
 Allow: /pages/
+# Allow: /
 
-Sitemap: [https://blobbyofficial.com/sitemap.xml](https://blobbyofficial.com/sitemap.xml)
+# Sitemap — provide a plain URL (no markdown)
+Sitemap: https://www.blobbyofficial.com/sitemap.xml
 
-# Crawl-delay to prevent server overload
-
+# Crawl-delay to reduce request rate for well-behaved crawlers
+# Note: not all crawlers respect this directive.
 Crawl-delay: 5
 
-# Specify preferred domain if applicable
-
+# If you want to specify a preferred host, uncomment and set below
 # Host: blobbyofficial.com
