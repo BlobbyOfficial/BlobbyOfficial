@@ -383,9 +383,77 @@
   .link-card .info .title, .contact-card .info .title { font-weight:700; font-size:16px; margin-bottom:4px; }
   .link-card .info .desc, .contact-card .info .desc { font-size:14px; color:var(--muted); }
 
-  /* ==================== Footer ==================== */
-  footer{ padding:30px 0 60px; color:var(--muted); }
-  .muted{ color:var(--muted); }
+/* ==================== Footer ==================== */
+  footer {
+    position: relative;
+    padding: 50px 0 80px;
+    color: var(--muted);
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(11, 16, 32, 0.85) 100%);
+    text-align: center;
+    overflow: hidden;
+    transition: background 0.6s ease, color 0.4s ease;
+  }
+
+  footer::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--brand), transparent);
+    opacity: 0.4;
+    animation: shimmer 5s infinite linear;
+  }
+
+  footer .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  footer .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  footer .footer-links a {
+    color: var(--muted);
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  footer .footer-links a:hover {
+    color: var(--brand-2);
+    transform: translateY(-2px);
+  }
+
+  footer .copyright {
+    font-size: 14px;
+    opacity: 0.8;
+    letter-spacing: 0.4px;
+    animation: fadeInUp 1s ease both;
+  }
+
+  .muted {
+    color: var(--muted);
+    transition: color 0.3s ease;
+  }
+
+  @keyframes shimmer {
+    0% { opacity: 0.2; transform: translateX(-50%) scaleX(1); }
+    50% { opacity: 0.6; transform: translateX(-50%) scaleX(1.05); }
+    100% { opacity: 0.2; transform: translateX(-50%) scaleX(1); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
   /* ==================== Navbar Specific ==================== */
   .desktop-navbar{display:block;}
