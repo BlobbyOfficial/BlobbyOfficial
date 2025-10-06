@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.png"  height="768" width="432" style="border-radius: 50%;">
+  <img src="assets/banner.png"  height="960" width="540" style="border-radius: 50%;">
 </p>
 
 
@@ -42,6 +42,11 @@ As a faceless creator, I share content that highlights my work and creative proj
 
 # Looking Ahead
 My aim is to continue building my presence as a creator across platforms. I’m always working on new projects in music, design, development, and content creation, with the goal of expanding what I can share with the community.
+
+---
+
+# Read More on my website:
+[www.BlobbyOfficial.com](https://www.blobbyofficial.com)
 
 ---
 

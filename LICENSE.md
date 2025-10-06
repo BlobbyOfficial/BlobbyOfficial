@@ -2,7 +2,7 @@
 
 BlobbyOfficial is pleased to release this repository under a **proprietary license**.
 
-Copyright (C) 2025 BlobbyOfficial. All rights reserved.
+Copyright (C) 2025 [BlobbyOfficial](https://www.blobbyofficial.com). All rights reserved.
 
 This repository, including all code, assets, and content, is the exclusive property of BlobbyOfficial.
 
@@ -12,6 +12,7 @@ This repository, including all code, assets, and content, is the exclusive prope
 
 1. **Definitions**
    - **License**: This document and its terms.
+   - **Me/My/Our/We/Us/BlobbyOfficial**: BlobbyOfficial, the copyright holder.
    - **Licensor**: BlobbyOfficial, the copyright holder.
    - **You/Your**: Any individual or entity accessing, viewing, or downloading this repository.
    - **Work**: Any content, code, documentation, or asset included in this repository.
@@ -30,13 +31,13 @@ This repository, including all code, assets, and content, is the exclusive prope
    - You assume all risk in using or attempting to use the Work.
 
 5. **Limitation of Liability**
-   - BlobbyOfficial is not liable for any direct, indirect, incidental, consequential, or other damages resulting from the use of this repository.
+   - BlobbyOfficial is not liable for any direct, indirect, incidental, consequential, or other damages resulting from the use of this repository or website.
 
 ---
 
 ### Acknowledgements
 
-Some content in this repository may have been assisted by AI tools (e.g., ChatGPT) for guidance or code generation. All original copyright and ownership remain with BlobbyOfficial.
+Some content in this repository or website may have been assisted by AI tools (e.g., ChatGPT) for guidance or code generation. All original copyright and ownership remain with BlobbyOfficial.
 
 ---
 
@@ -44,7 +45,7 @@ Some content in this repository may have been assisted by AI tools (e.g., ChatGP
 
 For permissions or inquiries, contact:
 
-- **Email**: blobbyofficial@outlook.com  
-- **Website**: [https://blobbyofficial.github.io/BlobbyOfficial/](https://blobbyofficial.github.io/BlobbyOfficial/)  
+- **Email**: [blobbyofficial@blobbyofficial.com](mailto:blobbyofficial@blobbyofficial.com)  
+- **Website**: [https://www.blobbyofficial.com](https://www.blobbyofficial.com)  
 - **Source Code**: [https://github.com/BlobbyOfficial/BlobbyOfficial](https://github.com/BlobbyOfficial/BlobbyOfficial)  
 - **Discord**: [https://discord.gg/quq8thpMEd](https://discord.gg/quq8thpMEd)

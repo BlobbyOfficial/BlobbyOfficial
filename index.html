@@ -49,6 +49,7 @@
     "https://blobbyofficial.com/assets/icon_1920x1920.png",
     "https://blobbyofficial.com/assets/circle_icon_1920x1920.png"
   ],
+  "logo": "https://blobbyofficial.com/assets/icon_1920x1920.png",
   "url": "https://blobbyofficial.com",
   "sameAs": [
     "https://www.blobbyofficial.com",
@@ -222,7 +223,159 @@
 
   /* ==================== Gate Overlay ==================== */
   #gate-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:#0b1020; display:flex; align-items:center; justify-content:center; z-index:9999; }
+
+  /* ==================== Animations ==================== */
+  @keyframes fadeInBody { from {opacity:0;} to {opacity:1;} }
+  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+  @keyframes fadeSlideUp { from {opacity:0; transform:translateY(12px);} to {opacity:1; transform:translateY(0);} }
+  @keyframes fadeSlideDown { from {opacity:0; transform:translateY(-12px);} to {opacity:1; transform:translateY(0);} }
+  @keyframes slideInRight { from {transform:translateX(20%); opacity:0;} to {transform:translateX(0); opacity:1;} }
+  @keyframes popIn { from {transform:scale(0.8); opacity:0;} to {transform:scale(1); opacity:1;} }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
 </style>
+
+<script>
+// ==================== Unified Site Script ====================
+(function() {
+  // ==================== Gate Overlay & Verification ====================
+  const gate = document.getElementById('gate-overlay');
+
+  function showGate() {
+    if (gate) gate.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hideGate() {
+    if (gate) gate.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  function turnstileSuccess(token) {
+    sessionStorage.setItem('verified', 'true');
+    hideGate();
+  }
+
+  if (!sessionStorage.getItem('verified')) {
+    showGate();
+  } else {
+    hideGate();
+  }
+
+  window.turnstileSuccess = turnstileSuccess;
+
+  // ==================== Dropdown Logic ====================
+  const dropBtn = document.getElementById('dropToggle');
+  const dropdown = document.getElementById('brandDropdown');
+  let dropdownOpen = false;
+
+  function openDropdown() {
+    dropdown.classList.add('open');
+    dropBtn.setAttribute('aria-expanded', 'true');
+    dropdownOpen = true;
+  }
+
+  function closeDropdown() {
+    dropdown.classList.remove('open');
+    dropBtn.setAttribute('aria-expanded', 'false');
+    dropdownOpen = false;
+  }
+
+  if (dropBtn && dropdown) {
+    dropBtn.addEventListener('click', () => {
+      dropdownOpen ? closeDropdown() : openDropdown();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (dropdownOpen && !dropBtn.contains(e.target) && !dropdown.contains(e.target)) {
+        closeDropdown();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dropdownOpen) closeDropdown();
+    });
+  }
+
+  // ==================== Mobile Sidebar ====================
+  const overlay = document.getElementById('overlay');
+  const panel = document.getElementById('mobilePanel');
+  const openBtn = document.getElementById('hamburger');
+  const closeBtn = document.getElementById('closeBtn');
+  const scrim = document.getElementById('scrim');
+
+  function openPanel() {
+    overlay.classList.remove('hidden');
+    panel.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    trapFocus(panel);
+  }
+
+  function closePanel() {
+    panel.classList.remove('open');
+    overlay.classList.add('hidden');
+    document.body.style.overflow = '';
+    releaseFocus();
+  }
+
+  if (openBtn && closeBtn && scrim && overlay && panel) {
+    openBtn.addEventListener('click', openPanel);
+    closeBtn.addEventListener('click', closePanel);
+    scrim.addEventListener('click', closePanel);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePanel();
+    });
+
+    panel.addEventListener('click', (e) => {
+      if (e.target.tagName.toLowerCase() === 'a') closePanel();
+    });
+  }
+
+  // ==================== Focus Trap ====================
+  let focusableElements = [];
+  let lastFocusedElement = null;
+
+  function trapFocus(container) {
+    focusableElements = container.querySelectorAll('a, button, input, textarea, select, [tabindex]');
+    if (focusableElements.length === 0) return;
+    lastFocusedElement = document.activeElement;
+    focusableElements[0].focus();
+
+    function handleFocus(e) {
+      const first = focusableElements[0];
+      const last = focusableElements[focusableElements.length - 1];
+      if (e.key === 'Tab') {
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    container.addEventListener('keydown', handleFocus);
+    container.dataset.trapHandler = true;
+  }
+
+  function releaseFocus() {
+    if (lastFocusedElement) lastFocusedElement.focus();
+  }
+
+  // ==================== Footer & Accessibility ====================
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  document.body.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') document.body.classList.add('user-is-tabbing');
+  });
+  document.body.addEventListener('mousedown', () => {
+    document.body.classList.remove('user-is-tabbing');
+  });
+})();
+</script>
+
 
 <body>
   <!-- Gate overlay -->
@@ -233,30 +386,7 @@
   </div>
 </div>
 
-<script>
-  // Start with scrolling locked
-  document.body.style.overflow = 'hidden';
 
-  // Called by Turnstile when verification succeeds
-  function turnstileSuccess(token) {
-    document.getElementById('gate-overlay').style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }
-
-  if (!sessionStorage.getItem('verified')) {
-    document.getElementById('gate-overlay').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.getElementById('gate-overlay').style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }
-
-  function turnstileSuccess(token) {
-    sessionStorage.setItem('verified', 'true');
-    document.getElementById('gate-overlay').style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }
-</script>
 
 
 <!-- Desktop Navbar -->
@@ -336,40 +466,6 @@
     </div>
   </aside>
 </div>
-
-<script>
-  (function(){
-    const dropBtn=document.getElementById('dropToggle');
-    const dropdown=document.getElementById('brandDropdown');
-    let dropdownOpen=false;
-    function openDropdown(){dropdown.classList.add('open');dropBtn.setAttribute('aria-expanded','true');dropdownOpen=true;}
-    function closeDropdown(){dropdown.classList.remove('open');dropBtn.setAttribute('aria-expanded','false');dropdownOpen=false;}
-    dropBtn.addEventListener('click',()=>{dropdownOpen?closeDropdown():openDropdown()});
-    document.addEventListener('click',(e)=>{if(dropdownOpen&&!dropBtn.contains(e.target)&&!dropdown.contains(e.target))closeDropdown()});
-    document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&dropdownOpen)closeDropdown()});
-
-    const overlay=document.getElementById('overlay');
-    const panel=document.getElementById('mobilePanel');
-    const openBtn=document.getElementById('hamburger');
-    const closeBtn=document.getElementById('closeBtn');
-    const scrim=document.getElementById('scrim');
-    function openPanel(){overlay.classList.remove('hidden');panel.classList.add('open');document.body.style.overflow='hidden';}
-    function closePanel(){panel.classList.remove('open');overlay.classList.add('hidden');document.body.style.overflow='';}
-    openBtn.addEventListener('click',openPanel);
-    closeBtn.addEventListener('click',closePanel);
-    scrim.addEventListener('click',closePanel);
-    document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closePanel()});
-    panel.addEventListener('click',(e)=>{if(e.target.tagName.toLowerCase()==='a')closePanel()});
-  })();
-</script>
-
-
-
-
-
-
-
-
 
 <main id="top" class="container">
   <!-- About -->
@@ -494,20 +590,5 @@
       <div class="muted">© <span id="year"></span> BlobbyOfficial • All rights reserved.</div>
     </div>
   </footer>
-
-  <script>
-    // Set copyright year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Accessibility: Focus outline only on keyboard navigation
-    document.body.addEventListener('keydown', function(e) {
-      if (e.key === 'Tab') {
-        document.body.classList.add('user-is-tabbing');
-      }
-    });
-    document.body.addEventListener('mousedown', function() {
-      document.body.classList.remove('user-is-tabbing');
-    });
-  </script>
 </body>
 </html>
