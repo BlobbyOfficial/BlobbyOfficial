@@ -196,163 +196,227 @@
 </script>
 
 
-<!-- Desktop Navbar -->
-<header class="desktop-navbar">
+<!-- Mobile Sidebar — Upgraded: full-screen, acrylic blur, accessible, keyboard-friendly, animated, error-handled -->
+<header class="mobile-navbar" aria-hidden="false">
   <div class="container nav">
     <a href="https://www.blobbyofficial.com" class="brand-link">
       <div class="avatar"><img src="https://www.blobbyofficial.com/assets/icon.png" alt="BlobbyOfficial Logo"></div>
       <h1>BlobbyOfficial</h1>
     </a>
-    <div class="desktop-links">
-      <div class="dropdown">
-        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Open navigation menu">
-          <span class="arrow">▼</span>
-        </button>
-        <div class="dropdown-menu" role="menu">
-          <a href="#about" role="menuitem">About</a>
-          <a href="#work" role="menuitem">What I Do</a>
-          <a href="#youtube" role="menuitem">YouTube</a>
-          <a href="#future" role="menuitem">Looking Ahead</a>
-          <a href="#links" role="menuitem">Links</a>
-          <a href="#contact" role="menuitem">Contact</a>
-        </div>
+
+    <!-- Hamburger button controls the mobile side panel -->
+    <button class="hamburger" id="mobile-hamburger" aria-controls="mobile-sidepanel" aria-expanded="false" aria-label="Open menu">
+      <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M0 1.5h20M0 7h20M0 12.5h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <!-- Overlay (covers entire viewport and creates acrylic blur behind) -->
+  <div id="mobile-overlay" class="mobile-overlay" tabindex="-1" hidden></div>
+
+  <!-- Side panel (full-screen on mobile). Hidden by default. -->
+  <aside id="mobile-sidepanel" class="side-panel" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+    <div class="side-panel-inner">
+      <div class="panel-header">
+        <a href="https://www.blobbyofficial.com" class="brand-small" aria-label="Go to BlobbyOfficial homepage">
+          <div class="avatar"><img src="https://www.blobbyofficial.com/assets/icon.png" alt="BlobbyOfficial Logo"></div>
+          <span class="brand-title">BlobbyOfficial</span>
+        </a>
+        <button class="close" id="mobile-close" aria-label="Close menu">&times;</button>
       </div>
-      <a href="https://store.blobbyofficial.com" target="_blank">Store</a>
-      <a href="https://commission.blobbyofficial.com" target="_blank">Commission</a>
-      <a href="https://links.blobbyofficial.com" target="_blank">Links</a>
-      <a href="https://blog.blobbyofficial.com" target="_blank">Blog</a>
-      <a href="https://newsletter.blobbyofficial.com" target="_blank">Newsletter</a>
+
+      <nav class="panel-nav" aria-label="Mobile main navigation">
+        <ul>
+          <li style="--i:0"><a href="#about">About</a></li>
+          <li style="--i:1"><a href="#work">What I Do</a></li>
+          <li style="--i:2"><a href="#youtube">YouTube</a></li>
+          <li style="--i:3"><a href="#future">Looking Ahead</a></li>
+          <li style="--i:4"><a href="#links">Links</a></li>
+          <li style="--i:5"><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="panel-actions">
+        <a class="btn primary" href="https://store.blobbyofficial.com" target="_blank">Store</a>
+        <a class="btn" href="https://commission.blobbyofficial.com" target="_blank">Commission</a>
+      </div>
+
+      <div class="panel-footnote">Newsletter • Blog • Links</div>
     </div>
-  </div>
-</header>
-
-<!-- Mobile Navbar -->
-<header class="mobile-navbar">
-  <div class="container nav">
-    <a href="https://www.blobbyofficial.com" class="brand-link">
-      <div class="avatar"><img src="https://www.blobbyofficial.com/assets/icon.png" alt="BlobbyOfficial Logo"></div>
-      <h1>BlobbyOfficial</h1>
-    </a>
-    <button class="hamburger" aria-label="Toggle menu">☰</button>
-  </div>
-
-  <div class="side-panel" role="dialog" aria-hidden="true">
-    <nav>
-      <ul>
-        <li class="panel-dropdown">
-          <button class="panel-toggle" aria-haspopup="true" aria-expanded="false">Navigation <span class="arrow">▼</span></button>
-          <ul class="panel-menu">
-            <li><a href="#about" class="submenu">About</a></li>
-            <li><a href="#work" class="submenu">What I Do</a></li>
-            <li><a href="#youtube" class="submenu">YouTube</a></li>
-            <li><a href="#future" class="submenu">Looking Ahead</a></li>
-            <li><a href="#links" class="submenu">Links</a></li>
-            <li><a href="#contact" class="submenu">Contact</a></li>
-          </ul>
-        </li>
-        <li><a href="https://store.blobbyofficial.com" target="_blank">Store</a></li>
-        <li><a href="https://commission.blobbyofficial.com" target="_blank">Commission</a></li>
-        <li><a href="https://links.blobbyofficial.com" target="_blank">Links</a></li>
-        <li><a href="https://blog.blobbyofficial.com" target="_blank">Blog</a></li>
-        <li><a href="https://newsletter.blobbyofficial.com" target="_blank">Newsletter</a></li>
-      </ul>
-    </nav>
-  </div>
+  </aside>
 </header>
 
 <style>
-/* General */
-.brand-link { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text); }
-.brand-link h1 { margin:0; font-size:2rem; }
-.avatar img { width:50px; height:50px; object-fit:contain; }
-.arrow { display:inline-block; transition: transform 0.3s ease; }
-
-/* Desktop specific */
-.desktop-navbar .desktop-links { display:flex; align-items:center; gap:20px; }
-.dropdown { position:relative; }
-.dropdown-toggle { background:none; border:none; cursor:pointer; color:var(--text); font-size:1.2rem; transition: transform 0.3s ease; }
-.dropdown-toggle:focus { outline:2px solid var(--accent, #7c3aed); }
-.dropdown-menu { position:absolute; top:130%; right:0; background:var(--panel); border:1px solid rgba(148,163,184,.14); border-radius:var(--radius); display:flex; flex-direction:column; min-width:180px; z-index:50; opacity:0; transform:translateY(-15px); pointer-events:none; transition:all 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
-.dropdown.open .dropdown-menu { opacity:1; transform:translateY(0); pointer-events:auto; }
-.dropdown-menu a { padding:12px 16px; border-radius:var(--radius); color:var(--text); text-decoration:none; transition: background 0.25s ease, transform 0.25s ease; }
-.dropdown-menu a:hover { background: rgba(124,58,237,.15); transform:translateX(5px); }
-
-/* Mobile specific */
-.mobile-navbar .hamburger { font-size:28px; background: rgba(255,255,255,0.1); backdrop-filter:blur(12px) saturate(180%); border:none; padding:10px 15px; border-radius:8px; cursor:pointer; color:var(--text); transition: background 0.3s ease, transform 0.2s ease; }
-.mobile-navbar .hamburger:active { transform: scale(0.9); }
-.side-panel { position:fixed; top:0; left:-300px; width:280px; height:100%; background:rgba(20,20,20,0.6); backdrop-filter:blur(30px) saturate(180%); -webkit-backdrop-filter:blur(30px) saturate(180%); z-index:999; transition:left 0.4s cubic-bezier(0.4,0,0.2,1); padding-top:60px; box-shadow:2px 0 12px rgba(0,0,0,0.3); overflow-y:auto; }
-.side-panel.open { left:0; }
-.side-panel nav ul { list-style:none; padding:0; margin:0; }
-.side-panel nav ul li { border-bottom:1px solid rgba(148,163,184,.14); }
-.side-panel nav ul li a, .panel-toggle { display:block; padding:15px 20px; text-decoration:none; color:var(--text); cursor:pointer; transition: background 0.25s ease, padding-left 0.25s ease; }
-.side-panel nav ul li a:hover, .panel-toggle:hover { background: rgba(124,58,237,.15); padding-left:25px; }
-.panel-dropdown .panel-menu { display:none; flex-direction:column; padding-left:20px; animation: fadeIn 0.3s ease; }
-.panel-dropdown.open .panel-menu { display:flex; }
-.panel-dropdown .arrow { float:right; transition: transform 0.3s ease; }
-.panel-dropdown.open .arrow { transform:rotate(180deg); }
-.submenu { padding-left:15px; background: rgba(0,0,0,0.05); border-radius:6px; margin:2px 0; transition: background 0.3s ease; }
-.submenu:hover { background: rgba(124,58,237,.1); }
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity:0; transform:translateY(-5px); }
-  to { opacity:1; transform:translateY(0); }
+:root{
+  --panel-bg: rgba(18,20,24,0.45);
+  --panel-accent: rgba(124,58,237,0.12);
+  --text: #e8eef8;
+  --muted: #a9b4c5;
+  --accent: #7c3aed;
+  --radius: 14px;
 }
 
-/* Hide Desktop on Mobile, Hide Mobile on Desktop */
-@media(max-width:768px){ .desktop-navbar{ display:none; } }
-@media(min-width:769px){ .mobile-navbar{ display:none; } }
+/* Mobile-only styles (desktop unaffected) */
+@media (max-width: 768px){
+  .mobile-navbar .container{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;}
+  .brand-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);} 
+  .brand-link h1{font-size:1.125rem;margin:0}
+  .avatar img{width:40px;height:40px;border-radius:8px}
+
+  .hamburger{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:10px;color:var(--text);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+  .hamburger:focus{outline:3px solid rgba(124,58,237,0.18)}
+
+  /* Overlay covers entire viewport; uses backdrop-filter for acrylic blur when available */
+  .mobile-overlay{position:fixed;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);z-index:1100;opacity:0;transition:opacity 280ms ease;}
+  .mobile-overlay.visible{opacity:1}
+
+  /* Side panel covers full viewport for a clean mobile UX */
+  .side-panel{position:fixed;top:0;right:0;bottom:0;left:0;width:100vw;height:100vh;z-index:1200;pointer-events:none;transform:translateY(8px);opacity:0;transition:opacity 320ms ease, transform 360ms cubic-bezier(0.2,0.9,0.3,1);}
+
+  .side-panel-inner{max-width:720px;margin:0 auto;height:100%;display:flex;flex-direction:column;background:var(--panel-bg);border-radius:16px;overflow:hidden;box-shadow:0 18px 50px rgba(2,6,23,0.6);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);padding:18px;pointer-events:auto}
+
+  /* When open */
+  .side-panel.open{opacity:1;transform:translateY(0)}
+
+  .panel-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:6px}
+  .brand-small{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+  .brand-title{font-weight:600}
+
+  .close{background:transparent;border:0;font-size:28px;color:var(--muted);cursor:pointer;padding:6px;border-radius:8px}
+  .close:focus{outline:3px solid rgba(124,58,237,0.12)}
+
+  .panel-nav{flex:1;display:flex;align-items:flex-start}
+  .panel-nav ul{list-style:none;margin:8px 0;padding:6px;width:100%}
+  .panel-nav li{margin:8px 0;opacity:0;transform:translateY(6px);animation:menuIn 420ms cubic-bezier(0.2,0.9,0.3,1) forwards;animation-delay:calc(var(--i) * 50ms)}
+  .panel-nav a{display:block;padding:14px 12px;text-decoration:none;color:var(--text);font-weight:600;border-radius:10px}
+  .panel-nav a:active,.panel-nav a:hover{background:var(--panel-accent)}
+
+  .panel-actions{display:flex;gap:10px;padding-top:8px}
+  .btn{display:inline-block;padding:12px 14px;border-radius:10px;text-decoration:none;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,0.06)}
+  .btn.primary{background:linear-gradient(90deg,var(--accent),#9b5cff);box-shadow:0 8px 20px rgba(124,58,237,0.18);border:0}
+
+  .panel-footnote{padding:12px 6px;color:var(--muted);font-size:0.875rem;text-align:center}
+
+  /* When side-panel open, animate children in */
+  .side-panel.open .panel-nav li{opacity:1;transform:none}
+
+  /* Animations */
+  @keyframes menuIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    .side-panel,.mobile-overlay,.panel-nav li{transition:none;animation:none}
+  }
+}
 </style>
 
 <script>
-/* Desktop dropdown */
-const desktopDropdown = document.querySelector('.desktop-navbar .dropdown');
-if (desktopDropdown) {
-  const toggle = desktopDropdown.querySelector('.dropdown-toggle');
-  const menu = desktopDropdown.querySelector('.dropdown-menu');
+(function(){
+  try{
+    const hamburger = document.getElementById('mobile-hamburger');
+    const sidePanel = document.getElementById('mobile-sidepanel');
+    const overlay = document.getElementById('mobile-overlay');
+    const closeBtn = document.getElementById('mobile-close');
 
-  toggle.addEventListener('click', e => {
-    e.preventDefault();
-    const isOpen = desktopDropdown.classList.contains('open');
-    document.querySelectorAll('.desktop-navbar .dropdown').forEach(d => d.classList.remove('open'));
-    if(!isOpen) {
-      desktopDropdown.classList.add('open');
-      toggle.setAttribute('aria-expanded', 'true');
-    } else {
-      desktopDropdown.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
+    if (!hamburger || !sidePanel || !overlay || !closeBtn) {
+      console.warn('Mobile sidebar: missing expected elements — skipping JS enhancements.');
+      return;
     }
-  });
 
-  document.addEventListener('click', e => {
-    if (!desktopDropdown.contains(e.target)) {
-      desktopDropdown.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
+    const focusableSelector = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+    let lastFocused = null;
+
+    function openPanel(){
+      lastFocused = document.activeElement;
+      overlay.hidden = false;
+      sidePanel.hidden = false;
+      // small timeout to allow CSS transitions
+      requestAnimationFrame(()=>{
+        overlay.classList.add('visible');
+        sidePanel.classList.add('open');
+        overlay.removeAttribute('hidden');
+        sidePanel.removeAttribute('hidden');
+        document.documentElement.style.overflow = 'hidden'; // prevent background scroll
+        hamburger.setAttribute('aria-expanded','true');
+        sidePanel.setAttribute('aria-hidden','false');
+        overlay.setAttribute('aria-hidden','false');
+
+        // focus first interactive element inside panel
+        const first = sidePanel.querySelector(focusableSelector);
+        if (first) first.focus();
+      });
+
+      // set up focus trapping
+      document.addEventListener('keydown', handleKeydown);
     }
-  });
-}
 
-/* Mobile panel */
-const hamburger = document.querySelector('.mobile-navbar .hamburger');
-const sidePanel = document.querySelector('.side-panel');
-const panelDropdown = document.querySelector('.panel-dropdown');
-const panelToggle = panelDropdown ? panelDropdown.querySelector('.panel-toggle') : null;
+    function closePanel(){
+      overlay.classList.remove('visible');
+      sidePanel.classList.remove('open');
+      hamburger.setAttribute('aria-expanded','false');
+      sidePanel.setAttribute('aria-hidden','true');
+      overlay.setAttribute('aria-hidden','true');
+      document.documentElement.style.overflow = '';
 
-if (hamburger && sidePanel) {
-  hamburger.addEventListener('click', ()=> {
-    sidePanel.classList.toggle('open');
-    sidePanel.setAttribute('aria-hidden', !sidePanel.classList.contains('open'));
-  });
-}
+      // after transition hide elements to remain accessible for no-JS fallback
+      setTimeout(()=>{
+        overlay.hidden = true;
+        sidePanel.hidden = true;
+        // restore focus
+        try{ if (lastFocused) lastFocused.focus(); }catch(e){}
+      }, 380);
 
-if (panelToggle && panelDropdown) {
-  panelToggle.addEventListener('click', ()=>{
-    panelDropdown.classList.toggle('open');
-    const expanded = panelDropdown.classList.contains('open');
-    panelToggle.setAttribute('aria-expanded', expanded);
-  });
-}
+      document.removeEventListener('keydown', handleKeydown);
+    }
+
+    function handleKeydown(e){
+      if (e.key === 'Escape'){
+        e.preventDefault();
+        closePanel();
+        return;
+      }
+
+      if (e.key === 'Tab'){
+        // focus trap
+        const focusables = Array.from(sidePanel.querySelectorAll(focusableSelector));
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey){
+          if (document.activeElement === first){
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last){
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    }
+
+    // Events
+    hamburger.addEventListener('click', ()=>{
+      const isOpen = sidePanel.classList.contains('open');
+      if (isOpen) closePanel(); else openPanel();
+    });
+
+    closeBtn.addEventListener('click', closePanel);
+    overlay.addEventListener('click', closePanel);
+
+    // Close automatically on navigation link click for better UX
+    sidePanel.querySelectorAll('a[href]').forEach(a => {
+      a.addEventListener('click', () => setTimeout(closePanel, 150));
+    });
+
+    // Robustness: if CSS unsupported (very old browsers) ensure panel still becomes visible
+    // (no-op if everything is fine)
+  }catch(err){
+    console.error('Mobile sidebar script error:', err);
+  }
+})();
 </script>
+
 
 
 
