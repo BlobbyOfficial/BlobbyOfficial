@@ -197,6 +197,386 @@
 
 
 
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BlobbyOfficial — Responsive Navbar</title>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --panel: rgba(255,255,255,0.04);
+      --muted: #9aa7b2;
+      --accent: #6ee7b7;
+      --glass: rgba(255,255,255,0.06);
+      --glass-strong: rgba(255,255,255,0.08);
+      --radius:14px;
+      --nav-height:64px;
+      --max-width:1100px;
+      --transition:250ms cubic-bezier(.2,.9,.25,1);
+      color-scheme: dark;
+    }
+
+    /* Reset-ish */
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,#071025 0%, #07101a 100%);
+      color:#e6eef3;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.3;
+    }
+
+    /* Container */
+    .site-wrap{max-width:var(--max-width);margin:18px auto;padding:0 18px;}
+
+    /* NAVBAR */
+    .nav{
+      height:var(--nav-height);
+      display:flex;align-items:center;justify-content:space-between;
+      gap:18px;position:relative;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;
+      padding:8px 10px;border-radius:10px;transition:background var(--transition);
+    }
+    .brand:focus{outline:2px solid var(--accent);outline-offset:3px}
+    .brand:hover{background:var(--panel)}
+    .brand img{width:36px;height:36px;object-fit:cover;border-radius:8px;}
+    .brand .title{font-weight:600;letter-spacing:0.2px}
+    .brand .sub{font-size:12px;color:var(--muted);margin-top:-2px}
+
+    /* Brand + dropdown group */
+    .brand-group{display:flex;align-items:center;gap:6px}
+
+    /* Desktop nav links */
+    .nav-links{display:flex;align-items:center;gap:14px;margin-left:18px}
+    .nav-links a{color:inherit;text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:500}
+    .nav-links a:hover,.nav-links a:focus{background:var(--panel);outline:none}
+
+    /* Dropdown trigger */
+    .drop-btn{
+      display:inline-grid;place-items:center;padding:8px;border-radius:8px;border:1px solid transparent;background:transparent;cursor:pointer;
+    }
+    .drop-btn[aria-expanded="true"]{background:var(--panel)}
+    .chev{width:12px;height:12px;transform:rotate(0);transition:transform var(--transition)}
+    .drop-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+
+    /* Dropdown menu */
+    .dropdown{
+      position:absolute;left:18px;top:calc(var(--nav-height) + 6px);min-width:220px;background:linear-gradient(180deg, rgba(12,17,22,0.95), rgba(7,10,14,0.96));
+      border-radius:12px;padding:8px;box-shadow:0 8px 30px rgba(2,6,23,0.6);backdrop-filter:blur(8px) saturate(120%);opacity:0;transform:translateY(-8px) scale(.98);pointer-events:none;transition:opacity var(--transition),transform var(--transition)
+    }
+    .dropdown.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+    .dropdown a{display:block;padding:10px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:500}
+    .dropdown a:focus,.dropdown a:hover{background:var(--glass-strong);color:var(--accent);outline:none}
+
+    /* Right side controls */
+    .nav-right{display:flex;align-items:center;gap:10px}
+
+    /* Mobile styles */
+    .hamburger{display:none;padding:8px;border-radius:8px;border:1px solid transparent;background:transparent;cursor:pointer}
+    .hamburger:focus{outline:2px solid var(--accent);outline-offset:3px}
+
+    @media (max-width:880px){
+      .nav-links{display:none}
+      .drop-btn{display:none}
+      .hamburger{display:inline-grid;place-items:center}
+    }
+
+    /* SIDEBAR overlay (mobile) */
+    .overlay{
+      position:fixed;inset:0;display:flex;z-index:9999;pointer-events:none;align-items:stretch;justify-content:flex-end;
+    }
+    .overlay.hidden{display:none}
+    .scrim{position:absolute;inset:0;background:rgba(2,6,12,0.5);backdrop-filter:blur(6px) saturate(120%);opacity:0;transition:opacity var(--transition)}
+    .panel{
+      width:min(420px,100%);max-width:420px;background:linear-gradient(180deg, rgba(10,14,18,0.86), rgba(5,8,12,0.9));
+      box-shadow:-30px 0 60px rgba(2,6,23,0.6);transform:translateX(14%);opacity:0;transition:transform 350ms cubic-bezier(.2,.9,.25,1),opacity 280ms;
+      display:flex;flex-direction:column;padding:18px;pointer-events:auto;backdrop-filter:blur(8px);
+    }
+    .panel.open{transform:translateX(0);opacity:1}
+
+    .panel .top{display:flex;align-items:center;justify-content:space-between;padding:6px 2px}
+    .panel .brand-small{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+    .panel .brand-small img{width:30px;height:30px}
+
+    .close-btn{font-size:28px;border:none;background:transparent;color:var(--muted);cursor:pointer;padding:6px;border-radius:8px}
+    .close-btn:focus{outline:2px solid var(--accent)}
+
+    .panel nav{display:flex;flex-direction:column;gap:8px;margin-top:18px}
+    .panel nav a{padding:12px 10px;border-radius:10px;text-decoration:none;font-weight:600;color:#eaf7f0}
+    .panel nav a:focus,.panel nav a:hover{background:var(--glass)}
+
+    .actions{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+    .btn{display:inline-block;padding:12px 14px;border-radius:12px;text-align:center;text-decoration:none;font-weight:700}
+    .btn.primary{background:linear-gradient(90deg,#1dd3a6,#5be2c2);color:#042024}
+    .btn.ghost{border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted)}
+
+    .secondary{margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:8px}
+    .secondary a{font-weight:600;color:var(--muted);text-decoration:none}
+
+    /* small polish */
+    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;background:rgba(255,255,255,0.02);padding:2px 6px;border-radius:6px;font-size:12px;color:var(--muted)}
+
+    /* Focus-visible helper for keyboard users */
+    :where(button, a)[tabindex="0"]:focus-visible{outline:3px solid rgba(110,231,183,0.16);outline-offset:3px}
+
+  </style>
+</head>
+<body>
+  <div class="site-wrap">
+    <header class="nav" role="navigation" aria-label="Main">
+      <div style="display:flex;align-items:center">
+        <div class="brand-group">
+          <a class="brand" href="https://www.blobbyofficial.com" id="brand-link">
+            <img src="https://www.blobbyofficial.com/assets/icon.png" alt="BlobbyOfficial logo" />
+            <div>
+              <div class="title">BlobbyOfficial</div>
+              <div class="sub">Creators & Stuff</div>
+            </div>
+          </a>
+
+          <!-- Dropdown trigger -->
+          <button class="drop-btn" id="dropToggle" aria-haspopup="menu" aria-expanded="false" aria-controls="brandDropdown" title="More">
+            <svg class="chev" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8.5L10 13.5L15 8.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="sr-only" style="position:absolute;left:-9999px">Toggle menu</span>
+          </button>
+
+          <div id="brandDropdown" class="dropdown" role="menu" aria-labelledby="dropToggle">
+            <a href="#about" role="menuitem" tabindex="-1">About</a>
+            <a href="#work" role="menuitem" tabindex="-1">What I Do</a>
+            <a href="#youtube" role="menuitem" tabindex="-1">YouTube</a>
+            <a href="#future" role="menuitem" tabindex="-1">Looking Ahead</a>
+            <a href="#links" role="menuitem" tabindex="-1">Links</a>
+            <a href="#contact" role="menuitem" tabindex="-1">Contact</a>
+          </div>
+        </div>
+
+        <!-- Desktop inline nav -->
+        <nav class="nav-links" aria-label="Primary">
+          <a href="https://store.blobbyofficial.com">Store</a>
+          <a href="https://commission.blobbyofficial.com">Commission</a>
+          <a href="https://links.blobbyofficial.com">Links</a>
+          <a href="https://blog.blobbyofficial.com">Blog</a>
+          <a href="https://newsletter.blobbyofficial.com">Newsletter</a>
+        </nav>
+      </div>
+
+      <div class="nav-right">
+        <div class="kbd" aria-hidden="true">Esc</div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-haspopup="dialog" aria-controls="mobilePanel">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </header>
+  </div>
+
+  <!-- Mobile overlay -->
+  <div class="overlay hidden" id="overlay" aria-hidden="true">
+    <div class="scrim" id="scrim" tabindex="-1"></div>
+    <aside class="panel" id="mobilePanel" role="dialog" aria-modal="true" aria-label="Mobile menu">
+      <div class="top">
+        <a class="brand-small" href="https://www.blobbyofficial.com">
+          <img src="https://www.blobbyofficial.com/assets/icon.png" alt="logo" />
+          <div>
+            <div style="font-weight:700">BlobbyOfficial</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">Menu</div>
+          </div>
+        </a>
+        <button class="close-btn" id="closeBtn" aria-label="Close menu">×</button>
+      </div>
+
+      <nav aria-label="Mobile primary" tabindex="0">
+        <a href="#about">About</a>
+        <a href="#work">What I Do</a>
+        <a href="#youtube">YouTube</a>
+        <a href="#future">Looking Ahead</a>
+        <a href="#links">Links</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn primary" href="https://store.blobbyofficial.com">Store</a>
+        <a class="btn ghost" href="https://commission.blobbyofficial.com">Commission</a>
+      </div>
+
+      <div class="secondary">
+        <a href="https://newsletter.blobbyofficial.com">Newsletter</a>
+        <a href="https://blog.blobbyofficial.com">Blog</a>
+        <a href="https://links.blobbyofficial.com">Links</a>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    (function(){
+      const dropBtn = document.getElementById('dropToggle');
+      const dropdown = document.getElementById('brandDropdown');
+      let dropdownOpen = false;
+
+      // Helpers
+      const openDropdown = ()=>{
+        dropdown.classList.add('open');
+        dropBtn.setAttribute('aria-expanded','true');
+        dropdownOpen = true;
+        // make menu items focusable
+        dropdown.querySelectorAll('[role="menuitem"]').forEach((el,i)=>el.setAttribute('tabindex', '0'));
+        // focus first
+        dropdown.querySelector('[role="menuitem"]').focus();
+      }
+      const closeDropdown = ()=>{
+        dropdown.classList.remove('open');
+        dropBtn.setAttribute('aria-expanded','false');
+        dropdownOpen = false;
+        dropdown.querySelectorAll('[role="menuitem"]').forEach((el)=>el.setAttribute('tabindex', '-1'));
+        dropBtn.focus();
+      }
+
+      // init menu items as unfocusable until opened
+      dropdown.querySelectorAll('[role="menuitem"]').forEach((el)=>el.setAttribute('tabindex','-1'));
+
+      // Toggle on click
+      dropBtn.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        dropdownOpen ? closeDropdown() : openDropdown();
+      });
+
+      // Hover support: open on mouseenter, close on mouseleave (desktop)
+      let hoverTimeout;
+      const brandGroup = document.querySelector('.brand-group');
+      brandGroup.addEventListener('mouseenter', ()=>{
+        if(window.innerWidth > 880){ clearTimeout(hoverTimeout); openDropdown(); }
+      });
+      brandGroup.addEventListener('mouseleave', ()=>{
+        if(window.innerWidth > 880){ hoverTimeout = setTimeout(closeDropdown, 200); }
+      });
+
+      // Click outside to close
+      document.addEventListener('click', (e)=>{
+        if(!dropdownOpen) return;
+        if(!brandGroup.contains(e.target)) closeDropdown();
+      });
+
+      // Keyboard navigation inside dropdown
+      dropdown.addEventListener('keydown', (e)=>{
+        const items = Array.from(dropdown.querySelectorAll('[role="menuitem"]'));
+        const idx = items.indexOf(document.activeElement);
+        if(e.key === 'Escape') { closeDropdown(); }
+        else if(e.key === 'ArrowDown'){
+          e.preventDefault();
+          const next = items[(idx+1) % items.length]; next.focus();
+        } else if(e.key === 'ArrowUp'){
+          e.preventDefault();
+          const prev = items[(idx-1 + items.length) % items.length]; prev.focus();
+        } else if(e.key === 'Tab'){
+          // keep focus inside dropdown
+          e.preventDefault();
+          if(e.shiftKey){ items[items.length-1].focus(); } else { items[0].focus(); }
+        }
+      });
+
+      // Close on Escape globally for dropdown
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape'){
+          if(dropdownOpen) closeDropdown();
+        }
+      });
+
+      // ----------------- Mobile overlay logic -----------------
+      const overlay = document.getElementById('overlay');
+      const scrim = document.getElementById('scrim');
+      const panel = document.getElementById('mobilePanel');
+      const openBtn = document.getElementById('hamburger');
+      const closeBtn = document.getElementById('closeBtn');
+
+      let lastFocused = null;
+
+      function openPanel(){
+        lastFocused = document.activeElement;
+        overlay.classList.remove('hidden');
+        overlay.style.pointerEvents = 'auto';
+        // set aria
+        overlay.setAttribute('aria-hidden','false');
+        panel.classList.add('open');
+        // disable body scroll
+        document.body.style.overflow = 'hidden';
+        // trap focus
+        trapFocus(panel);
+      }
+      function closePanel(){
+        panel.classList.remove('open');
+        overlay.style.pointerEvents = 'none';
+        overlay.setAttribute('aria-hidden','true');
+        // small timeout to allow animation
+        setTimeout(()=>{ overlay.classList.add('hidden'); }, 320);
+        document.body.style.overflow = '';
+        releaseFocusTrap();
+        if(lastFocused) lastFocused.focus();
+      }
+
+      openBtn.addEventListener('click',(e)=>{ overlay.classList.remove('hidden'); requestAnimationFrame(()=>openPanel()); });
+      closeBtn.addEventListener('click', closePanel);
+      scrim.addEventListener('click', (e)=>{ closePanel(); });
+
+      // clicking links inside panel should close
+      panel.addEventListener('click', (e)=>{
+        if(e.target.tagName.toLowerCase() === 'a') closePanel();
+      });
+
+      // close on Esc
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape'){
+          if(panel.classList.contains('open')) closePanel();
+        }
+      });
+
+      // Focus trap implementation
+      let _focusables = [];
+      let _firstFocusable = null;
+      let _lastFocusable = null;
+      let _focusHandler = null;
+
+      function updateFocusables(container){
+        _focusables = Array.from(container.querySelectorAll('a,button,[tabindex]:not([tabindex="-1"])')).filter(el=>!el.hasAttribute('disabled'));
+        _firstFocusable = _focusables[0]; _lastFocusable = _focusables[_focusables.length-1];
+      }
+      function trapFocus(container){
+        updateFocusables(container);
+        if(_firstFocusable) _firstFocusable.focus();
+        _focusHandler = (e)=>{
+          if(e.key !== 'Tab') return;
+          if(_focusables.length === 0) { e.preventDefault(); return; }
+          if(e.shiftKey){ if(document.activeElement === _firstFocusable){ e.preventDefault(); _lastFocusable.focus(); } }
+          else { if(document.activeElement === _lastFocusable){ e.preventDefault(); _firstFocusable.focus(); } }
+        };
+        document.addEventListener('keydown', _focusHandler);
+      }
+      function releaseFocusTrap(){ if(_focusHandler) document.removeEventListener('keydown', _focusHandler); _focusHandler = null; }
+
+      // Responsive accessibility: if window resizes and dropdown was open on mobile, close it
+      window.addEventListener('resize', ()=>{
+        if(window.innerWidth > 880){ /* nothing */ } else { if(dropdownOpen) closeDropdown(); }
+      });
+
+    })();
+  </script>
+</body>
+
+
+
+
+
+
+
+
 <main id="top" class="container">
   <!-- About -->
   <section class="hero" id="about">
