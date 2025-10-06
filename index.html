@@ -196,7 +196,37 @@
 </script>
 
 
-<!-- Mobile Sidebar — Upgraded: full-screen, acrylic blur, accessible, keyboard-friendly, animated, error-handled -->
+<!-- Desktop Navbar -->
+<header class="desktop-navbar">
+  <div class="container nav">
+    <a href="https://www.blobbyofficial.com" class="brand-link">
+      <div class="avatar"><img src="https://www.blobbyofficial.com/assets/icon.png" alt="BlobbyOfficial Logo"></div>
+      <h1>BlobbyOfficial</h1>
+    </a>
+    <div class="desktop-links">
+      <div class="dropdown">
+        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Open navigation menu">
+          <span class="arrow">▼</span>
+        </button>
+        <div class="dropdown-menu" role="menu">
+          <a href="#about" role="menuitem">About</a>
+          <a href="#work" role="menuitem">What I Do</a>
+          <a href="#youtube" role="menuitem">YouTube</a>
+          <a href="#future" role="menuitem">Looking Ahead</a>
+          <a href="#links" role="menuitem">Links</a>
+          <a href="#contact" role="menuitem">Contact</a>
+        </div>
+      </div>
+      <a href="https://store.blobbyofficial.com" target="_blank">Store</a>
+      <a href="https://commission.blobbyofficial.com" target="_blank">Commission</a>
+      <a href="https://links.blobbyofficial.com" target="_blank">Links</a>
+      <a href="https://blog.blobbyofficial.com" target="_blank">Blog</a>
+      <a href="https://newsletter.blobbyofficial.com" target="_blank">Newsletter</a>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navbar (Upgraded Full-Screen Sidebar) -->
 <header class="mobile-navbar" aria-hidden="false">
   <div class="container nav">
     <a href="https://www.blobbyofficial.com" class="brand-link">
@@ -204,16 +234,13 @@
       <h1>BlobbyOfficial</h1>
     </a>
 
-    <!-- Hamburger button controls the mobile side panel -->
     <button class="hamburger" id="mobile-hamburger" aria-controls="mobile-sidepanel" aria-expanded="false" aria-label="Open menu">
       <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M0 1.5h20M0 7h20M0 12.5h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </div>
 
-  <!-- Overlay (covers entire viewport and creates acrylic blur behind) -->
   <div id="mobile-overlay" class="mobile-overlay" tabindex="-1" hidden></div>
 
-  <!-- Side panel (full-screen on mobile). Hidden by default. -->
   <aside id="mobile-sidepanel" class="side-panel" role="dialog" aria-modal="true" aria-hidden="true" hidden>
     <div class="side-panel-inner">
       <div class="panel-header">
@@ -255,7 +282,23 @@
   --radius: 14px;
 }
 
-/* Mobile-only styles (desktop unaffected) */
+/* General shared styles */
+.brand-link { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text); }
+.brand-link h1 { margin:0; font-size:2rem; }
+.avatar img { width:50px; height:50px; object-fit:contain; }
+.arrow { display:inline-block; transition: transform 0.3s ease; }
+
+/* Desktop specific */
+.desktop-navbar .desktop-links { display:flex; align-items:center; gap:20px; }
+.dropdown { position:relative; }
+.dropdown-toggle { background:none; border:none; cursor:pointer; color:var(--text); font-size:1.2rem; transition: transform 0.3s ease; }
+.dropdown-toggle:focus { outline:2px solid var(--accent, #7c3aed); }
+.dropdown-menu { position:absolute; top:130%; right:0; background:var(--panel-bg); border:1px solid rgba(148,163,184,.14); border-radius:var(--radius); display:flex; flex-direction:column; min-width:180px; z-index:50; opacity:0; transform:translateY(-15px); pointer-events:none; transition:all 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
+.dropdown.open .dropdown-menu { opacity:1; transform:translateY(0); pointer-events:auto; }
+.dropdown-menu a { padding:12px 16px; border-radius:var(--radius); color:var(--text); text-decoration:none; transition: background 0.25s ease, transform 0.25s ease; }
+.dropdown-menu a:hover { background: rgba(124,58,237,.15); transform:translateX(5px); }
+
+/* Mobile-only styles */
 @media (max-width: 768px){
   .mobile-navbar .container{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;}
   .brand-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);} 
@@ -265,22 +308,16 @@
   .hamburger{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:10px;color:var(--text);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
   .hamburger:focus{outline:3px solid rgba(124,58,237,0.18)}
 
-  /* Overlay covers entire viewport; uses backdrop-filter for acrylic blur when available */
   .mobile-overlay{position:fixed;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);z-index:1100;opacity:0;transition:opacity 280ms ease;}
   .mobile-overlay.visible{opacity:1}
 
-  /* Side panel covers full viewport for a clean mobile UX */
   .side-panel{position:fixed;top:0;right:0;bottom:0;left:0;width:100vw;height:100vh;z-index:1200;pointer-events:none;transform:translateY(8px);opacity:0;transition:opacity 320ms ease, transform 360ms cubic-bezier(0.2,0.9,0.3,1);}
-
   .side-panel-inner{max-width:720px;margin:0 auto;height:100%;display:flex;flex-direction:column;background:var(--panel-bg);border-radius:16px;overflow:hidden;box-shadow:0 18px 50px rgba(2,6,23,0.6);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);padding:18px;pointer-events:auto}
-
-  /* When open */
   .side-panel.open{opacity:1;transform:translateY(0)}
 
   .panel-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:6px}
   .brand-small{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
   .brand-title{font-weight:600}
-
   .close{background:transparent;border:0;font-size:28px;color:var(--muted);cursor:pointer;padding:6px;border-radius:8px}
   .close:focus{outline:3px solid rgba(124,58,237,0.12)}
 
@@ -296,17 +333,16 @@
 
   .panel-footnote{padding:12px 6px;color:var(--muted);font-size:0.875rem;text-align:center}
 
-  /* When side-panel open, animate children in */
   .side-panel.open .panel-nav li{opacity:1;transform:none}
 
-  /* Animations */
   @keyframes menuIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-  /* Respect reduced motion */
   @media (prefers-reduced-motion: reduce){
     .side-panel,.mobile-overlay,.panel-nav li{transition:none;animation:none}
   }
 }
+
+@media(min-width:769px){ .mobile-navbar{ display:none; } }
 </style>
 
 <script>
@@ -317,10 +353,7 @@
     const overlay = document.getElementById('mobile-overlay');
     const closeBtn = document.getElementById('mobile-close');
 
-    if (!hamburger || !sidePanel || !overlay || !closeBtn) {
-      console.warn('Mobile sidebar: missing expected elements — skipping JS enhancements.');
-      return;
-    }
+    if (!hamburger || !sidePanel || !overlay || !closeBtn) return;
 
     const focusableSelector = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
     let lastFocused = null;
@@ -329,23 +362,18 @@
       lastFocused = document.activeElement;
       overlay.hidden = false;
       sidePanel.hidden = false;
-      // small timeout to allow CSS transitions
       requestAnimationFrame(()=>{
         overlay.classList.add('visible');
         sidePanel.classList.add('open');
         overlay.removeAttribute('hidden');
         sidePanel.removeAttribute('hidden');
-        document.documentElement.style.overflow = 'hidden'; // prevent background scroll
+        document.documentElement.style.overflow = 'hidden';
         hamburger.setAttribute('aria-expanded','true');
         sidePanel.setAttribute('aria-hidden','false');
         overlay.setAttribute('aria-hidden','false');
-
-        // focus first interactive element inside panel
         const first = sidePanel.querySelector(focusableSelector);
         if (first) first.focus();
       });
-
-      // set up focus trapping
       document.addEventListener('keydown', handleKeydown);
     }
 
@@ -356,61 +384,35 @@
       sidePanel.setAttribute('aria-hidden','true');
       overlay.setAttribute('aria-hidden','true');
       document.documentElement.style.overflow = '';
-
-      // after transition hide elements to remain accessible for no-JS fallback
       setTimeout(()=>{
         overlay.hidden = true;
         sidePanel.hidden = true;
-        // restore focus
         try{ if (lastFocused) lastFocused.focus(); }catch(e){}
       }, 380);
-
       document.removeEventListener('keydown', handleKeydown);
     }
 
     function handleKeydown(e){
-      if (e.key === 'Escape'){
-        e.preventDefault();
-        closePanel();
-        return;
-      }
-
+      if (e.key === 'Escape') closePanel();
       if (e.key === 'Tab'){
-        // focus trap
         const focusables = Array.from(sidePanel.querySelectorAll(focusableSelector));
         if (!focusables.length) return;
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
         if (e.shiftKey){
-          if (document.activeElement === first){
-            e.preventDefault();
-            last.focus();
-          }
+          if (document.activeElement === first){ e.preventDefault(); last.focus(); }
         } else {
-          if (document.activeElement === last){
-            e.preventDefault();
-            first.focus();
-          }
+          if (document.activeElement === last){ e.preventDefault(); first.focus(); }
         }
       }
     }
 
-    // Events
     hamburger.addEventListener('click', ()=>{
-      const isOpen = sidePanel.classList.contains('open');
-      if (isOpen) closePanel(); else openPanel();
+      sidePanel.classList.contains('open') ? closePanel() : openPanel();
     });
-
     closeBtn.addEventListener('click', closePanel);
     overlay.addEventListener('click', closePanel);
-
-    // Close automatically on navigation link click for better UX
-    sidePanel.querySelectorAll('a[href]').forEach(a => {
-      a.addEventListener('click', () => setTimeout(closePanel, 150));
-    });
-
-    // Robustness: if CSS unsupported (very old browsers) ensure panel still becomes visible
-    // (no-op if everything is fine)
+    sidePanel.querySelectorAll('a[href]').forEach(a => a.addEventListener('click', () => setTimeout(closePanel, 150)));
   }catch(err){
     console.error('Mobile sidebar script error:', err);
   }
