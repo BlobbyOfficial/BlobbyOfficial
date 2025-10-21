@@ -152,17 +152,18 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     transition: background 600ms ease, color 400ms ease;
-  
-    /* Modern layered background with subtle depth */
+
+    /* Refined background with soft gradients + noise texture */
     background-color: var(--bg);
     background-image:
-      radial-gradient(1000px 700px at 80% -10%, rgba(124,58,237,.10), transparent 60%),
-      radial-gradient(800px 500px at -20% 20%, rgba(34,211,238,.08), transparent 60%),
-      url('https://www.transparenttextures.com/patterns/dotnoise-light-grey.png'); /* subtle noise texture */
-    background-repeat: no-repeat, no-repeat, repeat;
-    background-size: cover, cover, 300px 300px;
-    background-attachment: fixed, fixed, scroll;
-    background-blend-mode: normal, normal, overlay;
+      radial-gradient(1000px 700px at 80% -10%, rgba(124,58,237,.12), transparent 65%),
+      radial-gradient(800px 500px at -10% 30%, rgba(34,211,238,.08), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.02) 0%, rgba(255,255,255,0) 100%),
+      url('https://grainy-gradients.vercel.app/noise.svg'); /* better high-res subtle noise */
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+    background-size: cover, cover, cover, 200px 200px;
+    background-attachment: fixed, fixed, scroll, scroll;
+    background-blend-mode: overlay, overlay, soft-light, normal;
   }
 
   a {
@@ -189,22 +190,24 @@
     padding: 24px;
     position: relative;
     transition: transform 300ms ease, opacity 300ms ease;
-    backdrop-filter: saturate(180%) blur(8px);
-    -webkit-backdrop-filter: saturate(180%) blur(8px);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
     border-radius: var(--radius);
   }
 
-  /* Optimize background performance on mobile */
+  /* Mobile refinement */
   @media (max-width: 768px) {
     body {
       background-image:
         radial-gradient(700px 400px at 80% -10%, rgba(124,58,237,.10), transparent 60%),
-        radial-gradient(600px 400px at -20% 20%, rgba(34,211,238,.08), transparent 60%),
-        url('https://www.transparenttextures.com/patterns/noise.png');
-      background-size: cover, cover, 250px 250px;
+        radial-gradient(600px 400px at -20% 20%, rgba(34,211,238,.07), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.02) 0%, rgba(255,255,255,0) 100%),
+        url('https://grainy-gradients.vercel.app/noise.svg');
+      background-size: cover, cover, cover, 180px 180px;
       background-attachment: scroll;
     }
   }
+
 
 
   /* ==================== Accessibility & Error Handling ==================== */
