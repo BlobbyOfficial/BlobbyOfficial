@@ -3,9 +3,11 @@ Disallow: /private/
 Disallow: /admin/
 Allow: /assets/
 Allow: /pages/
+Allow: /music/
+Allow: /games/
 
-Sitemap: https://blobbyofficial.com/sitemap.xml
+Sitemap: https://www.blobbyofficial.com/sitemap.xml
 
-Crawl-delay: 5
+Crawl-delay: 0
 
 Host: blobbyofficial.com
