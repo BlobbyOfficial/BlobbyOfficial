@@ -5,6 +5,7 @@ Allow: /assets/
 Allow: /pages/
 Allow: /music/
 Allow: /games/
+Allow: /gallery/
 
 Sitemap: https://www.blobbyofficial.com/sitemap.xml
 

@@ -82,5 +82,14 @@
     <lastmod>2025-10-21</lastmod>
     <priority>0.7</priority>
   </url>
-  
+  <url>
+    <loc>https://www.blobbyofficial.com/gallery/</loc>
+    <lastmod>2025-10-21</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.blobbyofficial.com/assets/</loc>
+    <lastmod>2025-10-21</lastmod>
+    <priority>0.7</priority>
+  </url>
 </urlset>

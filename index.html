@@ -35,7 +35,10 @@
 <link rel="preload" as="image" href="https://www.blobbyofficial.com/assets/Stickers/Camera man pfp.png">
 <link rel="preload" as="image" href="https://www.blobbyofficial.com/assets/Stickers/Fat pfp.png">
 <link rel="preload" as="image" href="https://www.blobbyofficial.com/assets/Stickers/Shrug pfp.png">
-<link rel="preload" as="image" href="https://www.blobbyofficial.com/assets/Stickers/Thumbs up pfp.png">
+<link rel="prefetch" href="/assets/">
+<link rel="prefetch" href="/games/">
+<link rel="prefetch" href="/music/">
+<link rel="prefetch" href="/pages/">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -937,7 +940,68 @@
     document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closePanel()});
     panel.addEventListener('click',(e)=>{if(e.target.tagName.toLowerCase()==='a')closePanel()});
   })();
+  </script>
+
+<script>
+  // ===============================
+  // Basic site performance helpers
+  // ===============================
+
+  // 1. Preload critical assets
+  const preloads = [
+    '/main.css',
+    '/main.js',
+    '/images/logo.png'
+  ];
+  preloads.forEach(asset => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = asset.endsWith('.css') ? 'style' :
+               asset.endsWith('.js') ? 'script' : 'image';
+    link.href = asset;
+    document.head.appendChild(link);
+  });
+
+  // 2. Lazy-load all images not already handled
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('img').forEach(img => {
+      if (!img.hasAttribute('loading')) {
+        img.loading = 'lazy';
+      }
+    });
+  });
+
+  // 3. Use localStorage for a lightweight “cache” of small assets (optional)
+  async function cacheSmallAssets() {
+    const assetsToCache = ['/config.json', '/meta.json'];
+    for (const asset of assetsToCache) {
+      try {
+        const res = await fetch(asset);
+        const text = await res.text();
+        localStorage.setItem(`cache:${asset}`, text);
+      } catch (e) {
+        console.warn(`Could not cache ${asset}:`, e);
+      }
+    }
+  }
+  cacheSmallAssets();
+
+  // 4. Service Worker registration (real caching magic)
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(() => console.log('Service Worker registered for caching.'))
+        .catch(err => console.warn('SW registration failed:', err));
+    });
+  }
+
+  // 5. Optional: store performance metrics locally (no tracking)
+  window.addEventListener('load', () => {
+    const timing = performance.getEntriesByType('navigation')[0];
+    localStorage.setItem('lastLoadTime', timing.loadEventEnd);
+  });
 </script>
+
 
 <main id="top" class="container">
     <!-- About -->
