@@ -825,210 +825,208 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </style>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMMSPQ8K"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
   <!-- Gate overlay -->
-<div id="gate-overlay">
-  <div class="cf-challenge"
-       data-sitekey="0x4AAAAAAB3rRYXeLVFLBhKT"
-       data-callback="turnstileSuccess">
+  <div id="gate-overlay">
+    <div class="cf-challenge"
+      data-sitekey="0x4AAAAAAB3rRYXeLVFLBhKT"
+      data-callback="turnstileSuccess">
+    </div>
   </div>
-</div>
 
-<script>
-  // Start with scrolling locked
-  document.body.style.overflow = 'hidden';
-
-  // Called by Turnstile when verification succeeds
-  function turnstileSuccess(token) {
-    document.getElementById('gate-overlay').style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }
-
-  if (!sessionStorage.getItem('verified')) {
-    document.getElementById('gate-overlay').style.display = 'flex';
+  <script>
+    // Start with scrolling locked
     document.body.style.overflow = 'hidden';
-  } else {
-    document.getElementById('gate-overlay').style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }
 
-  function turnstileSuccess(token) {
-    sessionStorage.setItem('verified', 'true');
-    document.getElementById('gate-overlay').style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }
-</script>
+    // Called by Turnstile when verification succeeds
+    function turnstileSuccess(token) {
+      document.getElementById('gate-overlay').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    if (!sessionStorage.getItem('verified')) {
+      document.getElementById('gate-overlay').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.getElementById('gate-overlay').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function turnstileSuccess(token) {
+      sessionStorage.setItem('verified', 'true');
+      document.getElementById('gate-overlay').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  </script>
 
 
-<!-- Desktop Navbar -->
-<header class="desktop-navbar">
-  <div class="container nav">
-    <div style="display:flex;align-items:center">
-      <div class="brand-group">
-        <a class="brand" href="https://www.blobbyofficial.com">
-          <img src="https://www.blobbyofficial.com/assets/icons/icon.png" alt="BlobbyOfficial logo" />
-          <div>
-            <div class="title">BlobbyOfficial</div>
-            <div class="sub">Creators & Stuff</div>
+  <!-- Desktop Navbar -->
+  <header class="desktop-navbar">
+    <div class="container nav">
+      <div style="display:flex;align-items:center">
+        <div class="brand-group">
+          <a class="brand" href="https://www.blobbyofficial.com">
+            <img src="https://www.blobbyofficial.com/assets/icons/icon.png" alt="BlobbyOfficial logo" />
+            <div>
+              <div class="title">BlobbyOfficial</div>
+              <div class="sub">Creators & Stuff</div>
+            </div>
+          </a>
+          <button class="drop-btn" id="dropToggle" aria-haspopup="menu" aria-expanded="false" aria-controls="brandDropdown">
+            <svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M5 8.5L10 13.5L15 8.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div id="brandDropdown" class="dropdown" role="menu">
+            <a href="#about">About</a>
+            <a href="#work">What I Do</a>
+             <a href="#youtube">YouTube</a>
+            <a href="#future">Looking Ahead</a>
+            <a href="#links">Links</a>
+            <a href="#contact">Contact</a>
           </div>
-        </a>
-        <button class="drop-btn" id="dropToggle" aria-haspopup="menu" aria-expanded="false" aria-controls="brandDropdown">
-          <svg class="chev" viewBox="0 0 20 20" fill="none"><path d="M5 8.5L10 13.5L15 8.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div id="brandDropdown" class="dropdown" role="menu">
-          <a href="#about">About</a>
-          <a href="#work">What I Do</a>
-           <a href="#youtube">YouTube</a>
-          <a href="#future">Looking Ahead</a>
-          <a href="#links">Links</a>
-          <a href="#contact">Contact</a>
         </div>
+        <nav class="nav-links">
+          <a href="https://store.blobbyofficial.com">Store</a>
+          <a href="https://commission.blobbyofficial.com">Commission</a>
+          <a href="https://links.blobbyofficial.com">Links</a>
+          <a href="https://blog.blobbyofficial.com">Blog</a>
+          <a href="https://newsletter.blobbyofficial.com">Newsletter</a>
+        </nav>
       </div>
-      <nav class="nav-links">
-        <a href="https://store.blobbyofficial.com">Store</a>
-        <a href="https://commission.blobbyofficial.com">Commission</a>
-        <a href="https://links.blobbyofficial.com">Links</a>
-        <a href="https://blog.blobbyofficial.com">Blog</a>
-        <a href="https://newsletter.blobbyofficial.com">Newsletter</a>
-      </nav>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- Mobile Navbar -->
-<header class="mobile-navbar">
-  <div class="container nav">
-    <a class="brand" href="https://www.blobbyofficial.com">
-      <img src="https://www.blobbyofficial.com/assets/icons/icon.png" alt="logo" />
-      <span class="title">BlobbyOfficial</span>
-    </a>
-    <button class="hamburger" id="hamburger">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-</header>
-
-<div class="overlay hidden" id="overlay">
-  <div class="scrim" id="scrim"></div>
-  <aside class="panel" id="mobilePanel">
-    <div class="top">
-      <a class="brand-small" href="https://www.blobbyofficial.com">
+  <!-- Mobile Navbar -->
+  <header class="mobile-navbar">
+    <div class="container nav">
+      <a class="brand" href="https://www.blobbyofficial.com">
         <img src="https://www.blobbyofficial.com/assets/icons/icon.png" alt="logo" />
-        <div><div style="font-weight:700">BlobbyOfficial</div><div style="font-size:12px;color:var(--muted)">Menu</div></div>
+        <span class="title">BlobbyOfficial</span>
       </a>
-      <button class="close-btn" id="closeBtn">×</button>
+      <button class="hamburger" id="hamburger">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
     </div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#work">What I Do</a>
-      <a href="#youtube">YouTube</a>
-      <a href="#future">Looking Ahead</a>
-      <a href="#links">Links</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="actions">
-      <a class="btn primary" href="https://store.blobbyofficial.com">Store</a>
-      <a class="btn ghost" href="https://commission.blobbyofficial.com">Commission</a>
-    </div>
-    <div class="secondary">
-      <a href="https://newsletter.blobbyofficial.com">Newsletter</a>
-      <a href="https://blog.blobbyofficial.com">Blog</a>
-      <a href="https://links.blobbyofficial.com">Links</a>
-    </div>
-  </aside>
-</div>
+  </header>
 
-<script>
-  (function(){
-    const dropBtn=document.getElementById('dropToggle');
-    const dropdown=document.getElementById('brandDropdown');
-    let dropdownOpen=false;
-    function openDropdown(){dropdown.classList.add('open');dropBtn.setAttribute('aria-expanded','true');dropdownOpen=true;}
-    function closeDropdown(){dropdown.classList.remove('open');dropBtn.setAttribute('aria-expanded','false');dropdownOpen=false;}
-    dropBtn.addEventListener('click',()=>{dropdownOpen?closeDropdown():openDropdown()});
-    document.addEventListener('click',(e)=>{if(dropdownOpen&&!dropBtn.contains(e.target)&&!dropdown.contains(e.target))closeDropdown()});
-    document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&dropdownOpen)closeDropdown()});
+  <div class="overlay hidden" id="overlay">
+    <div class="scrim" id="scrim"></div>
+    <aside class="panel" id="mobilePanel">
+      <div class="top">
+        <a class="brand-small" href="https://www.blobbyofficial.com">
+          <img src="https://www.blobbyofficial.com/assets/icons/icon.png" alt="logo" />
+          <div><div style="font-weight:700">BlobbyOfficial</div><div style="font-size:12px;color:var(--muted)">Menu</div></div>
+        </a>
+        <button class="close-btn" id="closeBtn">×</button>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#work">What I Do</a>
+        <a href="#youtube">YouTube</a>
+        <a href="#future">Looking Ahead</a>
+        <a href="#links">Links</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="actions">
+        <a class="btn primary" href="https://store.blobbyofficial.com">Store</a>
+        <a class="btn ghost" href="https://commission.blobbyofficial.com">Commission</a>
+      </div>
+      <div class="secondary">
+        <a href="https://newsletter.blobbyofficial.com">Newsletter</a>
+        <a href="https://blog.blobbyofficial.com">Blog</a>
+        <a href="https://links.blobbyofficial.com">Links</a>
+      </div>
+    </aside>
+  </div>
 
-    const overlay=document.getElementById('overlay');
-    const panel=document.getElementById('mobilePanel');
-    const openBtn=document.getElementById('hamburger');
-    const closeBtn=document.getElementById('closeBtn');
-    const scrim=document.getElementById('scrim');
-    function openPanel(){overlay.classList.remove('hidden');panel.classList.add('open');document.body.style.overflow='hidden';}
-    function closePanel(){panel.classList.remove('open');overlay.classList.add('hidden');document.body.style.overflow='';}
-    openBtn.addEventListener('click',openPanel);
-    closeBtn.addEventListener('click',closePanel);
-    scrim.addEventListener('click',closePanel);
-    document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closePanel()});
-    panel.addEventListener('click',(e)=>{if(e.target.tagName.toLowerCase()==='a')closePanel()});
-  })();
-</script>
+  <script>
+    (function(){
+      const dropBtn=document.getElementById('dropToggle');
+      const dropdown=document.getElementById('brandDropdown');
+      let dropdownOpen=false;
+      function openDropdown(){dropdown.classList.add('open');dropBtn.setAttribute('aria-expanded','true');dropdownOpen=true;}
+      function closeDropdown(){dropdown.classList.remove('open');dropBtn.setAttribute('aria-expanded','false');dropdownOpen=false;}
+      dropBtn.addEventListener('click',()=>{dropdownOpen?closeDropdown():openDropdown()});
+      document.addEventListener('click',(e)=>{if(dropdownOpen&&!dropBtn.contains(e.target)&&!dropdown.contains(e.target))closeDropdown()});
+      document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&dropdownOpen)closeDropdown()});
 
-<script>
-  // ===============================
-  // Basic site performance helpers
-  // ===============================
+      const overlay=document.getElementById('overlay');
+      const panel=document.getElementById('mobilePanel');
+      const openBtn=document.getElementById('hamburger');
+      const closeBtn=document.getElementById('closeBtn');
+      const scrim=document.getElementById('scrim');
+      function openPanel(){overlay.classList.remove('hidden');panel.classList.add('open');document.body.style.overflow='hidden';}
+      function closePanel(){panel.classList.remove('open');overlay.classList.add('hidden');document.body.style.overflow='';}
+      openBtn.addEventListener('click',openPanel);
+      closeBtn.addEventListener('click',closePanel);
+      scrim.addEventListener('click',closePanel);
+      document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closePanel()});
+      panel.addEventListener('click',(e)=>{if(e.target.tagName.toLowerCase()==='a')closePanel()});
+    })();
+  </script>
 
-  // 1. Preload critical assets
-  const preloads = [
-    '/main.css',
-    '/main.js',
-    '/images/logo.png'
-  ];
-  preloads.forEach(asset => {
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.as = asset.endsWith('.css') ? 'style' :
-               asset.endsWith('.js') ? 'script' : 'image';
-    link.href = asset;
-    document.head.appendChild(link);
-  });
+  <script>
+    // ===============================
+    // Basic site performance helpers
+    // ===============================
 
-  // 2. Lazy-load all images not already handled
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('img').forEach(img => {
-      if (!img.hasAttribute('loading')) {
-        img.loading = 'lazy';
-      }
+    // 1. Preload critical assets
+    const preloads = [
+      '/main.css',
+      '/main.js',
+      '/images/logo.png'
+    ];
+    preloads.forEach(asset => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = asset.endsWith('.css') ? 'style' :
+                 asset.endsWith('.js') ? 'script' : 'image';
+      link.href = asset;
+      document.head.appendChild(link);
     });
-  });
 
-  // 3. Use localStorage for a lightweight “cache” of small assets (optional)
-  async function cacheSmallAssets() {
-    const assetsToCache = ['/config.json', '/meta.json'];
-    for (const asset of assetsToCache) {
-      try {
-        const res = await fetch(asset);
-        const text = await res.text();
-        localStorage.setItem(`cache:${asset}`, text);
-      } catch (e) {
-        console.warn(`Could not cache ${asset}:`, e);
+    // 2. Lazy-load all images not already handled
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('img').forEach(img => {
+        if (!img.hasAttribute('loading')) {
+          img.loading = 'lazy';
+        }
+      });
+    });
+
+    // 3. Use localStorage for a lightweight “cache” of small assets (optional)
+    async function cacheSmallAssets() {
+      const assetsToCache = ['/config.json', '/meta.json'];
+      for (const asset of assetsToCache) {
+        try {
+          const res = await fetch(asset);
+          const text = await res.text();
+          localStorage.setItem(`cache:${asset}`, text);
+        } catch (e) {
+          console.warn(`Could not cache ${asset}:`, e);
+        }
       }
     }
-  }
-  cacheSmallAssets();
+    cacheSmallAssets();
 
-  // 4. Service Worker registration (real caching magic)
-  if ('serviceWorker' in navigator) {
+    // 4. Service Worker registration (real caching magic)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(() => console.log('Service Worker registered for caching.'))
+          .catch(err => console.warn('SW registration failed:', err));
+     });
+    }
+
+    // 5. Optional: store performance metrics locally (no tracking)
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(() => console.log('Service Worker registered for caching.'))
-        .catch(err => console.warn('SW registration failed:', err));
+      const timing = performance.getEntriesByType('navigation')[0];
+      localStorage.setItem('lastLoadTime', timing.loadEventEnd);
     });
-  }
-
-  // 5. Optional: store performance metrics locally (no tracking)
-  window.addEventListener('load', () => {
-    const timing = performance.getEntriesByType('navigation')[0];
-    localStorage.setItem('lastLoadTime', timing.loadEventEnd);
-  });
-</script>
-
-<body>
-  
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMMSPQ8K"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  </script>
 
   <main id="top" class="container">
     <!-- About -->
@@ -1182,25 +1180,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </main>
 
 
-  <footer>
-    <div class="container">
-      <div class="muted">© <span id="year"></span> <a href="https://www.blobbyofficial.com" target="_blank" rel="noopener noreferrer">BlobbyOfficial</a> • All rights reserved.</div>
-    </div>
-  </footer>
+    <footer>
+      <div class="container">
+        <div class="muted">© <span id="year"></span> <a href="https://www.blobbyofficial.com" target="_blank" rel="noopener noreferrer">BlobbyOfficial</a> • All rights reserved.</div>
+      </div>
+    </footer>
 
-  <script>
-    // Set copyright year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    <script>
+      // Set copyright year
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Accessibility: Focus outline only on keyboard navigation
-    document.body.addEventListener('keydown', function(e) {
-      if (e.key === 'Tab') {
-        document.body.classList.add('user-is-tabbing');
-      }
-    });
-    document.body.addEventListener('mousedown', function() {
-      document.body.classList.remove('user-is-tabbing');
-    });
-  </script>
+      // Accessibility: Focus outline only on keyboard navigation
+      document.body.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+          document.body.classList.add('user-is-tabbing');
+        }
+      });
+      document.body.addEventListener('mousedown', function() {
+        document.body.classList.remove('user-is-tabbing');
+      });
+    </script>
 </body>
 </html>
