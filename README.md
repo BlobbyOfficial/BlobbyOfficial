@@ -7,64 +7,22 @@
 
 [![Website](https://img.shields.io/badge/blobbyofficial.com-000000?style=flat-square&logo=googlechrome&logoColor=white)](https://blobbyofficial.com)
 [![TikTok](https://img.shields.io/badge/@blobby.official-000000?style=flat-square&logo=tiktok&logoColor=white)](https://tiktok.com/@blobby.official)
-[![YouTube](https://img.shields.io/badge/@blobby.official-000000?style=flat-square&logo=youtube&logoColor=white)](https://youtube.com/@blobby.official)
-[![Discord](https://img.shields.io/badge/Discord-000000?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/quq8thpMEd)
 [![Discord](https://img.shields.io/badge/Payhip-000000?style=flat-square&logo=payhip&logoColor=white)](https://payhip.com/blobbyofficial)
 
 ---
 
-I create **free DaVinci Resolve presets** for short-form content, such as TikTok and YouTube short videos.
+I create **DaVinci Resolve presets** for TikTok edits!
 
 Presets available on my [store](https://blobbyofficial.com/#store), and tutorials are coming to [YouTube](https://youtube.com/@blobby.official) soon.
 
 ---
 
-### What's here
-
-```text
-blobbyofficial/
-├── index.html
-├── 404.html
-├── assets/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── script.js
-├── media/
-│   ├── hero.mp4
-│   └── images/
-│       ├── favicon/
-│       │   ├── android-chrome-192x192.png
-│       │   ├── android-chrome-512x512.png
-│       │   ├── apple-touch-icon.png
-│       │   ├── favicon-16x16.png
-│       │   └── favicon-32x32.png
-│       ├── store/
-│       │   └── edge_reflect/
-│       │       └── 1080x1080.png
-│       └── tiktok/
-│           ├── clip1.png
-│           ├── clip2.png
-│           └── clip3.png
-├── favicon.ico
-├── site.webmanifest
-├── preview.png
-├── robots.txt
-└── sitemap.xml
-```
-
-This is the source for [blobbyofficial.com](https://blobbyofficial.com).
-
----
-
-### Tools i use
-
+### Tools I use
 (Some affiliate links)
 
 [![DaVinci Resolve](https://img.shields.io/badge/DaVinci%20Resolve%20Studio-000000?style=flat-square&logo=blackmagicdesign&logoColor=white)](https://www.blackmagicdesign.com/products/davinciresolve)
 [![Cloudflare](https://img.shields.io/badge/Cloudflare-000000?style=flat-square&logo=cloudflare&logoColor=white)](https://cloudflare.com)
 [![Payhip](https://img.shields.io/badge/Payhip-000000?style=flat-square&logo=shopify&logoColor=white)](https://payhip.com?fp_ref=blobbyofficial)
-[![Epidemic Sounds](https://img.shields.io/badge/Epidemic%20Sounds-000000?style=flat-square&logo=audacity&logoColor=white)](https://share.epidemicsound.com/thb518)
 [![Eleven Labs](https://img.shields.io/badge/Eleven%20Labs-000000?style=flat-square&logo=googleassistant&logoColor=white)](https://try.elevenlabs.io/blobbyofficial)
 [![Proton](https://img.shields.io/badge/Proton-000000?style=flat-square&logo=googleassistant&logoColor=white)](https://pr.tn/ref/XWAW73G4)
 
