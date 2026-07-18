@@ -11,21 +11,19 @@
 
 ---
 
-I create **DaVinci Resolve presets** for TikTok edits!
+Hire me to edit for you
 
-Presets available on my [store](https://blobbyofficial.com/#store), and tutorials are coming to [YouTube](https://youtube.com/@blobby.official) soon.
+Presets available on my [store](https://blobbyofficial.com/#store).
 
 ---
 
 ### Tools I use
-(Some affiliate links)
+(Affiliate links)
 
-[![DaVinci Resolve](https://img.shields.io/badge/DaVinci%20Resolve%20Studio-000000?style=flat-square&logo=blackmagicdesign&logoColor=white)](https://www.blackmagicdesign.com/products/davinciresolve)
-[![Cloudflare](https://img.shields.io/badge/Cloudflare-000000?style=flat-square&logo=cloudflare&logoColor=white)](https://cloudflare.com)
 [![Payhip](https://img.shields.io/badge/Payhip-000000?style=flat-square&logo=shopify&logoColor=white)](https://payhip.com?fp_ref=blobbyofficial)
 [![Eleven Labs](https://img.shields.io/badge/Eleven%20Labs-000000?style=flat-square&logo=googleassistant&logoColor=white)](https://try.elevenlabs.io/blobbyofficial)
 [![Proton](https://img.shields.io/badge/Proton-000000?style=flat-square&logo=googleassistant&logoColor=white)](https://pr.tn/ref/XWAW73G4)
 
 ---
 
-[blobbyofficial.com](https://blobbyofficial.com) &nbsp;·&nbsp; [store](https://blobbyofficial.com/#store) &nbsp;·&nbsp; [contact](https://payhip.com/blobbyofficial/contact)
+[blobbyofficial.com](https://blobbyofficial.com) &nbsp;·&nbsp; [store](https://blobbyofficial.com/#store) &nbsp;·&nbsp; [contact](https://discord.com/users/1109378632071254086)
