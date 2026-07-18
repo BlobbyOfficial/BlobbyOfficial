@@ -180,38 +180,21 @@
     <li><a href="#portfolio">Portfolio</a></li>
 
     <!-- External links (SEO + security improved) -->
-    <li>
-      <a href="https://youtube.com/@blobby.official"
-         target="_blank"
-         rel="noopener noreferrer external"
-         aria-label="Visit YouTube channel">
-        YouTube ↗
-      </a>
-    </li>
 
     <li>
       <a href="https://tiktok.com/@blobby.official"
          target="_blank"
          rel="noopener noreferrer external"
          aria-label="Visit TikTok profile">
-        TikTok ↗
+        TikTok
       </a>
     </li>
 
     <li>
-      <a href="https://discord.gg/quq8thpMEd"
+      <a href="https://discord.com/users/1109378632071254086"
          target="_blank"
          rel="noopener noreferrer external"
-         aria-label="Visit Discord server">
-        Discord ↗
-      </a>
-    </li>
-
-    <li>
-      <a href="https://payhip.com/blobbyofficial/contact"
-         target="_blank"
-         rel="noopener noreferrer external"
-         aria-label="Contact Blobby"
+         aria-label="Contact Me"
          class="nav-contact-btn">
         Contact
       </a>
@@ -223,41 +206,51 @@
 <main id="main-content">
 
 <!-- ── HERO ── -->
-<section class="hero">
+<section class="hero" id="home">
   <div class="hero-bg">
-    <!--
-      HERO VIDEO — desktop only.
-      Replace the src with your own video file path, e.g. /media/hero.mp4
-      Recommended: H.264 MP4, 1920×1080, 10–30s loop, no audio needed.
-      Keep file size under ~8MB for fast loading.
-    -->
     <video
       class="hero-video"
       id="heroVideo"
       autoplay
       muted
       loop
-      preload="none"
+      playsinline
+      preload="metadata"
+      poster="/media/hero-poster.webp"
       aria-hidden="true"
     >
       <source src="/media/hero.mp4" type="video/mp4" />
     </video>
+
     <div class="hero-video-overlay"></div>
   </div>
-  <p class="hero-tag">DaVinci Resolve Presets</p>
-  <h1 class="hero-title">
-    <span>Create the</span>
-    PERFECT<br />LOOK
-  </h1>
-  <p class="hero-sub">
-    High quality, free fusion presets for
-    <strong>DaVinci Resolve</strong> editors.
-  </p>
-  <div class="hero-cta">
-    <a href="#store" class="btn-primary">View Store</a>
-    <a href="#portfolio" class="btn-ghost">See My Work →</a>
+
+  <div class="hero-content">
+
+    <h1 class="hero-title">
+      <span>Freelance Video Editor</span>
+      @blobbyofficial
+    </h1>
+
+    <div class="hero-cta">
+      <a
+        href="https://discord.com/users/1109378632071254086"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary">
+        Hire Me
+      </a>
+
+      <a href="#portfolio" class="btn-ghost">
+        View Portfolio →
+      </a>
+    </div>
+
   </div>
-  <div class="hero-scroll-hint" aria-hidden="true">Scroll</div>
+
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+  </div>
 </section>
 
 <!-- ── STORE ── -->
@@ -288,20 +281,15 @@
       <div class="product-info">
         <h3 class="product-name">Edge Reflect</h3>
 
-        <span class="product-signature">
-          preset by blobby
-        </span>
-
         <p class="product-desc">
           A simple preset to stop black borders appearing when
           tracking footage. Created for TikTok edits.
         </p>
 
         <div class="product-tags">
-          <span class="tag">DaVinci Resolve (free)</span>
-          <span class="tag">Shortform</span>
+          <span class="tag">DaVinci (free)</span>
+          <span class="tag">Edits</span>
           <span class="tag">.setting</span>
-          <span class="tag">fusion</span>
         </div>
 
         <div class="product-footer">
@@ -341,18 +329,14 @@
       <div class="product-info">
         <h3 class="product-name">Halo Blur</h3>
 
-        <span class="product-signature">
-          preset by blobby
-        </span>
-
         <p class="product-desc">
           A simple preset to create a halo blur effect, similar
           to CapCut. Great for edit transitions.
         </p>
 
         <div class="product-tags">
-          <span class="tag">DaVinci Resolve (free)</span>
-          <span class="tag">Shortform</span>
+          <span class="tag">DaVinci (free)</span>
+          <span class="tag">Edits</span>
           <span class="tag">.drfx</span>
           <span class="tag">edit</span>
         </div>
@@ -393,20 +377,15 @@
       <div class="product-info">
         <h3 class="product-name">HandBrake Preset</h3>
 
-        <span class="product-signature">
-          preset by blobby
-        </span>
-
         <p class="product-desc">
-          Useful preset to compress TikTok edits to reduce
+          The settings I use to compress the final edit to reduce
           upload times and minimise TikTok's compression.
         </p>
 
         <div class="product-tags">
-          <span class="tag">HandBrake (free)</span>
-          <span class="tag">TikTok</span>
+          <span class="tag">HandBrake</span>
+          <span class="tag">Edits</span>
           <span class="tag">.json</span>
-          <span class="tag">edit</span>
         </div>
 
         <div class="product-footer">
