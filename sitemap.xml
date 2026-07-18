@@ -17,13 +17,13 @@
 
   <url>
     <loc>https://blobbyofficial.com/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <!-- Optional: declare key images on this page for Google Image Search -->
     <image:image>
-      <image:loc>https://blobbyofficial.com/media/images/store/edge_reflect/1080x1080.png</image:loc>
-      <image:title>Edge Reflect DaVinci Resolve Preset</image:title>
+      <image:loc>https://blobbyofficial.com/media/images/icons/Logo/logo_compressed.png</image:loc>
+      <image:title>blobbyofficial Logo</image:title>
     </image:image>
   </url>
 
@@ -34,18 +34,38 @@
     you do NOT need to include them here — only include pages on blobbyofficial.com.
   -->
 
-  <!-- Example product page (uncomment and fill in if you have dedicated pages):
   <url>
     <loc>https://blobbyofficial.com/store/edge-reflect/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://blobbyofficial.com/media/images/store/edge_reflect/1080x1080.png</image:loc>
-      <image:title>Edge Reflect DaVinci Resolve Preset</image:title>
+      <image:title>Edge Reflect DaVinci Preset</image:title>
     </image:image>
   </url>
-  -->
+
+  <url>
+    <loc>https://blobbyofficial.com/store/halo_blur/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://blobbyofficial.com/media/images/store/halo_blur/1080x1080.png</image:loc>
+      <image:title>Halo Blur DaVinci Preset</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://blobbyofficial.com/store/handbrake_tiktok_1080_quality/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://blobbyofficial.com/media/images/store/handbrake_tiktok_1080_quality/1080x1080.png</image:loc>
+      <image:title>HandBrake TikTok 1080 Quality Preset</image:title>
+    </image:image>
+  </url>
 
   <!-- ==================== OTHER PAGES ==================== -->
   <!--

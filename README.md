@@ -1,7 +1,7 @@
 # blobbyofficial
 
 <!-- Smaller circular image -->
-<img src="https://raw.githubusercontent.com/blobbyofficial/blobbyofficial/refs/heads/main/media/images/icons/Logo/logo.png" alt="blobbyofficial's logo" width="512" height="512" style="border-radius:50%; object-fit:cover;">
+<img src="https://raw.githubusercontent.com/blobbyofficial/blobbyofficial/refs/heads/main/media/images/icons/Logo/logo_compressed.png" alt="blobbyofficial's logo" width="540" height="540" style="border-radius:50%; object-fit:cover;">
 
 ## video editor · davinci resolve · fusion presets
 
