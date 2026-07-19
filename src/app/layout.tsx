@@ -83,7 +83,7 @@ const personJsonLd = {
   "@type": "Person",
   name: "BlobbyOfficial",
   url: SITE_URL,
-  sameAs: [SOCIALS.tiktok, SOCIALS.youtube, SOCIALS.discordProfile],
+  sameAs: [SOCIALS.tiktok, SOCIALS.youtube, SOCIALS.discord],
   jobTitle: "Video Editor",
   knowsAbout: ["Video Editor", "DaVinci Resolve", "Editing Presets", "After Effects", "TikTok"],
 };

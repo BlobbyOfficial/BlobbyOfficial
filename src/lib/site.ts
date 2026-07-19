@@ -5,8 +5,7 @@ export const SITE_NAME = "blobbyofficial";
 export const SOCIALS = {
   tiktok: "https://tiktok.com/@blobby.official",
   youtube: "https://youtube.com/@blobby.official",
-  discord: "https://discord.gg/quq8thpMEd",
-  discordProfile: "https://discord.com/users/1109378632071254086",
+  discord: "https://discord.com/users/1109378632071254086",
   payhipStore: "https://payhip.com/blobbyofficial",
 } as const;
 

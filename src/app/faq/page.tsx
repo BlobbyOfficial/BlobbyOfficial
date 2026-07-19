@@ -33,19 +33,19 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
   },
   {
     q: "A preset isn't working — what do I check first?",
-    a: "Confirm you're on a recent version of DaVinci Resolve (the presets are tested against the last two major releases) and that the .setting/.drfx file was imported into the correct panel — Edit page effects for .setting files, Effects Library for .drfx. If it's still not working, use the contact form and describe exactly what you're seeing.",
+    a: "Confirm you're on a recent version of DaVinci Resolve (the presets are tested against the last two major releases) and that the .setting/.drfx file was imported into the correct panel — Edit page effects for .setting files, Effects Library for .drfx. If it's still not working, use the contact form or DM me and describe exactly what you're seeing.",
   },
   {
     q: "How much do you charge for freelance editing?",
-    a: "It depends on footage length, turnaround, and how much direction you can give me up front. Tell me about the project through the contact form and I'll quote a flat rate before any work starts — no open-ended hourly billing.",
+    a: "Currently I edit entirely for free. Normally it depends on footage length, turnaround, and how much direction you can give me up front. Discord Nitro is always very appreciated, but not required.",
   },
   {
     q: "What's your turnaround time?",
-    a: "Most short-form edits (under 3 minutes of raw footage) are turned around in 24–48 hours. Longer or more involved projects get a specific timeline quoted up front.",
+    a: "Most short-form edits (under 3 minutes of raw footage) are turned around in 1-2 days. Longer or more involved projects can get a specific timeline quoted up front.",
   },
   {
     q: "Do you take revisions?",
-    a: "Yes — every project includes a round of revisions based on your notes before final delivery. Scope for revisions is agreed before I start editing so there are no surprises on either side.",
+    a: "Yes — every project includes a round of revisions based on your notes before final delivery. Scope for revisions is agreed before I start editing so there are no surprises on either side. Any additional rounds of revisions are also agreed up front and may incur a fee depending on the scope.",
   },
 ];
 

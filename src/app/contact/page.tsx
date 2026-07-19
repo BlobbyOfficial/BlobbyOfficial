@@ -34,7 +34,7 @@ export default function ContactPage() {
               For preset support requests, the FAQ covers the most common issues.
             </p>
             <a
-              href={SOCIALS.discordProfile}
+              href={SOCIALS.discord}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-ghost"
