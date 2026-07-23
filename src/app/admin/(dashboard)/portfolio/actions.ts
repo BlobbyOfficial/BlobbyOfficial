@@ -49,3 +49,11 @@ export async function deleteClip(id: string) {
   revalidatePath("/");
   revalidatePath("/portfolio");
 }
+
+export async function toggleSectionVisibility(category: "tiktok" | "clients", hidden: boolean) {
+  const supabase = await createClient();
+  await supabase.from("portfolio_section_visibility").upsert({ category, hidden });
+  revalidatePath("/admin/portfolio");
+  revalidatePath("/");
+  revalidatePath("/portfolio");
+}

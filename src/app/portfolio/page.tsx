@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { PortfolioGrid } from "@/components/portfolio-grid";
 import { StatsRow } from "@/components/stats-row";
-import { getPortfolioClips } from "@/lib/content";
+import { getPortfolioClips, getHiddenPortfolioSections } from "@/lib/content";
 import { SOCIALS } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function PortfolioPage() {
-  const clips = await getPortfolioClips();
+  const [clips, hiddenSections] = await Promise.all([getPortfolioClips(), getHiddenPortfolioSections()]);
 
   return (
     <>
@@ -42,7 +42,7 @@ export default async function PortfolioPage() {
               View Profile →
             </a>
           </div>
-          <PortfolioGrid clips={clips} />
+          <PortfolioGrid clips={clips} hiddenSections={hiddenSections} />
         </div>
 
         <div className="mt-14 border border-border p-9 flex items-center justify-between max-md:flex-col max-md:items-start max-md:gap-6 max-md:p-6">

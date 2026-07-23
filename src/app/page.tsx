@@ -4,11 +4,15 @@ import { ProductCard } from "@/components/product-card";
 import { PortfolioGrid } from "@/components/portfolio-grid";
 import { StatsRow } from "@/components/stats-row";
 import { Reveal } from "@/components/reveal";
-import { getProducts, getPortfolioClips } from "@/lib/content";
+import { getProducts, getPortfolioClips, getHiddenPortfolioSections } from "@/lib/content";
 import { SOCIALS } from "@/lib/site";
 
 export default async function Home() {
-  const [products, clips] = await Promise.all([getProducts(), getPortfolioClips()]);
+  const [products, clips, hiddenSections] = await Promise.all([
+    getProducts(),
+    getPortfolioClips(),
+    getHiddenPortfolioSections(),
+  ]);
 
   return (
     <>
@@ -48,7 +52,7 @@ export default async function Home() {
                 View Profile →
               </a>
             </div>
-            <PortfolioGrid clips={clips} />
+            <PortfolioGrid clips={clips} hiddenSections={hiddenSections} />
           </div>
         </Reveal>
 

@@ -64,10 +64,18 @@ const SECTIONS: { key: PortfolioCategory; label: string }[] = [
   { key: "clients", label: "Clients" },
 ];
 
-export function PortfolioGrid({ clips }: { clips: PortfolioClip[] }) {
+export function PortfolioGrid({
+  clips,
+  hiddenSections,
+}: {
+  clips: PortfolioClip[];
+  hiddenSections?: Set<PortfolioCategory>;
+}) {
   return (
     <div className="flex flex-col gap-10">
       {SECTIONS.map(({ key, label }) => {
+        if (hiddenSections?.has(key)) return null;
+
         const sectionClips = clips.filter((clip) => clip.category === key);
         if (sectionClips.length === 0) return null;
 

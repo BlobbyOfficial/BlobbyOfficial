@@ -1,5 +1,5 @@
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
-import type { PortfolioClip, Product } from "@/lib/types";
+import type { PortfolioCategory, PortfolioClip, Product } from "@/lib/types";
 
 /**
  * Seed content mirrors what shipped in the original static site. It renders
@@ -159,4 +159,14 @@ export async function getPortfolioClips(): Promise<PortfolioClip[]> {
 
   if (error || !data || data.length === 0) return SEED_PORTFOLIO;
   return data;
+}
+
+export async function getHiddenPortfolioSections(): Promise<Set<PortfolioCategory>> {
+  if (!isSupabaseConfigured()) return new Set();
+
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("portfolio_section_visibility").select("*");
+
+  if (error || !data) return new Set();
+  return new Set(data.filter((row) => row.hidden).map((row) => row.category));
 }

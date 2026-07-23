@@ -1,20 +1,43 @@
 import { createClient } from "@/lib/supabase/server";
-import { createClip, updateClip, deleteClip } from "./actions";
+import { createClip, updateClip, deleteClip, toggleSectionVisibility } from "./actions";
 
 const inputClass =
   "bg-transparent border border-border px-3 py-2 text-[12px] text-fg outline-none transition-colors focus:border-border-hover w-full";
 const labelClass = "text-[9px] tracking-[0.14em] uppercase text-mid";
 
+const SECTIONS = [
+  { key: "tiktok", label: "TikTok" },
+  { key: "clients", label: "Clients" },
+] as const;
+
 export default async function AdminPortfolioPage() {
   const supabase = await createClient();
-  const { data: clips } = await supabase
-    .from("portfolio_clips")
-    .select("*")
-    .order("sort_order", { ascending: true });
+  const [{ data: clips }, { data: visibility }] = await Promise.all([
+    supabase.from("portfolio_clips").select("*").order("sort_order", { ascending: true }),
+    supabase.from("portfolio_section_visibility").select("*"),
+  ]);
+
+  const hiddenSections = new Set((visibility ?? []).filter((row) => row.hidden).map((row) => row.category));
 
   return (
     <div>
       <h1 className="font-display text-3xl tracking-[0.04em] mb-8">Portfolio clips</h1>
+
+      <div className="flex gap-4 mb-10">
+        {SECTIONS.map(({ key, label }) => {
+          const hidden = hiddenSections.has(key);
+          return (
+            <form key={key} action={toggleSectionVisibility.bind(null, key, !hidden)}>
+              <button
+                type="submit"
+                className={hidden ? "btn-ghost" : "btn-primary"}
+              >
+                {label}: {hidden ? "Hidden" : "Visible"} — click to {hidden ? "unhide" : "hide"}
+              </button>
+            </form>
+          );
+        })}
+      </div>
 
       <form action={createClip} className="border border-border p-6 mb-10 grid grid-cols-5 gap-4 items-end max-md:grid-cols-2">
         <div className="flex flex-col gap-1.5">

@@ -13,6 +13,11 @@ export type PortfolioClip = {
   review_discord_username: string | null;
 };
 
+export type PortfolioSectionVisibility = {
+  category: PortfolioCategory;
+  hidden: boolean;
+};
+
 export type Product = {
   id: string;
   slug: string;
@@ -55,6 +60,12 @@ export type Database = {
         Row: ContactMessage;
         Insert: Omit<ContactMessage, "id" | "created_at" | "read">;
         Update: Partial<Omit<ContactMessage, "id" | "created_at">>;
+        Relationships: [];
+      };
+      portfolio_section_visibility: {
+        Row: PortfolioSectionVisibility;
+        Insert: PortfolioSectionVisibility;
+        Update: Partial<PortfolioSectionVisibility>;
         Relationships: [];
       };
     };
