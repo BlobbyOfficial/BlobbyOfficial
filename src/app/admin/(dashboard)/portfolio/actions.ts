@@ -7,7 +7,7 @@ export async function createClip(formData: FormData) {
   const supabase = await createClient();
   await supabase.from("portfolio_clips").insert({
     title: String(formData.get("title") ?? ""),
-    thumbnail_url: String(formData.get("thumbnail_url") ?? ""),
+    category: formData.get("category") === "clients" ? "clients" : "tiktok",
     video_url: String(formData.get("video_url") ?? ""),
     sort_order: Number(formData.get("sort_order") ?? 0),
     published: formData.get("published") === "on",
@@ -23,7 +23,7 @@ export async function updateClip(id: string, formData: FormData) {
     .from("portfolio_clips")
     .update({
       title: String(formData.get("title") ?? ""),
-      thumbnail_url: String(formData.get("thumbnail_url") ?? ""),
+      category: formData.get("category") === "clients" ? "clients" : "tiktok",
       video_url: String(formData.get("video_url") ?? ""),
       sort_order: Number(formData.get("sort_order") ?? 0),
       published: formData.get("published") === "on",

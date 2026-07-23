@@ -56,7 +56,7 @@ const SEED_PORTFOLIO: PortfolioClip[] = [
   {
     id: "seed-clip-1",
     title: "TikTok edit 1",
-    thumbnail_url: "/media/images/tiktok/clip1.webp",
+    category: "tiktok",
     video_url: "https://drive.google.com/file/d/19hms66uuhjAZqoEFvYmg7btb3Xku7rz1/",
     sort_order: 0,
     published: true,
@@ -65,7 +65,7 @@ const SEED_PORTFOLIO: PortfolioClip[] = [
   {
     id: "seed-clip-2",
     title: "TikTok edit 2",
-    thumbnail_url: "/media/images/tiktok/clip2.webp",
+    category: "tiktok",
     video_url: "https://drive.google.com/file/d/1LTuqS4n0Og72fY2FbpwSBmjbz7t7-IZG/",
     sort_order: 1,
     published: true,
@@ -74,7 +74,7 @@ const SEED_PORTFOLIO: PortfolioClip[] = [
   {
     id: "seed-clip-3",
     title: "TikTok edit 3",
-    thumbnail_url: "/media/images/tiktok/clip3.webp",
+    category: "tiktok",
     video_url: "https://drive.google.com/file/d/1U5KJM6V3nt8hARxp0R60BIiJ1sUwd8uC/",
     sort_order: 2,
     published: true,
@@ -83,7 +83,7 @@ const SEED_PORTFOLIO: PortfolioClip[] = [
   {
     id: "seed-clip-4",
     title: "TikTok edit 4",
-    thumbnail_url: "/media/images/tiktok/clip4.webp",
+    category: "tiktok",
     video_url: "https://drive.google.com/file/d/1C6fAmte9Ed9R2QjjfnD2eodTNcObqn3E/",
     sort_order: 3,
     published: true,
@@ -92,7 +92,7 @@ const SEED_PORTFOLIO: PortfolioClip[] = [
   {
     id: "seed-clip-5",
     title: "TikTok edit 5",
-    thumbnail_url: "/media/images/tiktok/clip5.webp",
+    category: "tiktok",
     video_url: "https://drive.google.com/file/d/1YlMdc9chtr4SVSnyQcofyjXmudEKEEu6/",
     sort_order: 4,
     published: true,
@@ -101,7 +101,7 @@ const SEED_PORTFOLIO: PortfolioClip[] = [
   {
     id: "seed-clip-6",
     title: "TikTok edit 6",
-    thumbnail_url: "/media/images/tiktok/clip6.webp",
+    category: "tiktok",
     video_url: "https://drive.google.com/file/d/1OIj_ws1LTWSsIk0sJzA1cW9uEy9bveD0/",
     sort_order: 5,
     published: true,

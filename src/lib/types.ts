@@ -1,7 +1,9 @@
+export type PortfolioCategory = "tiktok" | "clients";
+
 export type PortfolioClip = {
   id: string;
   title: string;
-  thumbnail_url: string;
+  category: PortfolioCategory;
   video_url: string;
   sort_order: number;
   published: boolean;

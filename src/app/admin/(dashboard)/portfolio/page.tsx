@@ -22,11 +22,14 @@ export default async function AdminPortfolioPage() {
           <input name="title" required className={inputClass} />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label className={labelClass}>Thumbnail URL</label>
-          <input name="thumbnail_url" required className={inputClass} placeholder="/media/images/tiktok/clip.webp" />
+          <label className={labelClass}>Category</label>
+          <select name="category" defaultValue="tiktok" className={inputClass}>
+            <option value="tiktok">TikTok</option>
+            <option value="clients">Clients</option>
+          </select>
         </div>
         <div className="flex flex-col gap-1.5">
-          <label className={labelClass}>Video URL</label>
+          <label className={labelClass}>Video URL (Google Drive)</label>
           <input name="video_url" required className={inputClass} />
         </div>
         <div className="flex flex-col gap-1.5">
@@ -55,11 +58,14 @@ export default async function AdminPortfolioPage() {
               <input name="title" defaultValue={clip.title} required className={inputClass} />
             </div>
             <div className="flex flex-col gap-1.5">
-              <label className={labelClass}>Thumbnail URL</label>
-              <input name="thumbnail_url" defaultValue={clip.thumbnail_url} required className={inputClass} />
+              <label className={labelClass}>Category</label>
+              <select name="category" defaultValue={clip.category} className={inputClass}>
+                <option value="tiktok">TikTok</option>
+                <option value="clients">Clients</option>
+              </select>
             </div>
             <div className="flex flex-col gap-1.5">
-              <label className={labelClass}>Video URL</label>
+              <label className={labelClass}>Video URL (Google Drive)</label>
               <input name="video_url" defaultValue={clip.video_url} required className={inputClass} />
             </div>
             <div className="flex flex-col gap-1.5">
