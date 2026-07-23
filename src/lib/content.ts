@@ -61,6 +61,9 @@ const SEED_PORTFOLIO: PortfolioClip[] = [
     sort_order: 0,
     published: true,
     created_at: "",
+    review_rating: null,
+    review_comment: null,
+    review_discord_username: null,
   },
   {
     id: "seed-clip-2",
@@ -70,6 +73,9 @@ const SEED_PORTFOLIO: PortfolioClip[] = [
     sort_order: 1,
     published: true,
     created_at: "",
+    review_rating: null,
+    review_comment: null,
+    review_discord_username: null,
   },
   {
     id: "seed-clip-3",
@@ -79,6 +85,9 @@ const SEED_PORTFOLIO: PortfolioClip[] = [
     sort_order: 2,
     published: true,
     created_at: "",
+    review_rating: null,
+    review_comment: null,
+    review_discord_username: null,
   },
   {
     id: "seed-clip-4",
@@ -88,6 +97,9 @@ const SEED_PORTFOLIO: PortfolioClip[] = [
     sort_order: 3,
     published: true,
     created_at: "",
+    review_rating: null,
+    review_comment: null,
+    review_discord_username: null,
   },
   {
     id: "seed-clip-5",
@@ -97,6 +109,9 @@ const SEED_PORTFOLIO: PortfolioClip[] = [
     sort_order: 4,
     published: true,
     created_at: "",
+    review_rating: null,
+    review_comment: null,
+    review_discord_username: null,
   },
   {
     id: "seed-clip-6",
@@ -106,6 +121,9 @@ const SEED_PORTFOLIO: PortfolioClip[] = [
     sort_order: 5,
     published: true,
     created_at: "",
+    review_rating: null,
+    review_comment: null,
+    review_discord_username: null,
   },
 ];
 

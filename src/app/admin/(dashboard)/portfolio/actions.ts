@@ -5,12 +5,16 @@ import { createClient } from "@/lib/supabase/server";
 
 export async function createClip(formData: FormData) {
   const supabase = await createClient();
+  const rating = String(formData.get("review_rating") ?? "");
   await supabase.from("portfolio_clips").insert({
     title: String(formData.get("title") ?? ""),
     category: formData.get("category") === "clients" ? "clients" : "tiktok",
     video_url: String(formData.get("video_url") ?? ""),
     sort_order: Number(formData.get("sort_order") ?? 0),
     published: formData.get("published") === "on",
+    review_rating: rating ? Number(rating) : null,
+    review_comment: String(formData.get("review_comment") ?? "") || null,
+    review_discord_username: String(formData.get("review_discord_username") ?? "") || null,
   });
   revalidatePath("/admin/portfolio");
   revalidatePath("/");
@@ -19,6 +23,7 @@ export async function createClip(formData: FormData) {
 
 export async function updateClip(id: string, formData: FormData) {
   const supabase = await createClient();
+  const rating = String(formData.get("review_rating") ?? "");
   await supabase
     .from("portfolio_clips")
     .update({
@@ -27,6 +32,9 @@ export async function updateClip(id: string, formData: FormData) {
       video_url: String(formData.get("video_url") ?? ""),
       sort_order: Number(formData.get("sort_order") ?? 0),
       published: formData.get("published") === "on",
+      review_rating: rating ? Number(rating) : null,
+      review_comment: String(formData.get("review_comment") ?? "") || null,
+      review_discord_username: String(formData.get("review_discord_username") ?? "") || null,
     })
     .eq("id", id);
   revalidatePath("/admin/portfolio");

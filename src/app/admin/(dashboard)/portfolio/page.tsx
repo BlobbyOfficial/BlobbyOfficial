@@ -40,6 +40,28 @@ export default async function AdminPortfolioPage() {
           <label className="flex items-center gap-2 text-[11px] text-mid">
             <input name="published" type="checkbox" defaultChecked /> Published
           </label>
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelClass}>Review rating (1-5, clients only)</label>
+          <select name="review_rating" defaultValue="" className={inputClass}>
+            <option value="">No review</option>
+            {[1, 2, 3, 4, 5].map((n) => (
+              <option key={n} value={n}>
+                {n} star{n === 1 ? "" : "s"}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex flex-col gap-1.5 col-span-2">
+          <label className={labelClass}>Review comment</label>
+          <input name="review_comment" className={inputClass} placeholder="What the client said" />
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <label className={labelClass}>Client Discord username</label>
+          <input name="review_discord_username" className={inputClass} placeholder="username" />
+        </div>
+        <div className="flex items-center gap-3">
           <button type="submit" className="btn-primary shrink-0">
             Add
           </button>
@@ -76,6 +98,38 @@ export default async function AdminPortfolioPage() {
               <label className="flex items-center gap-2 text-[11px] text-mid">
                 <input name="published" type="checkbox" defaultChecked={clip.published} /> Published
               </label>
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              <label className={labelClass}>Review rating (clients only)</label>
+              <select name="review_rating" defaultValue={clip.review_rating ?? ""} className={inputClass}>
+                <option value="">No review</option>
+                {[1, 2, 3, 4, 5].map((n) => (
+                  <option key={n} value={n}>
+                    {n} star{n === 1 ? "" : "s"}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex flex-col gap-1.5 col-span-2">
+              <label className={labelClass}>Review comment</label>
+              <input
+                name="review_comment"
+                defaultValue={clip.review_comment ?? ""}
+                className={inputClass}
+                placeholder="What the client said"
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label className={labelClass}>Client Discord username</label>
+              <input
+                name="review_discord_username"
+                defaultValue={clip.review_discord_username ?? ""}
+                className={inputClass}
+                placeholder="username"
+              />
+            </div>
+            <div className="flex items-center gap-3">
               <button type="submit" className="btn-ghost">
                 Save
               </button>

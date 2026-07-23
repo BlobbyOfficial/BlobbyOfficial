@@ -8,6 +8,9 @@ export type PortfolioClip = {
   sort_order: number;
   published: boolean;
   created_at: string;
+  review_rating: number | null;
+  review_comment: string | null;
+  review_discord_username: string | null;
 };
 
 export type Product = {
