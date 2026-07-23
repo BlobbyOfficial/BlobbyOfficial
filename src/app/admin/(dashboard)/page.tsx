@@ -6,8 +6,12 @@ async function getCounts() {
   const [clips, products, messages, unread] = await Promise.all([
     supabase.from("portfolio_clips").select("id", { count: "exact", head: true }),
     supabase.from("products").select("id", { count: "exact", head: true }),
-    supabase.from("contact_messages").select("id", { count: "exact", head: true }),
-    supabase.from("contact_messages").select("id", { count: "exact", head: true }).eq("read", false),
+    supabase.from("bo_messages").select("id", { count: "exact", head: true }),
+    supabase
+      .from("bo_messages")
+      .select("id", { count: "exact", head: true })
+      .eq("sender", "user")
+      .eq("read", false),
   ]);
 
   return {

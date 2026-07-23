@@ -1,41 +1,39 @@
 # Deploying blobbyofficial
 
 This app is built with Next.js (App Router) and Supabase. It runs fully without
-either of the two set up below — the site falls back to static seed content
-and `/admin` is simply unreachable — but you'll want both configured for the
-contact form, admin dashboard, and dynamic content to work in production.
+Supabase set up — the site falls back to static seed content and `/admin`,
+`/contact`, and `/scripts` are simply unreachable — but you'll want it
+configured for messaging, the admin dashboard, script collaboration, and
+dynamic content to work in production.
 
 ## 1. Supabase
 
 1. Create a project at [supabase.com](https://supabase.com).
-2. In the SQL Editor, run `supabase/migrations/0001_init.sql`. This creates
-   the `portfolio_clips`, `products`, and `contact_messages` tables, their
-   row-level security policies, and seeds the products/clips that were on
-   the original static site.
-3. Create your admin account: **Authentication → Users → Add user**. Use
-   the email/password you'll sign in with at `/admin/login`. There's no
-   public sign-up — this is the one account that manages content.
+2. In the SQL Editor, run every file under `supabase/migrations/` in order
+   (`0001` through the latest). These create the `portfolio_clips`,
+   `products`, `contact_messages` (legacy), `bo_admins`, `bo_messages`, and
+   `bo_scripts` tables, their row-level security policies, and seed the
+   products/clips that were on the original static site.
+3. Create your admin account: **Authentication → Users → Add user**. Then,
+   in the SQL Editor, add that user's id to `bo_admins`:
+
+   ```sql
+   insert into public.bo_admins (user_id) values ('<the user id>');
+   ```
+
+   Sign in at `/admin/login`. Any other visitor can create a normal account
+   (via `/signup`) to message you or use the script editor, but only rows in
+   `bo_admins` can reach `/admin`.
 4. Copy **Project Settings → API → Project URL** and **anon public key**
    into `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
 
-## 2. Cloudflare Turnstile (contact form spam protection)
-
-1. Create a widget at [dash.cloudflare.com → Turnstile](https://dash.cloudflare.com/?to=/:account/turnstile).
-2. Add your production domain (and `localhost` for local testing).
-3. Copy the **Site Key** into `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and the
-   **Secret Key** into `TURNSTILE_SECRET_KEY`.
-
-Without these set, the contact form still works, but skips bot verification
-(a warning is logged server-side) — fine for local dev, not for production.
-
-## 3. Vercel
+## 2. Vercel
 
 1. Import this repository at [vercel.com/new](https://vercel.com/new).
 2. Framework preset: Next.js (auto-detected).
 3. Add the environment variables from `.env.example` (Project Settings →
    Environment Variables) — `NEXT_PUBLIC_SITE_URL`,
-   `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
-   `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`.
+   `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
 4. Deploy.
 5. **Domain**: Project Settings → Domains → add `blobbyofficial.com`, then
    point its DNS at Vercel per the instructions Vercel shows you. This

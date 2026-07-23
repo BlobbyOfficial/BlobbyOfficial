@@ -1,74 +1,47 @@
 "use server";
 
-import { headers } from "next/headers";
+import { revalidatePath } from "next/cache";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
-import { verifyTurnstileToken } from "@/lib/turnstile";
 import { isRateLimited } from "@/lib/rate-limit";
 
-export type ContactFormState = {
-  status: "idle" | "success" | "error";
-  message: string;
-};
+export type SendMessageState = { error: string | null };
 
-export async function submitContactForm(
-  _prevState: ContactFormState,
+export async function sendMessage(
+  _prevState: SendMessageState,
   formData: FormData
-): Promise<ContactFormState> {
-  const name = String(formData.get("name") ?? "").trim();
-  const email = String(formData.get("email") ?? "").trim();
-  const message = String(formData.get("message") ?? "").trim();
-  const turnstileToken = String(formData.get("cf-turnstile-response") ?? "");
-  // Honeypot field — real users never fill a visually-hidden input.
-  const honeypot = String(formData.get("company") ?? "");
-
-  if (honeypot) {
-    return { status: "success", message: "Thanks — I'll get back to you soon." };
-  }
-
-  if (!name || !email || !message) {
-    return { status: "error", message: "Please fill in every field." };
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return { status: "error", message: "That email address doesn't look right." };
-  }
-  if (message.length > 4000) {
-    return { status: "error", message: "That message is too long — try trimming it down." };
-  }
-
-  const headerList = await headers();
-  const ip =
-    headerList.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    headerList.get("x-real-ip") ??
-    "unknown";
-
-  if (isRateLimited(ip)) {
-    return { status: "error", message: "Too many messages sent — please try again in a minute." };
-  }
-
-  const verified = await verifyTurnstileToken(turnstileToken, ip);
-  if (!verified) {
-    return { status: "error", message: "Verification failed — please try again." };
-  }
-
+): Promise<SendMessageState> {
   if (!isSupabaseConfigured()) {
-    console.warn("Supabase not configured — contact message was not persisted:", {
-      name,
-      email,
-      message,
-    });
-    return {
-      status: "success",
-      message: "Thanks — I'll get back to you soon.",
-    };
+    return { error: "Messaging isn't configured yet." };
   }
+
+  const body = String(formData.get("body") ?? "").trim();
+  if (!body) return { error: "Write a message first." };
+  if (body.length > 4000) return { error: "That message is too long — try trimming it down." };
 
   const supabase = await createClient();
-  const { error } = await supabase.from("contact_messages").insert({ name, email, message });
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  if (error) {
-    console.error("Failed to save contact message:", error);
-    return { status: "error", message: "Something went wrong on our end — please try again." };
+  if (!user) return { error: "You need to be signed in to send a message." };
+
+  if (isRateLimited(user.id)) {
+    return { error: "Too many messages sent — please try again in a minute." };
   }
 
-  return { status: "success", message: "Thanks — I'll get back to you soon." };
+  const { error } = await supabase.from("bo_messages").insert({
+    user_id: user.id,
+    user_email: user.email ?? "unknown",
+    sender: "user",
+    body,
+  });
+
+  if (error) {
+    console.error("Failed to save message:", error);
+    return { error: "Something went wrong on our end — please try again." };
+  }
+
+  revalidatePath("/contact");
+  revalidatePath("/admin/messages");
+  return { error: null };
 }

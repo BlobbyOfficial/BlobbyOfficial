@@ -17,6 +17,7 @@ export const ANALYTICS = {
 export const NAV_LINKS = [
   { href: "/portfolio", label: "Portfolio" },
   { href: "/store", label: "Store" },
+  { href: "/scripts", label: "Scripts" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
 ] as const;

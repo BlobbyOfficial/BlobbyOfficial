@@ -22,10 +22,11 @@ Hire me: [blobbyofficial.com/contact](https://blobbyofficial.com/contact)
 
 - **Next.js** (App Router, TypeScript) — [Vercel](https://vercel.com)-hosted
 - **Tailwind CSS v4**
-- **Supabase** — Postgres (portfolio/product content, contact messages) +
-  Auth (single admin account gating `/admin`)
-- **Cloudflare Turnstile** — server-verified spam protection on the contact
-  form
+- **Supabase** — Postgres (portfolio/product content, messaging inbox,
+  real-time script collaboration) + Auth (public accounts, plus an
+  admin-only allowlist gating `/admin`)
+- **Yjs** — CRDT sync for the real-time collaborative script editor at
+  `/scripts`, transported over Supabase Realtime broadcast channels
 
 See [DEPLOY.md](./DEPLOY.md) for environment setup and deployment steps.
 
@@ -44,11 +45,12 @@ Supabase is configured — see `src/lib/content.ts`.
 
 ```text
 src/
-  app/            routes (App Router) — pages, admin dashboard, API-less
-                  server actions for the contact form and admin CRUD
-  components/     shared UI (nav, hero, product card, admin forms, ...)
+  app/            routes (App Router) — pages, admin dashboard, login/signup,
+                  API-less server actions for messaging, scripts, admin CRUD
+  components/     shared UI (nav, hero, product card, message thread,
+                  script editor, admin forms, ...)
   lib/            Supabase clients, content/data layer, site constants,
-                  Turnstile verification, rate limiting
+                  rate limiting
 supabase/
   migrations/     SQL schema + RLS policies + seed data
 ```

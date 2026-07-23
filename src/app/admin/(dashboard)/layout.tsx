@@ -33,6 +33,17 @@ export default async function AdminDashboardLayout({ children }: { children: Rea
 
   if (!user) redirect("/admin/login");
 
+  // Regular site accounts (used for the messaging inbox and script
+  // collaboration) share the same Supabase auth as the admin — being
+  // signed in is NOT enough on its own, so check bo_admins membership too.
+  const { data: adminRow } = await supabase
+    .from("bo_admins")
+    .select("user_id")
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (!adminRow) redirect("/admin/login");
+
   return (
     <div className="min-h-screen pt-28 px-10 pb-16 max-md:px-5 max-md:pt-24">
       <div className="flex items-center justify-between mb-10 flex-wrap gap-4">

@@ -41,6 +41,32 @@ export type ContactMessage = {
   read: boolean;
 };
 
+export type BoAdmin = {
+  user_id: string;
+  created_at: string;
+};
+
+export type MessageSender = "user" | "admin";
+
+export type BoMessage = {
+  id: string;
+  user_id: string;
+  user_email: string;
+  sender: MessageSender;
+  body: string;
+  read: boolean;
+  created_at: string;
+};
+
+export type BoScript = {
+  id: string;
+  owner_id: string;
+  title: string;
+  content: string;
+  created_at: string;
+  updated_at: string;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -66,6 +92,25 @@ export type Database = {
         Row: PortfolioSectionVisibility;
         Insert: PortfolioSectionVisibility;
         Update: Partial<PortfolioSectionVisibility>;
+        Relationships: [];
+      };
+      bo_admins: {
+        Row: BoAdmin;
+        Insert: Omit<BoAdmin, "created_at">;
+        Update: Partial<Omit<BoAdmin, "created_at">>;
+        Relationships: [];
+      };
+      bo_messages: {
+        Row: BoMessage;
+        Insert: Omit<BoMessage, "id" | "created_at" | "read"> & { read?: boolean };
+        Update: Partial<Omit<BoMessage, "id" | "created_at">>;
+        Relationships: [];
+      };
+      bo_scripts: {
+        Row: BoScript;
+        Insert: Omit<BoScript, "id" | "created_at" | "updated_at" | "content"> &
+          Partial<Pick<BoScript, "content">>;
+        Update: Partial<Omit<BoScript, "id" | "created_at" | "owner_id">>;
         Relationships: [];
       };
     };

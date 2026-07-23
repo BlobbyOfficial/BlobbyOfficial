@@ -4,11 +4,11 @@ const MAX_REQUESTS = 3;
 const hits = new Map<string, number[]>();
 
 /**
- * Best-effort in-memory sliding-window limiter, keyed by IP. It only holds
- * state per serverless instance (not shared across regions/cold starts), so
- * it's a speed bump against casual spam, not a hard guarantee — combined
- * with server-verified Turnstile above, that's an appropriate level of
- * protection for a low-traffic contact form.
+ * Best-effort in-memory sliding-window limiter, keyed by IP or user id. It
+ * only holds state per serverless instance (not shared across
+ * regions/cold starts), so it's a speed bump against spam/flooding, not a
+ * hard guarantee — an appropriate level of protection for a low-traffic
+ * messaging inbox where senders already need an account.
  */
 export function isRateLimited(key: string): boolean {
   const now = Date.now();
