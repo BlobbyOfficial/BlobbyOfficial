@@ -13,7 +13,7 @@ const SECTIONS = [
     title: "What you can do",
     items: [
       "Use any preset from the store in personal, freelance, or commercial video projects, without limit on the number of projects or clients.",
-      "Modify a preset for your own edits — adjust values, combine it with other effects, save your own variant for personal use.",
+      "Modify a preset for your own edits - adjust values, combine it with other effects, save your own variant for personal use.",
       "Credit is appreciated but never required.",
     ],
   },
@@ -22,7 +22,7 @@ const SECTIONS = [
     items: [
       "Repackage, resell, or redistribute the preset files themselves (as-is or lightly modified) as your own product, free or paid.",
       "Claim authorship of a preset in a course, pack, or marketplace listing.",
-      "Upload the raw preset files to third-party marketplaces or bundle them into another paid pack without permission — ask first via the contact page if you have a specific use case in mind.",
+      "Upload the raw preset files to third-party marketplaces or bundle them into another paid pack without permission - ask first via the contact page if you have a specific use case in mind.",
     ],
   },
   {
@@ -53,7 +53,7 @@ export default function LicensingPage() {
               <ul className="space-y-3">
                 {section.items.map((item) => (
                   <li key={item} className="text-[13px] text-mid leading-[1.8] flex gap-3">
-                    <span className="text-dim shrink-0">—</span>
+                    <span className="text-dim shrink-0">-</span>
                     <span>{item}</span>
                   </li>
                 ))}

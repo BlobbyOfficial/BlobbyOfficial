@@ -7,7 +7,7 @@ export type LoginState = { error: string | null };
 
 export async function signIn(_prevState: LoginState, formData: FormData): Promise<LoginState> {
   if (!isSupabaseConfigured()) {
-    return { error: "Admin isn't configured yet — see DEPLOY.md." };
+    return { error: "Admin isn't configured yet - see DEPLOY.md." };
   }
 
   const email = String(formData.get("email") ?? "").trim();

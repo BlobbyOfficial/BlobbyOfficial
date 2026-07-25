@@ -16,7 +16,7 @@ export async function sendMessage(
 
   const body = String(formData.get("body") ?? "").trim();
   if (!body) return { error: "Write a message first." };
-  if (body.length > 4000) return { error: "That message is too long — try trimming it down." };
+  if (body.length > 4000) return { error: "That message is too long - try trimming it down." };
 
   const supabase = await createClient();
   const {
@@ -26,7 +26,7 @@ export async function sendMessage(
   if (!user) return { error: "You need to be signed in to send a message." };
 
   if (isRateLimited(user.id)) {
-    return { error: "Too many messages sent — please try again in a minute." };
+    return { error: "Too many messages sent - please try again in a minute." };
   }
 
   const { error } = await supabase.from("bo_messages").insert({
@@ -38,7 +38,7 @@ export async function sendMessage(
 
   if (error) {
     console.error("Failed to save message:", error);
-    return { error: "Something went wrong on our end — please try again." };
+    return { error: "Something went wrong on our end - please try again." };
   }
 
   revalidatePath("/contact");

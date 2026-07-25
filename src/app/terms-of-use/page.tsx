@@ -18,7 +18,7 @@ const SECTIONS = [
     title: "Presets",
     body: (
       <>
-        Free presets are provided without warranty of any kind — see the{" "}
+        Free presets are provided without warranty of any kind - see the{" "}
         <Link href="/licensing" className="text-fg underline underline-offset-2">
           licensing page
         </Link>{" "}
@@ -29,11 +29,11 @@ const SECTIONS = [
   },
   {
     title: "Freelance editing services",
-    body: "Any paid editing work is agreed separately, project by project, via the contact form or Discord — scope, price, and turnaround are confirmed in writing before work begins. These website terms don't override whatever is separately agreed for a specific project.",
+    body: "Any paid editing work is agreed separately, project by project, via the contact form or Discord - scope, price, and turnaround are confirmed in writing before work begins. These website terms don't override whatever is separately agreed for a specific project.",
   },
   {
     title: "External links",
-    body: "Purchases are processed by Payhip under its own terms. This site links out to third-party platforms (TikTok, YouTube, Discord, Google Drive) that are outside my control — I'm not responsible for their content, availability, or policies.",
+    body: "Purchases are processed by Payhip under its own terms. This site links out to third-party platforms (TikTok, YouTube, Discord, Google Drive) that are outside my control - I'm not responsible for their content, availability, or policies.",
   },
   {
     title: "Changes",

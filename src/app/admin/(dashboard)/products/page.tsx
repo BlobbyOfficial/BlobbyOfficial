@@ -116,7 +116,7 @@ export default async function AdminProductsPage() {
           </form>
         ))}
         {(!products || products.length === 0) && (
-          <p className="text-[12px] text-mid">No products yet — add one above.</p>
+          <p className="text-[12px] text-mid">No products yet - add one above.</p>
         )}
       </div>
     </div>

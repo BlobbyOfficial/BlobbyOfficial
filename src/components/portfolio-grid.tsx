@@ -47,7 +47,7 @@ function ClipGrid({ clips }: { clips: PortfolioClip[] }) {
                 )}
                 {clip.review_discord_username && (
                   <p className="text-[10px] tracking-[0.1em] uppercase text-white/50">
-                    — {clip.review_discord_username}
+                    - {clip.review_discord_username}
                   </p>
                 )}
               </div>

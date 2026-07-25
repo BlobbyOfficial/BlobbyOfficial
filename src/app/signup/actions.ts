@@ -30,7 +30,7 @@ export async function signUp(_prevState: AuthState, formData: FormData): Promise
   const { data, error } = await supabase.auth.signUp({ email, password });
 
   if (error) {
-    return { error: error.message || "Couldn't create that account — try again." };
+    return { error: error.message || "Couldn't create that account - try again." };
   }
 
   if (!data.session) {

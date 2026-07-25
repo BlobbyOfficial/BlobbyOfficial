@@ -37,7 +37,7 @@ export default async function ContactPage() {
         title="Let's talk"
         subtitle="about your edit"
         ghost="@"
-        description="Sign in to message me directly. Tell me about your footage, deadline, and what you're going for — I reply within a day."
+        description="Sign in to message me directly. Tell me about your footage, deadline, and what you're going for - I reply within a day."
       />
 
       <section className="border-t border-border py-20 px-10 max-md:py-14 max-md:px-6">
@@ -64,7 +64,7 @@ export default async function ContactPage() {
                 <p className="font-display text-2xl tracking-[0.06em]">Account required</p>
                 <p className="text-[13px] text-mid leading-[1.7]">
                   Sending a message needs a free account so we can keep the conversation in one
-                  place — no more digging through old emails or DMs.
+                  place - no more digging through old emails or DMs.
                 </p>
                 <div className="flex gap-4">
                   <Link href="/signup?next=/contact" className="btn-primary">

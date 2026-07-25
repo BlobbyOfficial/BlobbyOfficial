@@ -66,7 +66,7 @@ export function Hero() {
           style={{ animationDelay: "0.5s" }}
         >
           I cut fast-paced, high-retention TikTok edits and build the DaVinci Resolve
-          presets to back them up — free for anyone who wants to skip the guesswork.
+          presets to back them up - free for anyone who wants to skip the guesswork.
         </p>
 
         <div

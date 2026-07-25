@@ -12,28 +12,28 @@ const SECTIONS = [
   {
     title: "What's collected",
     body: [
-      "Analytics: Google Analytics and Microsoft Clarity collect standard, aggregated usage data — pages visited, approximate location, device/browser type, and on-page behavior like scrolling or clicks. This data isn't tied to your name or email.",
+      "Analytics: Google Analytics and Microsoft Clarity collect standard, aggregated usage data - pages visited, approximate location, device/browser type, and on-page behavior like scrolling or clicks. This data isn't tied to your name or email.",
       "Contact form: if you submit the contact form, your name, email address, and message are stored so I can respond to you. This is the only place personal information you provide is stored.",
     ],
   },
   {
     title: "How it's used",
     body: [
-      "Analytics data is used only to understand how the site is used and to improve it — it is never sold or shared with third parties beyond the analytics providers themselves (Google, Microsoft).",
+      "Analytics data is used only to understand how the site is used and to improve it - it is never sold or shared with third parties beyond the analytics providers themselves (Google, Microsoft).",
       "Contact form submissions are used solely to respond to your enquiry. They are not added to a mailing list or shared with anyone else.",
     ],
   },
   {
     title: "Your rights",
     body: [
-      "You can ask for any contact-form data linked to your email to be deleted at any time — use the contact form itself or reach out via Discord.",
+      "You can ask for any contact-form data linked to your email to be deleted at any time - use the contact form itself or reach out via Discord.",
       "You can block analytics collection entirely using standard browser tools (ad blockers, tracking protection, or disabling JavaScript), without affecting your ability to use the site.",
     ],
   },
   {
     title: "Third-party services",
     body: [
-      "Store purchases and downloads are handled entirely by Payhip under its own privacy policy — this site never sees or stores your payment details.",
+      "Store purchases and downloads are handled entirely by Payhip under its own privacy policy - this site never sees or stores your payment details.",
       "Hosting infrastructure (Vercel) and the database used for the contact form and site content (Supabase) process data on this site's behalf under their own respective data-processing terms.",
     ],
   },

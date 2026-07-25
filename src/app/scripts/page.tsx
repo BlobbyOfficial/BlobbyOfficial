@@ -40,7 +40,7 @@ export default async function ScriptsPage() {
         title="Write"
         subtitle="together"
         ghost="//"
-        description="Real-time collaborative script writing — like a shared doc. Create one, then send the link to anyone with an account to edit it live together."
+        description="Real-time collaborative script writing - like a shared doc. Create one, then send the link to anyone with an account to edit it live together."
       />
 
       <section className="border-t border-border py-20 px-10 max-md:py-14 max-md:px-6">
@@ -89,7 +89,7 @@ export default async function ScriptsPage() {
             </div>
           ))}
           {(!scripts || scripts.length === 0) && (
-            <p className="text-[12px] text-mid">No scripts yet — create one above.</p>
+            <p className="text-[12px] text-mid">No scripts yet - create one above.</p>
           )}
         </div>
       </section>

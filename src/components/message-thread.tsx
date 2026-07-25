@@ -61,7 +61,7 @@ export function MessageThread({
       <div className="flex-1 overflow-y-auto max-h-[420px] p-6 flex flex-col gap-4">
         {messages.length === 0 && (
           <p className="text-[13px] text-mid">
-            No messages yet — say hello and I&apos;ll get back to you within a day.
+            No messages yet - say hello and I&apos;ll get back to you within a day.
           </p>
         )}
         {messages.map((msg) => (

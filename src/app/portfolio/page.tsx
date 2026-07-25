@@ -8,7 +8,7 @@ import { SOCIALS } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Portfolio",
-  description: "Freelance video editing work from blobbyofficial — TikTok edits and short-form cuts.",
+  description: "Freelance video editing work from blobbyofficial - TikTok edits and short-form cuts.",
   alternates: { canonical: "/portfolio" },
 };
 

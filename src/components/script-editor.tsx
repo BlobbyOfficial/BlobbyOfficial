@@ -198,7 +198,7 @@ export function ScriptEditor({
         value={value}
         onChange={handleChange}
         rows={24}
-        placeholder="Start writing — anyone with this link and an account can edit live alongside you."
+        placeholder="Start writing - anyone with this link and an account can edit live alongside you."
         className="bg-transparent border border-border px-5 py-4 text-[14px] leading-[1.8] text-fg outline-none transition-colors focus:border-border-hover resize-y font-mono"
       />
 

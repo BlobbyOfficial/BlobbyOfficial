@@ -32,7 +32,7 @@ export default async function AdminPortfolioPage() {
                 type="submit"
                 className={hidden ? "btn-ghost" : "btn-primary"}
               >
-                {label}: {hidden ? "Hidden" : "Visible"} — click to {hidden ? "unhide" : "hide"}
+                {label}: {hidden ? "Hidden" : "Visible"} - click to {hidden ? "unhide" : "hide"}
               </button>
             </form>
           );
@@ -167,7 +167,7 @@ export default async function AdminPortfolioPage() {
           </form>
         ))}
         {(!clips || clips.length === 0) && (
-          <p className="text-[12px] text-mid">No portfolio clips yet — add one above.</p>
+          <p className="text-[12px] text-mid">No portfolio clips yet - add one above.</p>
         )}
       </div>
     </div>

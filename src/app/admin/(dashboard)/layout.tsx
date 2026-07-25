@@ -19,7 +19,7 @@ export default async function AdminDashboardLayout({ children }: { children: Rea
           <p className="text-[13px] text-mid leading-[1.8]">
             Set <code className="text-fg">NEXT_PUBLIC_SUPABASE_URL</code> and{" "}
             <code className="text-fg">NEXT_PUBLIC_SUPABASE_ANON_KEY</code> to enable the admin
-            dashboard — see <code className="text-fg">DEPLOY.md</code> for setup steps.
+            dashboard - see <code className="text-fg">DEPLOY.md</code> for setup steps.
           </p>
         </div>
       </div>
