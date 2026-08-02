@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import Link from "next/link";
 import { signIn, type LoginState } from "./actions";
 
 const initialState: LoginState = { error: null };
@@ -40,9 +41,17 @@ export default function AdminLoginPage() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="password" className="text-[10px] tracking-[0.14em] uppercase text-mid">
-            Password
-          </label>
+          <div className="flex items-baseline justify-between gap-3">
+            <label htmlFor="password" className="text-[10px] tracking-[0.14em] uppercase text-mid">
+              Password
+            </label>
+            <Link
+              href="/forgot-password"
+              className="text-[11px] text-mid underline underline-offset-2 transition-colors hover:text-fg"
+            >
+              Forgot password?
+            </Link>
+          </div>
           <input
             id="password"
             name="password"
