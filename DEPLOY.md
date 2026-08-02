@@ -28,8 +28,10 @@ dynamic content to work in production.
    into `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
 5. **Auth emails** (email verification + forgot password). Under
    **Authentication → URL Configuration**:
-   - Set **Site URL** to `https://blobbyofficial.com`.
-   - Add these **Redirect URLs**: `https://blobbyofficial.com/auth/callback`,
+   - Set **Site URL** to `https://www.blobbyofficial.com` (the apex domain
+     308-redirects to `www`, so `www` is the origin auth links come back to).
+   - Add these **Redirect URLs**: `https://www.blobbyofficial.com/auth/callback`,
+     `https://blobbyofficial.com/auth/callback`,
      `http://localhost:3000/auth/callback`, and (for Vercel previews)
      `https://*.vercel.app/auth/callback`.
 
