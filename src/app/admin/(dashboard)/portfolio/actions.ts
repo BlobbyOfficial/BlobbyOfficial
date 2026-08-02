@@ -2,23 +2,21 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { syncPortfolioVideos } from "@/lib/portfolio-sync";
 
-export async function createClip(formData: FormData) {
-  const supabase = await createClient();
-  const rating = String(formData.get("review_rating") ?? "");
-  await supabase.from("portfolio_clips").insert({
-    title: String(formData.get("title") ?? ""),
-    category: formData.get("category") === "clients" ? "clients" : "tiktok",
-    video_url: String(formData.get("video_url") ?? ""),
-    sort_order: Number(formData.get("sort_order") ?? 0),
-    published: formData.get("published") === "on",
-    review_rating: rating ? Number(rating) : null,
-    review_comment: String(formData.get("review_comment") ?? "") || null,
-    review_discord_username: String(formData.get("review_discord_username") ?? "") || null,
-  });
+function revalidateClipPages() {
   revalidatePath("/admin/portfolio");
   revalidatePath("/");
   revalidatePath("/portfolio");
+}
+
+/**
+ * Clips are never created by hand from the dashboard — this pulls in whatever
+ * is sitting in public/media/videos and adds the new ones as private.
+ */
+export async function syncClips() {
+  await syncPortfolioVideos();
+  revalidateClipPages();
 }
 
 export async function updateClip(id: string, formData: FormData) {
@@ -29,7 +27,6 @@ export async function updateClip(id: string, formData: FormData) {
     .update({
       title: String(formData.get("title") ?? ""),
       category: formData.get("category") === "clients" ? "clients" : "tiktok",
-      video_url: String(formData.get("video_url") ?? ""),
       sort_order: Number(formData.get("sort_order") ?? 0),
       published: formData.get("published") === "on",
       review_rating: rating ? Number(rating) : null,
@@ -37,23 +34,17 @@ export async function updateClip(id: string, formData: FormData) {
       review_discord_username: String(formData.get("review_discord_username") ?? "") || null,
     })
     .eq("id", id);
-  revalidatePath("/admin/portfolio");
-  revalidatePath("/");
-  revalidatePath("/portfolio");
+  revalidateClipPages();
 }
 
 export async function deleteClip(id: string) {
   const supabase = await createClient();
   await supabase.from("portfolio_clips").delete().eq("id", id);
-  revalidatePath("/admin/portfolio");
-  revalidatePath("/");
-  revalidatePath("/portfolio");
+  revalidateClipPages();
 }
 
 export async function toggleSectionVisibility(category: "tiktok" | "clients", hidden: boolean) {
   const supabase = await createClient();
   await supabase.from("portfolio_section_visibility").upsert({ category, hidden });
-  revalidatePath("/admin/portfolio");
-  revalidatePath("/");
-  revalidatePath("/portfolio");
+  revalidateClipPages();
 }

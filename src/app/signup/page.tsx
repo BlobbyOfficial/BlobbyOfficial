@@ -1,10 +1,10 @@
 "use client";
 
-import { Suspense, useActionState } from "react";
+import { Suspense, useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { signUp, type AuthState } from "./actions";
+import { signUp, resendVerification, type AuthState } from "./actions";
 
 const initialState: AuthState = { error: null };
 
@@ -27,6 +27,8 @@ export default function SignupPage() {
 
 function SignupForm() {
   const [state, formAction] = useActionState(signUp, initialState);
+  const [resendState, resendAction] = useActionState(resendVerification, initialState);
+  const [email, setEmail] = useState("");
   const searchParams = useSearchParams();
   const next = searchParams.get("next") ?? "/contact";
 
@@ -49,6 +51,8 @@ function SignupForm() {
             name="email"
             type="email"
             required
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             className="bg-transparent border border-border px-4 py-3 text-[13px] text-fg outline-none transition-colors focus:border-border-hover"
           />
         </div>
@@ -75,6 +79,22 @@ function SignupForm() {
         {state.info && <p className="text-[12px] text-mid">{state.info}</p>}
 
         <SubmitButton />
+
+        {state.info && (
+          <div className="flex flex-col gap-2 items-center">
+            <input type="hidden" name="email" value={email} />
+            <input type="hidden" name="next" value={next} />
+            <button formAction={resendAction} className="text-[12px] text-fg underline underline-offset-2">
+              Didn&apos;t get it? Resend the email
+            </button>
+            {resendState.error && (
+              <p className="text-[12px] text-red-400" role="alert">
+                {resendState.error}
+              </p>
+            )}
+            {resendState.info && <p className="text-[12px] text-mid">{resendState.info}</p>}
+          </div>
+        )}
 
         <p className="text-[12px] text-mid text-center">
           Already have an account?{" "}

@@ -26,6 +26,21 @@ dynamic content to work in production.
    `bo_admins` can reach `/admin`.
 4. Copy **Project Settings → API → Project URL** and **anon public key**
    into `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+5. **Auth emails** (email verification + forgot password). Under
+   **Authentication → URL Configuration**:
+   - Set **Site URL** to `https://blobbyofficial.com`.
+   - Add these **Redirect URLs**: `https://blobbyofficial.com/auth/callback`,
+     `http://localhost:3000/auth/callback`, and (for Vercel previews)
+     `https://*.vercel.app/auth/callback`.
+
+   Every link the app sends — the signup confirmation and the password reset —
+   comes back to `/auth/callback`, which exchanges the one-time code for a
+   session and forwards the user on (`/reset-password` for a recovery link).
+   Supabase's built-in SMTP is heavily rate-limited, so for anything beyond
+   testing set up your own SMTP under **Authentication → Emails → SMTP
+   Settings**. Leave **Confirm email** enabled under **Authentication →
+   Sign In / Providers** if you want addresses verified before sign-in — the
+   sign-in page detects unconfirmed accounts and offers a resend button.
 
 ## 2. Vercel
 

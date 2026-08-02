@@ -1,4 +1,5 @@
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
+import { VIDEO_MANIFEST } from "@/lib/video-manifest";
 import type { PortfolioCategory, PortfolioClip, Product } from "@/lib/types";
 
 /**
@@ -52,80 +53,23 @@ const SEED_PRODUCTS: Product[] = [
   },
 ];
 
-const SEED_PORTFOLIO: PortfolioClip[] = [
-  {
-    id: "seed-clip-1",
-    title: "TikTok edit 1",
-    category: "tiktok",
-    video_url: "https://drive.google.com/file/d/19hms66uuhjAZqoEFvYmg7btb3Xku7rz1/",
-    sort_order: 0,
-    published: true,
-    created_at: "",
-    review_rating: null,
-    review_comment: null,
-    review_discord_username: null,
-  },
-  {
-    id: "seed-clip-2",
-    title: "TikTok edit 2",
-    category: "tiktok",
-    video_url: "https://drive.google.com/file/d/1LTuqS4n0Og72fY2FbpwSBmjbz7t7-IZG/",
-    sort_order: 1,
-    published: true,
-    created_at: "",
-    review_rating: null,
-    review_comment: null,
-    review_discord_username: null,
-  },
-  {
-    id: "seed-clip-3",
-    title: "TikTok edit 3",
-    category: "tiktok",
-    video_url: "https://drive.google.com/file/d/1U5KJM6V3nt8hARxp0R60BIiJ1sUwd8uC/",
-    sort_order: 2,
-    published: true,
-    created_at: "",
-    review_rating: null,
-    review_comment: null,
-    review_discord_username: null,
-  },
-  {
-    id: "seed-clip-4",
-    title: "TikTok edit 4",
-    category: "tiktok",
-    video_url: "https://drive.google.com/file/d/1C6fAmte9Ed9R2QjjfnD2eodTNcObqn3E/",
-    sort_order: 3,
-    published: true,
-    created_at: "",
-    review_rating: null,
-    review_comment: null,
-    review_discord_username: null,
-  },
-  {
-    id: "seed-clip-5",
-    title: "TikTok edit 5",
-    category: "tiktok",
-    video_url: "https://drive.google.com/file/d/1YlMdc9chtr4SVSnyQcofyjXmudEKEEu6/",
-    sort_order: 4,
-    published: true,
-    created_at: "",
-    review_rating: null,
-    review_comment: null,
-    review_discord_username: null,
-  },
-  {
-    id: "seed-clip-6",
-    title: "TikTok edit 6",
-    category: "tiktok",
-    video_url: "https://drive.google.com/file/d/1OIj_ws1LTWSsIk0sJzA1cW9uEy9bveD0/",
-    sort_order: 5,
-    published: true,
-    created_at: "",
-    review_rating: null,
-    review_comment: null,
-    review_discord_username: null,
-  },
-];
+/**
+ * Portfolio seed comes straight from the files in public/media/videos — the
+ * filename is the clip title. This is only used when Supabase isn't
+ * configured; once it is, portfolio_clips (managed from /admin) wins.
+ */
+const SEED_PORTFOLIO: PortfolioClip[] = VIDEO_MANIFEST.map((entry) => ({
+  id: `seed-${entry.video_url}`,
+  title: entry.title,
+  category: entry.category,
+  video_url: entry.video_url,
+  sort_order: entry.sort_order,
+  published: true,
+  created_at: "",
+  review_rating: null,
+  review_comment: null,
+  review_discord_username: null,
+}));
 
 export const PORTFOLIO_STATS = [
   { platform: "TikTok", value: "2186", label: "Followers" },
@@ -157,8 +101,11 @@ export async function getPortfolioClips(): Promise<PortfolioClip[]> {
     .eq("published", true)
     .order("sort_order", { ascending: true });
 
-  if (error || !data || data.length === 0) return SEED_PORTFOLIO;
-  return data;
+  // Only fall back to the seed on a hard failure: an empty result is a
+  // legitimate state now that clips are added as private and only appear once
+  // they're published from /admin.
+  if (error) return SEED_PORTFOLIO;
+  return data ?? [];
 }
 
 export async function getHiddenPortfolioSections(): Promise<Set<PortfolioCategory>> {

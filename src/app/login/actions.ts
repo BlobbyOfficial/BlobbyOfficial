@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
-export type AuthState = { error: string | null };
+export type AuthState = { error: string | null; needsVerification?: boolean };
 
 function safeNext(next: FormDataEntryValue | null): string {
   const value = String(next ?? "");
@@ -27,6 +27,14 @@ export async function signIn(_prevState: AuthState, formData: FormData): Promise
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
+    // An unconfirmed account is a different problem from a wrong password, and
+    // it's fixable from this page — say so and offer the resend button.
+    if (error.code === "email_not_confirmed") {
+      return {
+        error: "Verify your email address first - we sent you a link when you signed up.",
+        needsVerification: true,
+      };
+    }
     return { error: "Invalid email or password." };
   }
 

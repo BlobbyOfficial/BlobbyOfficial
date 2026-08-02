@@ -41,6 +41,15 @@ npm run dev
 Runs at `http://localhost:3000` with static seed content even before
 Supabase is configured — see `src/lib/content.ts`.
 
+### Adding portfolio clips
+
+Drop the `.mp4` into `public/media/videos/TikTok` (own work) or
+`public/media/videos/clients` (client work) — the filename becomes the clip
+title. `npm run videos:manifest` (run automatically by `dev` and `build`)
+regenerates `src/lib/video-manifest.ts`, and opening `/admin/portfolio` adds
+anything new to the database as a **private** clip. Nothing is uploaded or
+linked from the dashboard; you rename it, add a review, and publish it there.
+
 ## Project structure
 
 ```text

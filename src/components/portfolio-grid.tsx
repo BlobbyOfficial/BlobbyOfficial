@@ -1,9 +1,13 @@
 import type { PortfolioCategory, PortfolioClip } from "@/lib/types";
 
-function toDriveEmbedUrl(url: string): string {
-  const match = url.match(/\/d\/([^/]+)/);
-  if (!match) return url;
-  return `https://drive.google.com/file/d/${match[1]}/preview`;
+/**
+ * Clips are local files under /public/media/videos, so there are no separate
+ * thumbnail images: the poster frame is grabbed from the video itself by
+ * pointing the browser at the first frame with a media fragment (`#t=`) and
+ * letting it preload just the metadata.
+ */
+function toPosterFrameSrc(url: string): string {
+  return url.includes("#") ? url : `${url}#t=0.1`;
 }
 
 function Stars({ rating }: { rating: number }) {
@@ -29,12 +33,15 @@ function ClipGrid({ clips }: { clips: PortfolioClip[] }) {
             key={clip.id}
             className="group relative aspect-square bg-[#0d0d0d] border border-border overflow-hidden"
           >
-            <iframe
-              src={toDriveEmbedUrl(clip.video_url)}
+            <video
+              src={toPosterFrameSrc(clip.video_url)}
               title={clip.title}
-              allow="autoplay"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full border-0"
+              controls
+              playsInline
+              muted
+              loop
+              preload="metadata"
+              className="absolute inset-0 w-full h-full object-cover bg-black"
             />
 
             {hasReview && (
