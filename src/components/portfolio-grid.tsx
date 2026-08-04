@@ -41,7 +41,10 @@ function ClipGrid({ clips }: { clips: PortfolioClip[] }) {
               muted
               loop
               preload="metadata"
-              className="absolute inset-0 w-full h-full object-cover bg-black"
+              /* `contain`, not `cover`: these are 9:16 TikTok edits in a
+                 square tile, so cover was cropping the top and bottom off
+                 the actual work. */
+              className="absolute inset-0 w-full h-full object-contain bg-black"
             />
 
             {hasReview && (

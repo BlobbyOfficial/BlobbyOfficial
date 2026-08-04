@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, DM_Mono, Cormorant, Monsieur_La_Doulaise } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { Grain } from "@/components/grain";
 import { Cursor } from "@/components/cursor";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import { ANALYTICS, SITE_NAME, SITE_URL, SOCIALS } from "@/lib/site";
+import { Analytics } from "@/components/analytics";
+import { SITE_NAME, SITE_URL, SOCIALS } from "@/lib/site";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -53,19 +53,19 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "BlobbyOfficial" }],
   robots: { index: true, follow: true },
-  alternates: { canonical: "/" },
+  // No canonical here on purpose: metadata is inherited, so a canonical set
+  // on the root layout makes every page that doesn't override it claim to be
+  // the homepage. Each page declares its own.
   openGraph: {
     title: `${SITE_NAME} | High quality, free editing presets for video editors.`,
     description: "High quality, free editing presets for video editors.",
     type: "website",
     url: SITE_URL,
-    images: ["/preview.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} | High quality, free editing presets for video editors.`,
     description: "High quality, free editing presets for video editors.",
-    images: ["/preview.png"],
   },
   icons: {
     icon: [
@@ -76,6 +76,15 @@ export const metadata: Metadata = {
     apple: "/media/images/favicon/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
+};
+
+/**
+ * The site is pure black; without this, mobile browsers paint their chrome
+ * white around it and Android's splash flashes white on launch.
+ */
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark",
 };
 
 const personJsonLd = {
@@ -111,29 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <SiteFooter />
 
-        {process.env.NODE_ENV === "production" && (
-          <>
-            <Script
-              id="clarity-analytics"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "${ANALYTICS.clarityId}");`,
-              }}
-            />
-            <Script
-              id="ga-loader"
-              strategy="afterInteractive"
-              src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.gaId}`}
-            />
-            <Script
-              id="ga-init"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${ANALYTICS.gaId}');`,
-              }}
-            />
-          </>
-        )}
+        <Analytics enabled={process.env.NODE_ENV === "production"} />
       </body>
     </html>
   );

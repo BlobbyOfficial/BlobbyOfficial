@@ -2,6 +2,19 @@ import Image from "next/image";
 import type { Product } from "@/lib/types";
 import { Reveal } from "@/components/reveal";
 
+/**
+ * The overlay badge names the software a preset is for. It used to be
+ * hardcoded to "DaVinci Resolve Preset", which mislabelled the HandBrake
+ * compression profile, so it's derived from the product's own tags instead.
+ */
+function badgeFor(product: Product): string {
+  const tags = product.tags.map((tag) => tag.toLowerCase());
+
+  if (tags.some((tag) => tag.includes("handbrake"))) return "HandBrake Preset";
+  if (tags.some((tag) => tag.includes("davinci"))) return "DaVinci Resolve Preset";
+  return "Editing Preset";
+}
+
 export function ProductCard({ product }: { product: Product }) {
   return (
     <Reveal className="bg-card border border-border transition-[border-color,transform] duration-300 relative overflow-hidden hover:border-border-hover hover:-translate-y-0.5">
@@ -19,7 +32,7 @@ export function ProductCard({ product }: { product: Product }) {
           className="object-cover"
         />
         <span className="absolute bottom-3.5 left-3.5 bg-black/80 text-[9px] tracking-[0.2em] uppercase px-2 py-1 text-mid border border-border">
-          DaVinci Resolve Preset
+          {badgeFor(product)}
         </span>
       </a>
 

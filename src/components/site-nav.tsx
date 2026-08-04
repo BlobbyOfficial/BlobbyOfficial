@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NAV_LINKS } from "@/lib/site";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -22,6 +23,22 @@ export function SiteNav() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // A full-screen overlay menu needs an escape hatch that isn't the toggle
+  // button, both for keyboard users and for anyone who opened it by accident.
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <nav
       className="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-10 py-[22px] bg-black/85 backdrop-blur-md border-b border-border max-md:px-5 max-md:py-4"
@@ -32,9 +49,11 @@ export function SiteNav() {
       </Link>
 
       <button
+        ref={toggleRef}
         className="hidden max-md:flex flex-col justify-center items-center gap-[5px] w-9 h-9 border border-border shrink-0 transition-colors hover:border-border-hover"
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
+        aria-controls="primary-navigation"
         onClick={() => setOpen((v) => !v)}
       >
         <span
@@ -46,6 +65,7 @@ export function SiteNav() {
       </button>
 
       <ul
+        id="primary-navigation"
         className={`flex gap-9 list-none max-md:fixed max-md:inset-x-0 max-md:top-0 max-md:h-dvh max-md:bg-black/97 max-md:backdrop-blur-xl max-md:flex-col max-md:justify-center max-md:items-center max-md:gap-0 max-md:border-b max-md:border-border max-md:z-[99] max-md:transition-transform max-md:duration-[400ms] ${
           open ? "max-md:translate-y-0" : "max-md:-translate-y-full"
         }`}
