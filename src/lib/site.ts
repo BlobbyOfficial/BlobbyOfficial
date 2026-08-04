@@ -7,6 +7,7 @@ export const SOCIALS = {
   youtube: "https://youtube.com/@blobby.official",
   discord: "https://discord.com/users/1109378632071254086",
   payhipStore: "https://payhip.com/blobbyofficial",
+  github: "https://github.com/blobbyofficial/blobbyofficial",
 } as const;
 
 export const ANALYTICS = {
