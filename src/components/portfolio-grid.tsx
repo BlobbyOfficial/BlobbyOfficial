@@ -1,3 +1,4 @@
+import { VideoPlayer } from "@/components/video-player";
 import type { PortfolioCategory, PortfolioClip } from "@/lib/types";
 
 /**
@@ -29,40 +30,29 @@ function ClipGrid({ clips }: { clips: PortfolioClip[] }) {
         const hasReview = clip.review_rating != null || clip.review_comment || clip.review_discord_username;
 
         return (
-          <div
+          <VideoPlayer
             key={clip.id}
-            className="group relative aspect-square bg-[#0d0d0d] border border-border overflow-hidden"
-          >
-            <video
-              src={toPosterFrameSrc(clip.video_url)}
-              title={clip.title}
-              controls
-              playsInline
-              muted
-              loop
-              preload="metadata"
-              /* `contain`, not `cover`: these are 9:16 TikTok edits in a
-                 square tile, so cover was cropping the top and bottom off
-                 the actual work. */
-              className="absolute inset-0 w-full h-full object-contain bg-black"
-            />
-
-            {hasReview && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 bg-black/85 px-5 text-center opacity-0 pointer-events-none transition-opacity duration-250 group-hover:opacity-100">
-                {clip.review_rating != null && <Stars rating={clip.review_rating} />}
-                {clip.review_comment && (
-                  <p className="text-[12px] leading-[1.6] text-white/90 max-w-[85%]">
-                    &ldquo;{clip.review_comment}&rdquo;
-                  </p>
-                )}
-                {clip.review_discord_username && (
-                  <p className="text-[10px] tracking-[0.1em] uppercase text-white/50">
-                    - {clip.review_discord_username}
-                  </p>
-                )}
-              </div>
-            )}
-          </div>
+            src={toPosterFrameSrc(clip.video_url)}
+            title={clip.title}
+            className="aspect-square bg-[#0d0d0d] border border-border"
+            overlay={
+              hasReview ? (
+                <>
+                  {clip.review_rating != null && <Stars rating={clip.review_rating} />}
+                  {clip.review_comment && (
+                    <p className="text-[12px] leading-[1.6] text-white/90 max-w-[85%]">
+                      &ldquo;{clip.review_comment}&rdquo;
+                    </p>
+                  )}
+                  {clip.review_discord_username && (
+                    <p className="text-[10px] tracking-[0.1em] uppercase text-white/50">
+                      - {clip.review_discord_username}
+                    </p>
+                  )}
+                </>
+              ) : undefined
+            }
+          />
         );
       })}
     </div>

@@ -266,6 +266,77 @@ textarea:focus-visible,
   top: 12px;
 }
 
+/* ── VIDEO SCRUBBER ──
+   A range input styled down to a 2px hairline so the portfolio player reads
+   as part of the site rather than as browser chrome. The filled portion is
+   driven by a --progress custom property set from the component. */
+.video-scrubber {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 12px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.video-scrubber::-webkit-slider-runnable-track {
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--fg) 0%,
+    var(--fg) var(--progress, 0%),
+    rgba(255, 255, 255, 0.25) var(--progress, 0%),
+    rgba(255, 255, 255, 0.25) 100%
+  );
+}
+
+.video-scrubber::-moz-range-track {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.video-scrubber::-moz-range-progress {
+  height: 2px;
+  background: var(--fg);
+}
+
+.video-scrubber::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 9px;
+  height: 9px;
+  margin-top: -3.5px;
+  background: var(--fg);
+  border: none;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.video-scrubber::-moz-range-thumb {
+  width: 9px;
+  height: 9px;
+  background: var(--fg);
+  border: none;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.video-scrubber:hover::-webkit-slider-thumb,
+.video-scrubber:focus-visible::-webkit-slider-thumb {
+  opacity: 1;
+}
+
+.video-scrubber:hover::-moz-range-thumb,
+.video-scrubber:focus-visible::-moz-range-thumb {
+  opacity: 1;
+}
+
+.video-scrubber:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
+}
+
 /* ── SCANLINE + SHARD (shared cinematic backdrop treatment) ── */
 .cine-backdrop::before {
   content: "";
