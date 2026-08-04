@@ -1,19 +1,24 @@
 {
-  "name": "blobbyofficial",
-  "short_name": "Blobby",
+  "name": "blobbyofficial — freelance video editor",
+  "short_name": "blobbyofficial",
+  "description": "High-retention TikTok edits, and the free DaVinci Resolve presets behind them.",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/media/images/favicon/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/media/images/favicon/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "background_color": "#000000",
   "display": "standalone"
 }

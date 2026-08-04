@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Hero } from "@/components/hero";
 import { ProductCard } from "@/components/product-card";
@@ -6,6 +7,10 @@ import { StatsRow } from "@/components/stats-row";
 import { Reveal } from "@/components/reveal";
 import { getProducts, getPortfolioClips, getHiddenPortfolioSections } from "@/lib/content";
 import { SOCIALS } from "@/lib/site";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default async function Home() {
   const [products, clips, hiddenSections] = await Promise.all([
@@ -42,7 +47,7 @@ export default async function Home() {
         <Reveal>
           <div className="border border-border p-9 max-md:p-6">
             <div className="flex items-baseline justify-between mb-7">
-              <div className="font-display text-[32px] tracking-[0.06em] max-md:text-[26px]">My Work</div>
+              <h3 className="font-display text-[32px] tracking-[0.06em] max-md:text-[26px]">My Work</h3>
               <a
                 href={SOCIALS.tiktok}
                 target="_blank"

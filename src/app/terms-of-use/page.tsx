@@ -28,8 +28,24 @@ const SECTIONS = [
     ),
   },
   {
+    title: "Accounts, messages and scripts",
+    body: (
+      <>
+        Creating an account is optional and only needed to message me or use the script editor. Keep
+        your password to yourself, and don&apos;t use the messaging or script features for spam,
+        harassment, or anything unlawful - I can remove an account that does. Anyone you share a
+        script link with can read and edit that script, so only send it to people you want editing
+        it. See the{" "}
+        <Link href="/privacy-policy" className="text-fg underline underline-offset-2">
+          privacy policy
+        </Link>{" "}
+        for what&apos;s stored and how to have it deleted.
+      </>
+    ),
+  },
+  {
     title: "Freelance editing services",
-    body: "Any paid editing work is agreed separately, project by project, via the contact form or Discord - scope, price, and turnaround are confirmed in writing before work begins. These website terms don't override whatever is separately agreed for a specific project.",
+    body: "Any paid editing work is agreed separately, project by project, via the contact page or Discord - scope, price, and turnaround are confirmed in writing before work begins. These website terms don't override whatever is separately agreed for a specific project.",
   },
   {
     title: "External links",
@@ -49,7 +65,7 @@ export default function TermsOfUsePage() {
         title="The rules of"
         subtitle="the road"
         ghost="T"
-        description="Last updated 2026. Straightforward terms for using this site and its services."
+        description="Last updated August 2026. Straightforward terms for using this site and its services."
       />
 
       <section className="border-t border-border py-20 px-10 max-md:py-14 max-md:px-6">

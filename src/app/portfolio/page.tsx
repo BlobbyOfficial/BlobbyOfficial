@@ -30,9 +30,9 @@ export default async function PortfolioPage() {
 
         <div className="border border-border p-9 max-md:p-6">
           <div className="flex items-baseline justify-between mb-7">
-            <div className="font-display text-[32px] tracking-[0.06em] max-md:text-[26px]">
+            <h2 className="font-display text-[32px] tracking-[0.06em] max-md:text-[26px]">
               My Work
-            </div>
+            </h2>
             <a
               href={SOCIALS.tiktok}
               target="_blank"

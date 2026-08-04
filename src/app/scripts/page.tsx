@@ -5,10 +5,12 @@ import { PageHero } from "@/components/page-hero";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { createScript, deleteScript } from "./actions";
 
+// Sign-in gated: signed-out visitors are redirected to /login, so there is
+// nothing here for a crawler to index.
 export const metadata: Metadata = {
   title: "Scripts",
   description: "Real-time collaborative script writing.",
-  alternates: { canonical: "/scripts" },
+  robots: { index: false, follow: false },
 };
 
 export default async function ScriptsPage() {

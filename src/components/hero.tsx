@@ -30,6 +30,9 @@ export function Hero() {
       className="cine-backdrop relative min-h-screen flex flex-col justify-end items-start px-10 pb-[60px] overflow-hidden max-md:px-6 max-md:pb-14 max-md:min-h-dvh"
       id="home"
     >
+      {/* The black fill is the poster: the video fades in over it once it can
+          play. A `poster` image would be better for LCP, but the one this
+          pointed at was never committed, so it only ever cost a 404. */}
       <div className="absolute inset-0 bg-black">
         <video
           ref={videoRef}
@@ -39,7 +42,6 @@ export function Hero() {
           loop
           playsInline
           preload="metadata"
-          poster="/media/hero-poster.webp"
           aria-hidden="true"
         >
           <source src="/media/hero.mp4" type="video/mp4" />
