@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import { redirect, notFound } from "next/navigation";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { ScriptEditor } from "@/components/script-editor";
+
+// A private document behind a share link — never index it, and don't leak the
+// title into a listing either.
+export const metadata: Metadata = {
+  title: "Script",
+  robots: { index: false, follow: false },
+};
 
 export default async function ScriptPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -20,7 +28,11 @@ export default async function ScriptPage({ params }: { params: Promise<{ id: str
 
   if (!user) redirect(`/login?next=/scripts/${id}`);
 
-  const { data: script } = await supabase.from("bo_scripts").select("*").eq("id", id).maybeSingle();
+  // Fetched by uuid through a security-definer function rather than a table
+  // query: bo_scripts is owner-only at the RLS level, and knowing the id is
+  // exactly what "having the share link" means (see migration 0009).
+  const { data } = await supabase.rpc("bo_script_get", { p_id: id });
+  const script = data?.[0];
 
   if (!script) notFound();
 

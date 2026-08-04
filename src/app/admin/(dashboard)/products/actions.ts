@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createClient } from "@/lib/supabase/server";
+import { requireAdmin } from "@/lib/admin";
 
 function parseTags(raw: FormDataEntryValue | null) {
   return String(raw ?? "")
@@ -24,26 +24,26 @@ function productFromForm(formData: FormData) {
   };
 }
 
-export async function createProduct(formData: FormData) {
-  const supabase = await createClient();
-  await supabase.from("products").insert(productFromForm(formData));
+function revalidateProductPages() {
   revalidatePath("/admin/products");
   revalidatePath("/");
   revalidatePath("/store");
+}
+
+export async function createProduct(formData: FormData) {
+  const { supabase } = await requireAdmin();
+  await supabase.from("products").insert(productFromForm(formData));
+  revalidateProductPages();
 }
 
 export async function updateProduct(id: string, formData: FormData) {
-  const supabase = await createClient();
+  const { supabase } = await requireAdmin();
   await supabase.from("products").update(productFromForm(formData)).eq("id", id);
-  revalidatePath("/admin/products");
-  revalidatePath("/");
-  revalidatePath("/store");
+  revalidateProductPages();
 }
 
 export async function deleteProduct(id: string) {
-  const supabase = await createClient();
+  const { supabase } = await requireAdmin();
   await supabase.from("products").delete().eq("id", id);
-  revalidatePath("/admin/products");
-  revalidatePath("/");
-  revalidatePath("/store");
+  revalidateProductPages();
 }

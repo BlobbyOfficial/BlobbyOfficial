@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/server";
+import { requireAdmin } from "@/lib/admin";
 import { syncPortfolioVideos } from "@/lib/portfolio-sync";
 import { syncClips, updateClip, deleteClip, toggleSectionVisibility } from "./actions";
 
@@ -12,12 +12,16 @@ const SECTIONS = [
 ] as const;
 
 export default async function AdminPortfolioPage() {
+  // Checked here as well as in the layout: layouts and pages render in
+  // parallel, so a layout redirect isn't guaranteed to stop this page's own
+  // data fetching — and opening this page writes to the database.
+  const { supabase } = await requireAdmin();
+
   // Videos are picked up automatically: anything new in public/media/videos is
   // added as a private clip the moment this page is opened. Nothing is
   // uploaded or linked by hand.
   const sync = await syncPortfolioVideos();
 
-  const supabase = await createClient();
   const [{ data: clips }, { data: visibility }] = await Promise.all([
     supabase.from("portfolio_clips").select("*").order("sort_order", { ascending: true }),
     supabase.from("portfolio_section_visibility").select("*"),

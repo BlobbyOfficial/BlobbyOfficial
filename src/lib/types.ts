@@ -115,7 +115,25 @@ export type Database = {
       };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      /**
+       * Script access is routed through these instead of querying bo_scripts
+       * directly: the table itself is owner-only, and knowing a script's uuid
+       * is what "having the share link" means. See migration 0009.
+       */
+      bo_script_get: {
+        Args: { p_id: string };
+        Returns: BoScript[];
+      };
+      bo_script_save: {
+        Args: { p_id: string; p_content: string };
+        Returns: undefined;
+      };
+      bo_script_rename: {
+        Args: { p_id: string; p_title: string };
+        Returns: undefined;
+      };
+    };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
   };

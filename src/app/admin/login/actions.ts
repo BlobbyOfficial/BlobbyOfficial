@@ -18,10 +18,26 @@ export async function signIn(_prevState: LoginState, formData: FormData): Promis
   }
 
   const supabase = await createClient();
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
-  if (error) {
+  if (error || !data.user) {
     return { error: "Invalid email or password." };
+  }
+
+  // Site accounts and the admin share one Supabase auth, so valid credentials
+  // aren't enough. Without this check a normal account signs in successfully,
+  // gets redirected to /admin, is bounced straight back by the dashboard
+  // layout, and lands on this form again with nothing explaining why.
+  const { data: adminRow } = await supabase
+    .from("bo_admins")
+    .select("user_id")
+    .eq("user_id", data.user.id)
+    .maybeSingle();
+
+  if (!adminRow) {
+    // Don't leave them silently holding a session they didn't ask for.
+    await supabase.auth.signOut();
+    return { error: "That account doesn't have admin access." };
   }
 
   redirect("/admin");
