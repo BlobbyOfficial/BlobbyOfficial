@@ -3,6 +3,14 @@ import Link from "next/link";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { SignOutButton } from "@/components/admin/sign-out-button";
 
+/**
+ * The dashboard is per-request by definition — it reads the caller's session
+ * and, on /admin/portfolio, writes to the database on render. Declaring that
+ * explicitly stops Next from trying to prerender these routes at build time,
+ * where there is no session to check.
+ */
+export const dynamic = "force-dynamic";
+
 const ADMIN_NAV = [
   { href: "/admin", label: "Overview" },
   { href: "/admin/portfolio", label: "Portfolio" },

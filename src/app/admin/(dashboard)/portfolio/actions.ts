@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createClient } from "@/lib/supabase/server";
+import { requireAdmin } from "@/lib/admin";
 import { syncPortfolioVideos } from "@/lib/portfolio-sync";
 
 function revalidateClipPages() {
@@ -15,12 +15,13 @@ function revalidateClipPages() {
  * is sitting in public/media/videos and adds the new ones as private.
  */
 export async function syncClips() {
+  await requireAdmin();
   await syncPortfolioVideos();
   revalidateClipPages();
 }
 
 export async function updateClip(id: string, formData: FormData) {
-  const supabase = await createClient();
+  const { supabase } = await requireAdmin();
   const rating = String(formData.get("review_rating") ?? "");
   await supabase
     .from("portfolio_clips")
@@ -38,13 +39,13 @@ export async function updateClip(id: string, formData: FormData) {
 }
 
 export async function deleteClip(id: string) {
-  const supabase = await createClient();
+  const { supabase } = await requireAdmin();
   await supabase.from("portfolio_clips").delete().eq("id", id);
   revalidateClipPages();
 }
 
 export async function toggleSectionVisibility(category: "tiktok" | "clients", hidden: boolean) {
-  const supabase = await createClient();
+  const { supabase } = await requireAdmin();
   await supabase.from("portfolio_section_visibility").upsert({ category, hidden });
   revalidateClipPages();
 }
