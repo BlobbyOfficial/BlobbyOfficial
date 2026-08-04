@@ -14,6 +14,11 @@ dynamic content to work in production.
    `products`, `contact_messages` (legacy), `bo_admins`, `bo_messages`, and
    `bo_scripts` tables, their row-level security policies, and seed the
    products/clips that were on the original static site.
+
+   **`0009` is not optional.** The policies written in `0001` predate public
+   signup and let any signed-up account edit content and read the legacy
+   contact messages; `0009` moves them onto `bo_admins`. A deployment that
+   stops at `0008` is wide open to anyone who registers.
 3. Create your admin account: **Authentication → Users → Add user**. Then,
    in the SQL Editor, add that user's id to `bo_admins`:
 
@@ -43,6 +48,10 @@ dynamic content to work in production.
    Settings**. Leave **Confirm email** enabled under **Authentication →
    Sign In / Providers** if you want addresses verified before sign-in — the
    sign-in page detects unconfirmed accounts and offers a resend button.
+6. **Recommended**: turn on **Leaked password protection** under
+   **Authentication → Policies**. Signup is open to the public, so this
+   costs nothing and stops people reusing a password that already appears in
+   a known breach.
 
 ## 2. Vercel
 
@@ -51,6 +60,11 @@ dynamic content to work in production.
 3. Add the environment variables from `.env.example` (Project Settings →
    Environment Variables) — `NEXT_PUBLIC_SITE_URL`,
    `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+
+   `NEXT_PUBLIC_SITE_URL` must be the host you actually serve, including
+   `www` if the apex redirects to it. It's the origin used for canonical
+   URLs, the sitemap and Open Graph tags, so pointing it at a host that
+   redirects makes every canonical resolve somewhere other than the page.
 4. Deploy.
 5. **Domain**: Project Settings → Domains → add `blobbyofficial.com`, then
    point its DNS at Vercel per the instructions Vercel shows you. This

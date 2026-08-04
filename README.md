@@ -28,6 +28,15 @@ Hire me: [blobbyofficial.com/contact](https://blobbyofficial.com/contact)
 - **Yjs** — CRDT sync for the real-time collaborative script editor at
   `/scripts`, transported over Supabase Realtime broadcast channels
 
+Write access to content and messages is restricted to accounts listed in
+`bo_admins`, enforced in row-level security *and* re-checked in every admin
+server action (they're independently addressable endpoints, so the dashboard
+layout's check doesn't cover them).
+
+Google Analytics and Microsoft Clarity are consent-gated: neither script is
+requested until the visitor accepts the cookie banner, and the choice can be
+changed later from the Cookies link in the footer.
+
 See [DEPLOY.md](./DEPLOY.md) for environment setup and deployment steps.
 
 ## Development
@@ -57,9 +66,10 @@ src/
   app/            routes (App Router) — pages, admin dashboard, login/signup,
                   API-less server actions for messaging, scripts, admin CRUD
   components/     shared UI (nav, hero, product card, message thread,
-                  script editor, admin forms, ...)
+                  script editor, portfolio video player, context menu,
+                  cookie banner, admin forms, ...)
   lib/            Supabase clients, content/data layer, site constants,
-                  rate limiting
+                  admin guard, analytics consent, rate limiting
 supabase/
   migrations/     SQL schema + RLS policies + seed data
 ```
