@@ -28,7 +28,13 @@ export default async function Home() {
           <h2 className="section-label">Store</h2>
         </Reveal>
 
-        <div className="grid gap-0.5 max-md:gap-px" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(280px, 380px))" }}>
+        {/* min() lets the column shrink below its 280px preference once the
+            container is narrower than that — without it the grid forced a
+            280px track and overflowed the very narrowest phones. */}
+        <div
+          className="grid gap-0.5 max-md:gap-px"
+          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 380px))" }}
+        >
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
