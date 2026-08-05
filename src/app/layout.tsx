@@ -6,6 +6,7 @@ import { Cursor } from "@/components/cursor";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { Analytics } from "@/components/analytics";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ContextMenu } from "@/components/context-menu";
 import { DevtoolsEasterEgg } from "@/components/devtools-easter-egg";
 import { SITE_NAME, SITE_URL, SOCIALS } from "@/lib/site";
@@ -126,6 +127,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <DevtoolsEasterEgg />
 
         <Analytics enabled={process.env.NODE_ENV === "production"} />
+        <SpeedInsights />
       </body>
     </html>
   );
