@@ -7,7 +7,7 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { Analytics } from "@/components/analytics";
 import { ContextMenu } from "@/components/context-menu";
-import { DevtoolsEasterEgg } from "@/components/devtools-easter-egg";
+import { DevtoolsNote } from "@/components/devtools-note";
 import { SITE_NAME, SITE_URL, SOCIALS } from "@/lib/site";
 
 const bebasNeue = Bebas_Neue({
@@ -123,7 +123,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteFooter />
 
         <ContextMenu />
-        <DevtoolsEasterEgg />
+        <DevtoolsNote />
 
         <Analytics enabled={process.env.NODE_ENV === "production"} />
       </body>
