@@ -72,8 +72,8 @@ const SEED_PORTFOLIO: PortfolioClip[] = VIDEO_MANIFEST.map((entry) => ({
 }));
 
 export const PORTFOLIO_STATS = [
-  { platform: "TikTok", value: "2186", label: "Followers" },
-  { platform: "TikTok", value: "32.2K", label: "Total Likes" },
+  { platform: "Discord", value: "15+", label: "Happy Clients" },
+  { platform: "Online", value: "70+", label: "Videos Edited" },
   { platform: "TikTok", value: "510.6K", label: "Most Viewed Video" },
 ] as const;
 
