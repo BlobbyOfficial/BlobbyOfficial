@@ -5,6 +5,7 @@ import { Grain } from "@/components/grain";
 import { Cursor } from "@/components/cursor";
 import { SiteChromeNav, SiteChromeFooter } from "@/components/site-chrome";
 import { Analytics } from "@/components/analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { ContextMenu } from "@/components/context-menu";
 import { DevtoolsNote } from "@/components/devtools-note";
 import { SITE_NAME, SITE_URL, SOCIALS } from "@/lib/site";
@@ -125,6 +126,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <DevtoolsNote />
 
         <Analytics enabled={process.env.NODE_ENV === "production"} />
+        <VercelAnalytics />
       </body>
     </html>
   );
