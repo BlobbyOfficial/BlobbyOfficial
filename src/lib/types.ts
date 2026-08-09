@@ -32,6 +32,42 @@ export type Product = {
   created_at: string;
 };
 
+export type PricingTier = {
+  id: string;
+  slug: string;
+  name: string;
+  price_label: string;
+  price_note: string;
+  description: string;
+  cta_label: string;
+  cta_url: string;
+  highlighted: boolean;
+  sort_order: number;
+  published: boolean;
+  created_at: string;
+};
+
+export type PricingFeature = {
+  id: string;
+  label: string;
+  note: string;
+  /** Tier slug -> value. "yes"/"no"/"-" render as marks, anything else verbatim. */
+  values: Record<string, string>;
+  sort_order: number;
+  published: boolean;
+  created_at: string;
+};
+
+export type PricingSettings = {
+  id: number;
+  heading: string;
+  subheading: string;
+  description: string;
+  payment_note: string;
+  footnote: string;
+  updated_at: string;
+};
+
 export type ContactMessage = {
   id: string;
   name: string;
@@ -80,6 +116,24 @@ export type Database = {
         Row: Product;
         Insert: Omit<Product, "id" | "created_at">;
         Update: Partial<Omit<Product, "id" | "created_at">>;
+        Relationships: [];
+      };
+      pricing_tiers: {
+        Row: PricingTier;
+        Insert: Omit<PricingTier, "id" | "created_at">;
+        Update: Partial<Omit<PricingTier, "id" | "created_at">>;
+        Relationships: [];
+      };
+      pricing_features: {
+        Row: PricingFeature;
+        Insert: Omit<PricingFeature, "id" | "created_at">;
+        Update: Partial<Omit<PricingFeature, "id" | "created_at">>;
+        Relationships: [];
+      };
+      pricing_settings: {
+        Row: PricingSettings;
+        Insert: Partial<Omit<PricingSettings, "updated_at">>;
+        Update: Partial<Omit<PricingSettings, "id">>;
         Relationships: [];
       };
       contact_messages: {

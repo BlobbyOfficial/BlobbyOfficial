@@ -18,6 +18,7 @@ export const ANALYTICS = {
 export const NAV_LINKS = [
   { href: "/portfolio", label: "Portfolio" },
   { href: "/store", label: "Store" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/scripts", label: "Scripts" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
@@ -25,6 +26,7 @@ export const NAV_LINKS = [
 
 export const FOOTER_LINKS = [
   { href: "/store", label: "Store" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
