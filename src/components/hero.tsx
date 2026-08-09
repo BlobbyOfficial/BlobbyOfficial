@@ -27,7 +27,12 @@ export function Hero() {
 
   return (
     <section
-      className="cine-backdrop relative min-h-screen flex flex-col justify-end items-start px-10 pb-[60px] overflow-hidden max-md:px-6 max-md:pb-14 max-md:min-h-dvh"
+      /* Bottom-aligned on desktop, where the video fills the space above it.
+         The video is hidden on phones, so bottom-aligning there just left a
+         tall empty black column with the call to action buried at the very
+         bottom of the fold — centred reads as composed instead, and keeps the
+         buttons clear of the cookie banner. */
+      className="cine-backdrop relative min-h-screen flex flex-col justify-end items-start px-10 pb-[60px] overflow-hidden max-md:px-6 max-md:pb-14 max-md:pt-24 max-md:min-h-dvh max-md:justify-center"
       id="home"
     >
       {/* The black fill is the poster: the video fades in over it once it can
@@ -55,8 +60,23 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative z-[3]">
-        <h1 className="fade-up font-display text-[clamp(72px,12vw,160px)] leading-[0.9] tracking-[0.04em]" style={{ animationDelay: "0.35s" }}>
+      {/* Full width on phones so the children size against the viewport. The
+          section is `items-start`, so without this the wrapper took its width
+          from the h1 — and the h1 was wider than the screen, which is what
+          pushed the "Hire Me" button off the right edge. */}
+      <div className="relative z-[3] max-md:w-full">
+        {/*
+          The 72px lower bound never let the name shrink on a phone:
+          "@blobbyofficial" renders 447px wide at that size, so it overflowed
+          every handset. Below the md breakpoint it scales with the viewport
+          instead — 13vw keeps the name at ~81% of the screen, comfortably
+          inside the 24px gutters. The 92px ceiling is 12vw measured at 768px,
+          so the size is continuous across the breakpoint rather than jumping.
+        */}
+        <h1
+          className="fade-up font-display text-[clamp(72px,12vw,160px)] leading-[0.9] tracking-[0.04em] max-md:text-[clamp(34px,13vw,92px)]"
+          style={{ animationDelay: "0.35s" }}
+        >
           <span className="block font-serif italic font-light text-mid text-[clamp(22px,3.5vw,48px)] tracking-[0.1em] mb-2">
             Freelance Video Editor
           </span>

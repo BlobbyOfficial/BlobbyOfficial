@@ -25,7 +25,9 @@ export default async function StorePage() {
       <section className="border-t border-border py-20 px-10 max-md:py-14 max-md:px-6">
         <div
           className="grid gap-0.5 max-md:gap-px"
-          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(280px, 380px))" }}
+          /* See the note on the homepage grid: min() keeps the track from
+             forcing a 280px column on narrower screens. */
+          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 380px))" }}
         >
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />

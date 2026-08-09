@@ -15,7 +15,9 @@ const ADMIN_NAV = [
   { href: "/admin", label: "Overview" },
   { href: "/admin/portfolio", label: "Portfolio" },
   { href: "/admin/products", label: "Products" },
+  { href: "/admin/pricing", label: "Pricing" },
   { href: "/admin/messages", label: "Messages" },
+  { href: "/admin/status", label: "Status" },
 ] as const;
 
 export default async function AdminDashboardLayout({ children }: { children: React.ReactNode }) {

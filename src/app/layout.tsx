@@ -3,12 +3,12 @@ import { Bebas_Neue, DM_Mono, Cormorant, Monsieur_La_Doulaise } from "next/font/
 import "./globals.css";
 import { Grain } from "@/components/grain";
 import { Cursor } from "@/components/cursor";
-import { SiteNav } from "@/components/site-nav";
-import { SiteFooter } from "@/components/site-footer";
+import { SiteChromeNav, SiteChromeFooter } from "@/components/site-chrome";
 import { Analytics } from "@/components/analytics";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { ContextMenu } from "@/components/context-menu";
-import { DevtoolsEasterEgg } from "@/components/devtools-easter-egg";
+import { DevtoolsNote } from "@/components/devtools-note";
 import { SITE_NAME, SITE_URL, SOCIALS } from "@/lib/site";
 
 const bebasNeue = Bebas_Neue({
@@ -117,18 +117,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <Grain />
         <Cursor />
-        <SiteNav />
+        <SiteChromeNav />
 
         <main id="main-content">{children}</main>
 
-        <SiteFooter />
+        <SiteChromeFooter />
 
         <ContextMenu />
-        <DevtoolsEasterEgg />
+        <DevtoolsNote />
 
         <Analytics enabled={process.env.NODE_ENV === "production"} />
         <SpeedInsights />
-      </body>
+        <VercelAnalytics />      </body>
     </html>
   );
 }

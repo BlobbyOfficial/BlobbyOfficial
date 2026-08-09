@@ -10,8 +10,8 @@ import { SOCIALS } from "@/lib/site";
  * Replaces the browser's default menu with one in the site's own visual
  * language, and drops the Inspect entry along the way. It is *not* a security
  * measure — the page source is public and devtools has its own shortcuts and
- * browser-menu entry that a page cannot touch (see devtools-easter-egg.tsx,
- * which greets anyone who gets in).
+ * browser-menu entry that a page cannot touch (see devtools-note.tsx, which
+ * leaves a note for anyone who gets in).
  *
  * The native menu is deliberately left alone inside text fields: spellcheck,
  * copy/paste and the browser's own suggestions matter more in the contact
