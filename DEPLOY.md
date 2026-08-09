@@ -72,6 +72,42 @@ dynamic content to work in production.
    is verified on Vercel, remove the old `CNAME`-style DNS records pointing
    at GitHub Pages.
 
+## 3. Status page (`status.blobbyofficial.com`)
+
+Optional — the rest of the site works without it, and `/status` renders with
+every row "unknown" until checks are running.
+
+1. Run `supabase/migrations/0010_status_page.sql`. It creates
+   `bo_status_services`, `bo_status_checks` and `bo_status_reports`, and seeds
+   the services listed in `src/lib/status.ts`. Add, rename or remove services
+   from `/admin/status` (or straight in the table) afterwards — each row is one
+   line on the page, grouped under `group_label`.
+2. Add `SUPABASE_SERVICE_ROLE_KEY` (Project Settings → API → `service_role`) to
+   the Vercel project's environment variables. The cron route writes check
+   history and service states, which row-level security forbids for the anon
+   key. **Never expose this key to the browser** — it must not be prefixed
+   `NEXT_PUBLIC_`.
+3. Optionally set `STATUS_REPORT_SALT` to a long random string. It salts the
+   hash of each reporter's IP (no IP is ever stored) that de-duplicates
+   reports.
+4. `vercel.json` registers the cron job (`/api/status/check`, every 10
+   minutes). Vercel sets `CRON_SECRET` itself; when it's present the route
+   requires it as a bearer token, so nobody else can trigger the pings. You can
+   run a check by hand from Vercel → Project → Cron Jobs → Run.
+5. **Domain**: Project Settings → Domains → add `status.blobbyofficial.com`,
+   and point a CNAME at Vercel. No separate project is needed — `src/proxy.ts`
+   rewrites any request on a `status.` host to `/status`.
+
+How a state gets set:
+
+- **auto** — whatever the last ping said (non-2xx or a failure is *down*, over
+  2.5s is *degraded*).
+- **reports** — two or more open visitor reports on a healthy service flip it
+  to *investigating* (orange). Clearing the reports in `/admin/status` puts it
+  back.
+- **manual** — a state you set in `/admin/status`. Neither the pinger nor the
+  report threshold overwrites it until you hit **resume auto**.
+
 ## Local development
 
 ```bash

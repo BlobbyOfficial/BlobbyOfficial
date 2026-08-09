@@ -3,8 +3,7 @@ import { Bebas_Neue, DM_Mono, Cormorant, Monsieur_La_Doulaise } from "next/font/
 import "./globals.css";
 import { Grain } from "@/components/grain";
 import { Cursor } from "@/components/cursor";
-import { SiteNav } from "@/components/site-nav";
-import { SiteFooter } from "@/components/site-footer";
+import { SiteChromeNav, SiteChromeFooter } from "@/components/site-chrome";
 import { Analytics } from "@/components/analytics";
 import { ContextMenu } from "@/components/context-menu";
 import { DevtoolsNote } from "@/components/devtools-note";
@@ -116,11 +115,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <Grain />
         <Cursor />
-        <SiteNav />
+        <SiteChromeNav />
 
         <main id="main-content">{children}</main>
 
-        <SiteFooter />
+        <SiteChromeFooter />
 
         <ContextMenu />
         <DevtoolsNote />

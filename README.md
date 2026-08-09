@@ -25,6 +25,8 @@ Hire me: [blobbyofficial.com/contact](https://blobbyofficial.com/contact)
 - **Supabase** — Postgres (portfolio/product content, messaging inbox,
   real-time script collaboration) + Auth (public accounts, plus an
   admin-only allowlist gating `/admin`)
+- **Vercel Cron** — pings every monitored endpoint every 10 minutes to feed
+  the status page at [status.blobbyofficial.com](https://status.blobbyofficial.com)
 - **Yjs** — CRDT sync for the real-time collaborative script editor at
   `/scripts`, transported over Supabase Realtime broadcast channels
 
@@ -58,6 +60,16 @@ title. `npm run videos:manifest` (run automatically by `dev` and `build`)
 regenerates `src/lib/video-manifest.ts`, and opening `/admin/portfolio` adds
 anything new to the database as a **private** clip. Nothing is uploaded or
 linked from the dashboard; you rename it, add a review, and publish it there.
+
+### Status page
+
+`status.blobbyofficial.com` serves `/status` (rewritten by host in
+`src/proxy.ts`). A Vercel cron job hits `/api/status/check` every 10 minutes,
+records one row per service in `bo_status_checks` — that history is the strip
+of coloured squares — and updates each service's state. Visitors can report an
+outage; two open reports on a service that still looks healthy flip it to
+*investigating* automatically, and `/admin/status` is where a state gets pinned
+by hand or handed back to the pinger. Setup is in [DEPLOY.md](./DEPLOY.md).
 
 ## Project structure
 
