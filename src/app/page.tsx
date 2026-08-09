@@ -5,7 +5,14 @@ import { ProductCard } from "@/components/product-card";
 import { PortfolioGrid } from "@/components/portfolio-grid";
 import { StatsRow } from "@/components/stats-row";
 import { Reveal } from "@/components/reveal";
-import { getProducts, getPortfolioClips, getHiddenPortfolioSections } from "@/lib/content";
+import { PricingCards } from "@/components/pricing-section";
+import {
+  getProducts,
+  getPortfolioClips,
+  getHiddenPortfolioSections,
+  getPricingSettings,
+  getPricingTiers,
+} from "@/lib/content";
 import { SOCIALS } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -13,10 +20,12 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const [products, clips, hiddenSections] = await Promise.all([
+  const [products, clips, hiddenSections, pricingTiers, pricingSettings] = await Promise.all([
     getProducts(),
     getPortfolioClips(),
     getHiddenPortfolioSections(),
+    getPricingTiers(),
+    getPricingSettings(),
   ]);
 
   return (
@@ -73,6 +82,31 @@ export default async function Home() {
             className="text-[11px] text-mid tracking-[0.14em] uppercase no-underline transition-colors hover:text-fg"
           >
             View full portfolio →
+          </Link>
+        </Reveal>
+      </section>
+
+      <section className="border-t border-border py-25 px-10 max-md:py-16 max-md:px-6" id="pricing">
+        <Reveal as="div">
+          <h2 className="section-label">Pricing</h2>
+        </Reveal>
+
+        <PricingCards tiers={pricingTiers} />
+
+        {pricingSettings.payment_note && (
+          <Reveal>
+            <p className="border border-border bg-white/2 mt-0.5 p-6 text-[12px] text-mid leading-[1.8] max-md:p-5">
+              {pricingSettings.payment_note}
+            </p>
+          </Reveal>
+        )}
+
+        <Reveal className="mt-8 text-center">
+          <Link
+            href="/pricing"
+            className="text-[11px] text-mid tracking-[0.14em] uppercase no-underline transition-colors hover:text-fg"
+          >
+            Compare every tier →
           </Link>
         </Reveal>
       </section>
