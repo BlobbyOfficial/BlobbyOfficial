@@ -124,9 +124,12 @@ as $$
   );
 $$;
 
-revoke all on function public.bo_is_blocked(uuid, text) from public, anon;
+-- bo_is_blocked answers about an arbitrary target, so a signed-in caller could
+-- use it to probe whether any address is blocked. Nothing needs the grant: the
+-- guard trigger and bo_am_i_blocked are both SECURITY DEFINER and run as the
+-- owner, which is exactly why bo_am_i_blocked (caller-only) is the one exposed.
+revoke all on function public.bo_is_blocked(uuid, text) from public, anon, authenticated;
 revoke all on function public.bo_am_i_blocked() from public, anon;
-grant execute on function public.bo_is_blocked(uuid, text) to authenticated;
 grant execute on function public.bo_am_i_blocked() to authenticated;
 
 -- ── MESSAGING SETTINGS ───────────────────────────────────────────────────
@@ -224,6 +227,9 @@ drop trigger if exists bo_messages_guard_trigger on public.bo_messages;
 create trigger bo_messages_guard_trigger
   before insert on public.bo_messages
   for each row execute function public.bo_messages_guard();
+
+-- Trigger functions are never meant to be reachable over PostgREST.
+revoke all on function public.bo_messages_guard() from public, anon, authenticated;
 
 -- ── ADMIN BULK OPERATIONS ────────────────────────────────────────────────
 -- Hard deletes. Soft delete is the default everywhere in the UI; these are
