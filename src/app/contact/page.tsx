@@ -7,6 +7,7 @@ import { Reveal } from "@/components/reveal";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { SOCIALS } from "@/lib/site";
 import type { BoMessage } from "@/lib/types";
+import { DEFAULT_MESSAGING_SETTINGS, getMessagingSettings } from "@/lib/messaging";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -21,13 +22,21 @@ export default async function ContactPage() {
   } = (await supabase?.auth.getUser()) ?? { data: { user: null } };
 
   let messages: BoMessage[] = [];
+  let settings = DEFAULT_MESSAGING_SETTINGS;
+  let blocked = false;
   if (supabase && user) {
-    const { data } = await supabase
-      .from("bo_messages")
-      .select("*")
-      .eq("user_id", user.id)
-      .order("created_at", { ascending: true });
+    const [{ data }, loadedSettings, { data: blockedFlag }] = await Promise.all([
+      supabase
+        .from("bo_messages")
+        .select("*")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: true }),
+      getMessagingSettings(supabase),
+      supabase.rpc("bo_am_i_blocked"),
+    ]);
     messages = data ?? [];
+    settings = loadedSettings;
+    blocked = Boolean(blockedFlag);
   }
 
   return (
@@ -51,7 +60,14 @@ export default async function ContactPage() {
                   </p>
                   <AccountSignOutButton />
                 </div>
-                <MessageThread userId={user.id} initialMessages={messages} />
+                <MessageThread
+                  userId={user.id}
+                  initialMessages={messages}
+                  maxLength={settings.max_length}
+                  banner={settings.banner}
+                  disabledNotice={settings.enabled ? null : settings.disabled_notice}
+                  blocked={blocked}
+                />
               </div>
             ) : !isSupabaseConfigured() ? (
               <div className="border border-border p-9 max-md:p-6">

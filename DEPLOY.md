@@ -119,3 +119,38 @@ npm run dev
 The site renders with seed content even with an empty `.env.local` — fill in
 Supabase to manage content from `/admin` instead of editing
 `src/lib/content.ts`.
+
+## 4. Messaging controls
+
+`supabase/migrations/0011_messaging_controls.sql` adds everything behind
+`/admin/messages`. Run it like any other migration — the inbox keeps working
+without it (settings fall back to defaults), but the controls below don't.
+
+What it adds:
+
+- **Deleting.** Both sides can delete. A delete is a *soft* delete: the row
+  stays and the other side sees "this message was deleted" rather than a
+  thread that silently rewrites itself. The admin can restore one, remove a
+  single tombstone for good, clear a whole thread, delete a conversation
+  permanently, or purge every tombstone older than N days in one go. Users get
+  the same verb for their own messages only (`Delete`, `Delete my messages`) —
+  the admin's replies aren't theirs to remove.
+- **Blocking.** `/admin/messages/blocks` blocks an account, an email address,
+  or both at once from a thread. Blocking the *address* matters because an
+  account can be deleted and re-created; the block outlives it. Blocked users
+  see a notice instead of the composer, and the admin can still reply in the
+  thread (useful for saying why). Enforced by an insert trigger, not just by
+  the UI.
+- **Organising.** Pin, star, archive and label conversations, keep a private
+  per-person note, search across emails/labels/message bodies, filter by
+  unread/starred/pinned/archived/blocked, mark a thread unread, mark
+  everything read, and export a thread as a plain-text transcript.
+- **Global controls** (`/admin/messages/settings`). Turn new messages off with
+  a custom notice, show a banner above the composer, set the maximum message
+  length, and set an auto-reply that fires when a thread has been quiet for
+  12 hours. The off-switch and the length cap are enforced in the database
+  too, so they hold for any client — not just this site.
+- **Composing.** Canned replies (one-click inserts above the reply box),
+  editing your own sent replies, pinning key messages to the top of a thread,
+  and a broadcast that sends one message into every conversation (blocked
+  accounts skipped, archived optionally skipped).

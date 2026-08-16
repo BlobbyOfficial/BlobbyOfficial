@@ -92,6 +92,51 @@ export type BoMessage = {
   body: string;
   read: boolean;
   created_at: string;
+  /** Soft delete — the row stays so the other side sees a tombstone. */
+  deleted_at: string | null;
+  deleted_by: MessageSender | null;
+  edited_at: string | null;
+  pinned: boolean;
+};
+
+/** Admin-owned, per-thread state. `note` is private to the admin. */
+export type BoConversation = {
+  user_id: string;
+  pinned: boolean;
+  archived: boolean;
+  starred: boolean;
+  label: string;
+  note: string;
+  updated_at: string;
+};
+
+/** A block on an account (`user_id`), an address (`email`), or both. */
+export type BoBlock = {
+  id: string;
+  user_id: string | null;
+  email: string | null;
+  reason: string;
+  created_by: string | null;
+  created_at: string;
+};
+
+export type BoMessagingSettings = {
+  id: number;
+  enabled: boolean;
+  disabled_notice: string;
+  banner: string;
+  max_length: number;
+  auto_reply_enabled: boolean;
+  auto_reply_body: string;
+  updated_at: string;
+};
+
+export type BoMessageTemplate = {
+  id: string;
+  title: string;
+  body: string;
+  sort_order: number;
+  created_at: string;
 };
 
 export type BoScript = {
@@ -198,8 +243,37 @@ export type Database = {
       };
       bo_messages: {
         Row: BoMessage;
-        Insert: Omit<BoMessage, "id" | "created_at" | "read"> & { read?: boolean };
+        Insert: Omit<
+          BoMessage,
+          "id" | "created_at" | "read" | "deleted_at" | "deleted_by" | "edited_at" | "pinned"
+        > &
+          Partial<Pick<BoMessage, "read" | "pinned">>;
         Update: Partial<Omit<BoMessage, "id" | "created_at">>;
+        Relationships: [];
+      };
+      bo_conversations: {
+        Row: BoConversation;
+        Insert: Pick<BoConversation, "user_id"> & Partial<Omit<BoConversation, "user_id">>;
+        Update: Partial<Omit<BoConversation, "user_id">>;
+        Relationships: [];
+      };
+      bo_blocks: {
+        Row: BoBlock;
+        Insert: Omit<BoBlock, "id" | "created_at" | "reason"> & Partial<Pick<BoBlock, "reason">>;
+        Update: Partial<Omit<BoBlock, "id" | "created_at">>;
+        Relationships: [];
+      };
+      bo_messaging_settings: {
+        Row: BoMessagingSettings;
+        Insert: Partial<BoMessagingSettings>;
+        Update: Partial<Omit<BoMessagingSettings, "id">>;
+        Relationships: [];
+      };
+      bo_message_templates: {
+        Row: BoMessageTemplate;
+        Insert: Omit<BoMessageTemplate, "id" | "created_at" | "sort_order"> &
+          Partial<Pick<BoMessageTemplate, "sort_order">>;
+        Update: Partial<Omit<BoMessageTemplate, "id" | "created_at">>;
         Relationships: [];
       };
       bo_scripts: {
@@ -248,6 +322,21 @@ export type Database = {
       bo_script_rename: {
         Args: { p_id: string; p_title: string };
         Returns: undefined;
+      };
+      /** True when the caller's account or email address is blocked. */
+      bo_am_i_blocked: {
+        Args: Record<string, never>;
+        Returns: boolean;
+      };
+      /** Hard-deletes every message in a thread. Admin only. */
+      bo_purge_conversation: {
+        Args: { p_user_id: string };
+        Returns: number;
+      };
+      /** Hard-deletes tombstones older than `p_days`. Admin only. */
+      bo_purge_deleted: {
+        Args: { p_days: number };
+        Returns: number;
       };
     };
     Enums: Record<string, never>;
