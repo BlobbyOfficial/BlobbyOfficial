@@ -11,7 +11,7 @@
 ---
 
 Freelance video editor working in short-form (TikTok/Reels/Shorts), sharing
-the free DaVinci Resolve and HandBrake presets built along the way.
+free DaVinci Resolve and HandBrake presets built along the way.
 
 Presets: [blobbyofficial.com/store](https://blobbyofficial.com/store)
 Hire me: [blobbyofficial.com/contact](https://blobbyofficial.com/contact)
